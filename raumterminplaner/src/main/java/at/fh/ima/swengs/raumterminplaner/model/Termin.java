@@ -30,30 +30,11 @@ public class Termin {
 
     private String kommentar;
 
-
     @ManyToOne
     private Raum raum;
 
-
-    @Version
-    private long version;
-
-
-
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "termin_mitarbeiter", joinColumns = @JoinColumn(name = "termin_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "mitarbeiter_id", referencedColumnName = "id"))
-    private Set<Mitarbeiter> mitarbeiter;
-
-    public Set<Mitarbeiter> getMitarbeiter() {
-        return mitarbeiter;
-    }
-
-
-    public void setMitarbeiter(Set<Mitarbeiter> mitarbeiter) {
-        this.mitarbeiter = mitarbeiter;
-    }
-
+    @ManyToOne
+    private Mitarbeiter mitarbeiter;
 
 
 
@@ -89,5 +70,21 @@ public class Termin {
 
     public void setKommentar(String kommentar) {
         this.kommentar = kommentar;
+    }
+
+    public Raum getRaum() {
+        return raum;
+    }
+
+    public void setRaum(Raum raum) {
+        this.raum = raum;
+    }
+
+    public Mitarbeiter getMitarbeiter() {
+        return mitarbeiter;
+    }
+
+    public void setMitarbeiter(Mitarbeiter mitarbeiter) {
+        this.mitarbeiter = mitarbeiter;
     }
 }

@@ -26,34 +26,11 @@ public class Mitarbeiter {
 
 
 
-
-    @ManyToMany(mappedBy = "mitarbeiter")
-    private Set<Termin> termine;
-
-    public Set<Termin> getTermin() {
-        return termine;
-    }
-
-    public void setTermin(Set<Termin> termine) {
-        this.termine = termine;
-    }
-
-/*
-
-    private int bonusMiles;
-
     @OneToMany(mappedBy = "mitarbeiter",orphanRemoval = true)
-    @JsonIgnoreProperties("mitarbeiter")
-    private List<Raum> bookings;
-*/
+    private List<Termin> termine;
 
 
 
-
-
-
-    @Version
-    private long version;
 
 
     public Mitarbeiter() {
@@ -89,11 +66,4 @@ public class Mitarbeiter {
         this.vorname = vorname;
     }
 
-    public long getVersion() {
-        return version;
-    }
-
-    public void setVersion(long version) {
-        this.version = version;
-    }
 }

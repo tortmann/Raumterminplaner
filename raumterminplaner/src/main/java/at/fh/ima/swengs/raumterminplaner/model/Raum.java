@@ -16,9 +16,6 @@ public class Raum {
 
     private String bezeichnung;
 
-    @Version
-    private long version;
-
 
     public long getId() {
         return id;
