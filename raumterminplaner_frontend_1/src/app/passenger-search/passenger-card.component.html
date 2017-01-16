@@ -1,0 +1,23 @@
+<div style="padding:20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); margin: 20px;"
+     [ngStyle]="{'background-color': (selectedItem == item) ?  '#006dcc' : 'ivory',
+     'color': (selectedItem == item) ?  'white' : 'black'}">
+
+  <h3>Passenger #{{item.id}}</h3>
+  <hr>
+  <p><b>Name:</b> {{item.name}}</p>
+  <p><b>First Name:</b> {{item.firstName}}</p>
+  <p><b>BonusMiles:</b> {{item.bonusMiles}}</p>
+  <p><b>Category:</b> {{item.bonusMiles | bonusMiles}}</p>
+  <p><b>Status:</b> {{item.passengerStatus}}</p>
+  <hr>
+
+
+  <p>
+    <input type="button"
+           value="Select"
+           class="btn btn-xs btn-primary"
+           (click)="select()" />
+
+    <a class="btn btn-xs btn-danger" [routerLink]="['/passenger-edit', item.id]">Edit</a>
+  </p>
+</div>

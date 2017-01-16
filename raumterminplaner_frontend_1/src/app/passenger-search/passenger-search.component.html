@@ -1,0 +1,125 @@
+<h1>Passengers</h1><hr><br>
+
+<ul class="nav nav-tabs">
+    <li [ngClass]="{ 'active':  menu == 1}" role="presentation"><a (click)="menu = 1">Search</a></li>
+    <li [ngClass]="{ 'active':  menu == 2}" role="presentation"><a (click)="menu = 2">Create</a></li>
+    <li [ngClass]="{ 'active':  menu == 3}" role="presentation"><a (click)="menu = 3">Info</a></li>
+</ul>
+
+
+<div class="panel panel-primary" *ngIf="menu == 1">
+  <div class="panel-heading">
+    <h2 class="panel-title">Search Passenger</h2>
+  </div>
+  <div class="panel-body">
+    <form #f="ngForm" novalidate>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">Name</span>
+      <input [(ngModel)]="name" placeholder="Search for passengers..."
+             name="name"
+             passenger="Muster,Sorglos,Doe,Test,Blauensteiner"
+             required
+             minlength="3"
+             maxlength="20"
+             asyncPassenger
+             pattern="[a-zA-ZöäüßÖÄÜ]*"
+             class="form-control">
+
+      <span class="input-group-btn">
+        <button [disabled]="!f?.controls?.name?.valid" class="btn btn-default" type="button" (click)="search()">
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        </button>
+      </span>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.name?.valid">
+       <div *ngIf="f?.controls?.name?.hasError('passenger')">
+         <b>Warning!&nbsp;</b><i>INVALID</i> Passenger name!
+      </div>
+      <div *ngIf="f?.controls?.name?.pending">
+        <b>Validating...</b>
+      </div>
+      <div *ngIf="f?.controls?.name?.hasError('asyncPassenger')">
+        <b>Warning!&nbsp;</b><i>NO</i> Passengers found with this <i>NAME</i>!
+      </div>
+      <div *ngIf="f?.controls?.name?.hasError('minlength')">
+        <b>Warning!&nbsp;</b>Passenger name is <i>TOO SHORT</i>!
+      </div>
+      <div *ngIf="f?.controls?.name?.hasError('pattern')">
+        <b>Warning!&nbsp;</b>Only <i>LETTERS</i> are allowed!
+      </div>
+      <div *ngIf="f?.controls?.name?.hasError('required')">
+        <b>Warning!&nbsp;</b>This field is <i>REQUIRED</i>!
+      </div>
+    </div>
+    </form>
+    <br>
+    <div class="panel-footer">
+      <table class="table"><br>
+        <tr>
+          <th>Name</th>
+          <th>First Name</th>
+          <th>Bonus Miles</th>
+          <th>Action</th>
+        </tr>
+        <tr *ngFor="let passenger of passengers" [ngClass]="{ 'active': passenger == selectedPassenger }">
+          <td>{{passenger.firstName}}</td>
+          <td>{{passenger.lastName}}</td>
+          <td>{{passenger.bonusMiles}}</td>
+
+          <td>
+            <button type="button" class="btn btn-default btn-sm" (click)="select(passenger)">
+              <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+            </button>
+            <!--
+            <button type="button" class="btn btn-default btn-sm" (click)="delete(passenger.id)">
+              <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+            </button>
+            -->
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-primary" *ngIf="menu == 2">
+  <div class="panel-heading">
+    <h2 class="panel-title">Create Passenger</h2>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-12">
+      <div class="col-lg-3 col-md-2">
+        <input [(ngModel)]="name" class="form-control" placeholder="Name">
+      </div>
+      <div class="col-lg-3 col-md-2">
+        <input [(ngModel)]="firstName" class="form-control" placeholder="First Name">
+      </div>
+      <div class="col-lg-3 col-md-2">
+        <input [(ngModel)]="bonusMiles" class="form-control" placeholder="Bonus Miles">
+      </div>
+      <div class="col-lg-2 col-md-1">
+        <button class="btn btn-default" type="button" (click)="create()">
+          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp;Create Passenger
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-primary" *ngIf="menu == 3">
+  <div class="panel-heading">
+    <h2 class="panel-title">Passenger Info</h2>
+  </div>
+  <div class="panel-body">
+    <div *ngFor="let p of passengers" class="col-xs-12 col-lg-3 col-md-4 col-sm-6 ">
+      <passenger-card
+        [item]="p"
+        [(selectedItem)]="selectedPassenger">
+      </passenger-card>
+    </div>
+    <pre>
+      {{ selectedPassenger | json }}
+    </pre>
+  </div>
+</div>
