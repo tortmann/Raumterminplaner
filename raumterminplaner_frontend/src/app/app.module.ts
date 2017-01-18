@@ -12,7 +12,7 @@ import {AppRouterModule} from "./app.routes";
 import {HomeComponent} from "./home/home.component";
 import {OAuthModule} from "angular-oauth2-oidc";
 //const BASE_URL_FOR_PRODUCTION = "http://www.angular.at/api/securepassenger";
-const BASE_URL_FOR_PRODUCTION = "http://localhost:8080/api/passengers";
+const BASE_URL_FOR_PRODUCTION = "http://localhost:8080/api/mitarbeiters";
 
 
 @NgModule({
