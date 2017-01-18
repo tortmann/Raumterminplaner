@@ -58,13 +58,11 @@
         <tr>
           <th>Name</th>
           <th>First Name</th>
-          <th>Bonus Miles</th>
           <th>Action</th>
         </tr>
         <tr *ngFor="let passenger of passengers" [ngClass]="{ 'active': passenger == selectedPassenger }">
-          <td>{{passenger.firstName}}</td>
-          <td>{{passenger.lastName}}</td>
-          <td>{{passenger.bonusMiles}}</td>
+          <td>{{passenger.name}}</td>
+          <td>{{passenger.vorname}}</td>
 
           <td>
             <button type="button" class="btn btn-default btn-sm" (click)="select(passenger)">

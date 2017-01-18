@@ -67,8 +67,8 @@ export class PassengerService{
       .map(resp => resp.json())
       .subscribe(
         (passengers_new) => {
-          this.passengers = passengers_new._embedded.passengers;
-          console.debug(passengers_new._embedded.passengers);
+          this.passengers = passengers_new._embedded.mitarbeiters;
+          console.debug(passengers_new._embedded.mitarbeiters);
         },
         (err) => {
           console.error('Fehler beim Laden', err);
