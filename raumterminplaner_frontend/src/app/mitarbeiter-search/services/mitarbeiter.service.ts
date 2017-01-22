@@ -78,10 +78,7 @@ export class MitarbeiterService{
 
   public findById(id: string): Observable<Mitarbeiter> {
 
-    let url = this.baseUrl+this.class_suffix;
-
-    let search = new URLSearchParams();
-    search.set('id', id);
+    let url = this.baseUrl+this.class_suffix+'/'+id;
 
     let headers = new Headers();
     headers.set('Accept', 'application/json');
@@ -89,7 +86,7 @@ export class MitarbeiterService{
 
     return this
       .http
-      .get(url, { headers, search })
+      .get(url, {headers})
       .map(resp => resp.json());
 
   }
