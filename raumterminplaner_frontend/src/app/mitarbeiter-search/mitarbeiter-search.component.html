@@ -58,24 +58,14 @@
         <tr>
           <th>ID</th>
           <th>Name</th>
-          <th>First Name</th>
-          <th>Action</th>
+          <th>Vorname</th>
+          <th>Aktion</th>
         </tr>
         <tr *ngFor="let mitarbeiter of mitarbeiters" [ngClass]="{ 'active': mitarbeiter == selectedMitarbeiter }">
           <td>{{mitarbeiter.id}}</td>
           <td>{{mitarbeiter.name}}</td>
           <td>{{mitarbeiter.vorname}}</td>
-
-          <td>
-            <button type="button" class="btn btn-default btn-sm" (click)="select(mitarbeiter)">
-              <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-            </button>
-            <!--
-            <button type="button" class="btn btn-default btn-sm" (click)="delete(passenger.id)">
-              <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
-            </button>
-            -->
-          </td>
+          <td><button type="button" class="btn btn-default btn-sm" (click)="select(mitarbeiter)">Auswählen</button></td>
         </tr>
       </table>
     </div>

@@ -12,15 +12,11 @@ import { Mitarbeiter } from '../../entities/mitarbeiter';
     </div>
     <div *ngIf="mitarbeiter">
       <div class="form-group">
-        <label>Id</label>
-        <input [(ngModel)]="mitarbeiter.id" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>From</label>
+        <label>Name</label>
         <input [(ngModel)]="mitarbeiter.name" class="form-control">
       </div>
       <div class="form-group">
-        <label>To</label>
+        <label>Vorname</label>
         <input [(ngModel)]="mitarbeiter.vorname" class="form-control">
       </div>
       <div class="form-group">
@@ -30,7 +26,8 @@ import { Mitarbeiter } from '../../entities/mitarbeiter';
     `
 })
 export class MitarbeiterEditComponent {
-  id: string;
+
+  id: number;
   showDetails: string;
 
   constructor(
@@ -50,7 +47,7 @@ export class MitarbeiterEditComponent {
   mitarbeiter: Mitarbeiter;
   message: string;
 
-  load(id: string): void {
+  load(id: number): void {
     this
       .mitarbeiterService
       .findById(id)
