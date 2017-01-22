@@ -1,44 +1,40 @@
 
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PassengerService } from '../services/passenger.service';
-import { Passenger } from '../../entities/passenger';
+import { MitarbeiterService } from '../services/mitarbeiter.service';
+import { Mitarbeiter } from '../../entities/mitarbeiter';
 
 @Component({
   template: `
-    <h1>Passenger Edit!</h1>
+    <h1>Mitarbeiter Edit!</h1>
     <div>
       {{ message }}
     </div>
-    <div *ngIf="passenger">
+    <div *ngIf="mitarbeiter">
       <div class="form-group">
         <label>Id</label>
-        <input [(ngModel)]="passenger.id" class="form-control">
+        <input [(ngModel)]="mitarbeiter.id" class="form-control">
       </div>
       <div class="form-group">
         <label>From</label>
-        <input [(ngModel)]="passenger.name" class="form-control">
+        <input [(ngModel)]="mitarbeiter.name" class="form-control">
       </div>
       <div class="form-group">
         <label>To</label>
-        <input [(ngModel)]="passenger.bonusMiles" class="form-control">
+        <input [(ngModel)]="mitarbeiter.vorname" class="form-control">
       </div>
       <div class="form-group">
-        <label>Date</label>
-        <input [(ngModel)]="passenger.passengerStatus" class="form-control">
-      </div>
-      <div class="form-group">
-        <button (click)="save()" class="btn btn-default">Save</button>
+        <button (click)="save()" class="btn btn-default">Speichern</button>
       </div>
     </div>
     `
 })
-export class PassengerEditComponent {
+export class MitarbeiterEditComponent {
   id: string;
   showDetails: string;
 
   constructor(
-    private passengerService: PassengerService,
+    private mitarbeiterService: MitarbeiterService,
     route: ActivatedRoute) {
 
     route.params.subscribe(
@@ -51,16 +47,16 @@ export class PassengerEditComponent {
 
   }
 
-  passenger: Passenger;
+  mitarbeiter: Mitarbeiter;
   message: string;
 
   load(id: string): void {
     this
-      .passengerService
+      .mitarbeiterService
       .findById(id)
       .subscribe(
-        passenger => {
-          this.passenger = passenger;
+        mitarbeiter => {
+          this.mitarbeiter = mitarbeiter;
           this.message = "";
         },
         (err) => {
@@ -71,11 +67,11 @@ export class PassengerEditComponent {
 
   save(): void {
     this
-      .passengerService
-      .save(this.passenger)
+      .mitarbeiterService
+      .save(this.mitarbeiter)
       .subscribe(
-        passenger => {
-          this.passenger = passenger;
+        mitarbeiter => {
+          this.mitarbeiter = mitarbeiter;
           this.message = "Daten wurden gespeichert!";
         },
         (err) => {

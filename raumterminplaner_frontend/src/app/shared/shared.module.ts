@@ -1,8 +1,8 @@
 import {NgModule} from "@angular/core";
-import { CommonModule} from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {BonusMilesPipe} from "./pipes/bonusMiles.pipe";
-import {PassengerValidator} from "./validators/passenger.validator";
-import {AsyncPassengerValidator} from "./validators/async-passenger.validator";
+import {MitarbeiterValidator} from "./validators/mitarbeiter.validator";
+import {AsyncMitarbeiterValidator} from "./validators/async-mitarbeiter.validator";
 
 
 @NgModule({
@@ -11,16 +11,16 @@ import {AsyncPassengerValidator} from "./validators/async-passenger.validator";
   ],
   declarations: [
     BonusMilesPipe,
-    PassengerValidator,
-    AsyncPassengerValidator
+    MitarbeiterValidator,
+    AsyncMitarbeiterValidator
   ],
   providers: [
 
   ],
   exports: [
     BonusMilesPipe,
-    PassengerValidator,
-    AsyncPassengerValidator
+    MitarbeiterValidator,
+    AsyncMitarbeiterValidator
   ]
 
 })

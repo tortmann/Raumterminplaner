@@ -1,15 +1,16 @@
 import {Injectable, Inject} from "@angular/core";
 import {Http, Headers, URLSearchParams} from "@angular/http";
-import {Passenger} from "../../entities/passenger";
+import {Mitarbeiter} from "../../entities/mitarbeiter";
 import {BASE_URL} from "../../app.tokens";
 import {Observable} from "rxjs";
 import {OAuthService} from "angular-oauth2-oidc";
 
 @Injectable()
-export class PassengerService{
+export class MitarbeiterService{
 
-  passengers: Array<Passenger> = [];
-  passengers_new: any = {};
+  class_suffix: string = 'mitarbeiters';
+  mitarbeiters: Array<Mitarbeiter> = [];
+  mitarbeiter_obj: any = {};
 
   constructor(
     @Inject(BASE_URL) private baseUrl: string,
@@ -19,32 +20,30 @@ export class PassengerService{
 
   }
 
-  public create(name: string, firstName: string, bonusMiles: number){
+  public create(name: string, vorname: string){
 
-    let url = this.baseUrl;
+    let url = this.baseUrl+this.class_suffix;
 
     let headers = new Headers();
     headers.set('Accept', 'application/json');
     headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
 
-    let dummyPassenger =  {
+    let dummyMitarbeiter =  {
       "id": 0,
       "name": name,
-      "firstName": firstName,
-      "bonusMiles": bonusMiles,
-      "passengerStatus": "B"
+      "vorname": vorname
     };
 
     return this
       .http
-      .post(url, dummyPassenger, {headers})
+      .post(url, dummyMitarbeiter, {headers})
       .map(resp => resp.json())
       .subscribe(
-        (passenger: Passenger) => {
-          console.debug('sucess',passenger);
+        (mitarbeiter: Mitarbeiter) => {
+          console.debug('sucess',mitarbeiter);
         },
         (err) => {
-      console.error('Create Passenger - ERROR',err);
+      console.error('Create Mitarbeiter - ERROR',err);
     })
 
   }
@@ -52,7 +51,7 @@ export class PassengerService{
 
   public find(name: string) {
 
-    let url = this.baseUrl;
+    let url = this.baseUrl+this.class_suffix;
 
     let search = new URLSearchParams();
     search.set('name', name);
@@ -66,9 +65,9 @@ export class PassengerService{
       .get(url, { headers, search })
       .map(resp => resp.json())
       .subscribe(
-        (passengers_new) => {
-          this.passengers = passengers_new._embedded.mitarbeiters;
-          console.debug(passengers_new._embedded.mitarbeiters);
+        (mitarbeiter_obj) => {
+          this.mitarbeiters = mitarbeiter_obj._embedded.mitarbeiters;
+          console.debug(mitarbeiter_obj._embedded.mitarbeiters);
         },
         (err) => {
           console.error('Fehler beim Laden', err);
@@ -77,9 +76,9 @@ export class PassengerService{
 
   }
 
-  public findById(id: string): Observable<Passenger> {
+  public findById(id: string): Observable<Mitarbeiter> {
 
-    let url = this.baseUrl;
+    let url = this.baseUrl+this.class_suffix;
 
     let search = new URLSearchParams();
     search.set('id', id);
@@ -95,9 +94,9 @@ export class PassengerService{
 
   }
 
-  public save(passenger: Passenger): Observable<Passenger> {
+  public save(mitarbeiter: Mitarbeiter): Observable<Mitarbeiter> {
 
-    let url = this.baseUrl;
+    let url = this.baseUrl+this.class_suffix;
 
     let headers = new Headers();
     headers.set('Accept', 'application/json');
@@ -105,7 +104,7 @@ export class PassengerService{
 
     return this
       .http
-      .post(url, passenger, { headers })
+      .post(url, mitarbeiter, { headers })
       .map(resp => resp.json());
 
   }

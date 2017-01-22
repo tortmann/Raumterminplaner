@@ -2,13 +2,10 @@
      [ngStyle]="{'background-color': (selectedItem == item) ?  '#006dcc' : 'ivory',
      'color': (selectedItem == item) ?  'white' : 'black'}">
 
-  <h3>Passenger #{{item.id}}</h3>
+  <h3>Mitarbeiter #{{item.id}}</h3>
   <hr>
   <p><b>Name:</b> {{item.name}}</p>
-  <p><b>First Name:</b> {{item.firstName}}</p>
-  <p><b>BonusMiles:</b> {{item.bonusMiles}}</p>
-  <p><b>Category:</b> {{item.bonusMiles | bonusMiles}}</p>
-  <p><b>Status:</b> {{item.passengerStatus}}</p>
+  <p><b>Vorname:</b> {{item.vorname}}</p>
   <hr>
 
 
@@ -18,6 +15,6 @@
            class="btn btn-xs btn-primary"
            (click)="select()" />
 
-    <a class="btn btn-xs btn-danger" [routerLink]="['/passenger-edit', item.id]">Edit</a>
+    <a class="btn btn-xs btn-danger" [routerLink]="['/mitarbeiter-edit', item.id]">Edit</a>
   </p>
 </div>

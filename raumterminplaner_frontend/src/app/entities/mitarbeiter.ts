@@ -1,5 +1,5 @@
 
-export interface Passenger{
+export interface Mitarbeiter{
 
   id: number;
   name: string;

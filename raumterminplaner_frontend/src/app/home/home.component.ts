@@ -7,8 +7,8 @@ import { OAuthService } from 'angular-oauth2-oidc';
     <h1 *ngIf="!givenName">Willkommen!</h1>
     <h1 *ngIf="givenName">Willkommen, {{givenName}}!</h1>
     
-    <button class="btn btn-default" (click)="login()">Login</button>
-    <button class="btn btn-default" (click)="logout()">Logout</button>
+    <button class="btn btn-success" (click)="login()">Login</button>
+    <button class="btn btn-danger" (click)="logout()">Logout</button>
   `
 })
 export class HomeComponent {

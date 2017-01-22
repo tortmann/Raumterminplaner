@@ -9,19 +9,19 @@
 
 <div class="panel panel-primary" *ngIf="menu == 1">
   <div class="panel-heading">
-    <h2 class="panel-title">Search Passenger</h2>
+    <h2 class="panel-title">Suche Mitarbeiter</h2>
   </div>
   <div class="panel-body">
     <form #f="ngForm" novalidate>
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">Name</span>
-      <input [(ngModel)]="name" placeholder="Search for passengers..."
+      <input [(ngModel)]="name" placeholder="Suche nach Mitarbeitern..."
              name="name"
-             passenger="Muster,Sorglos,Doe,Test,Blauensteiner"
+             mitarbeiter="Muster,Sorglos,Doe,Test,Blauensteiner,Ortmann,Skerbinz"
              required
              minlength="3"
              maxlength="20"
-             asyncPassenger
+             asyncMitarbeiter
              pattern="[a-zA-ZöäüßÖÄÜ]*"
              class="form-control">
 
@@ -32,23 +32,23 @@
       </span>
     </div>
     <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.name?.valid">
-       <div *ngIf="f?.controls?.name?.hasError('passenger')">
-         <b>Warning!&nbsp;</b><i>INVALID</i> Passenger name!
+       <div *ngIf="f?.controls?.name?.hasError('mitarbeiter')">
+         <b>Warnung!&nbsp;</b><i>FALSCHER</i> Mitarbeiter Name!
       </div>
       <div *ngIf="f?.controls?.name?.pending">
-        <b>Validating...</b>
+        <b>Validierung...</b>
       </div>
-      <div *ngIf="f?.controls?.name?.hasError('asyncPassenger')">
-        <b>Warning!&nbsp;</b><i>NO</i> Passengers found with this <i>NAME</i>!
+      <div *ngIf="f?.controls?.name?.hasError('asyncMitarbeiter')">
+        <b>Warnung!&nbsp;</b><i>KEINE</i> es wurden keine Mitarbeiter mit diesem <i>Namen</i> gefunden!
       </div>
       <div *ngIf="f?.controls?.name?.hasError('minlength')">
-        <b>Warning!&nbsp;</b>Passenger name is <i>TOO SHORT</i>!
+        <b>Warnung!&nbsp;</b>Mitarbeiter Name ist <i>ZU KURZ</i>!
       </div>
       <div *ngIf="f?.controls?.name?.hasError('pattern')">
-        <b>Warning!&nbsp;</b>Only <i>LETTERS</i> are allowed!
+        <b>Warnung!&nbsp;</b>Nur <i>BUCHSTABEN</i> sind erlaubt!
       </div>
       <div *ngIf="f?.controls?.name?.hasError('required')">
-        <b>Warning!&nbsp;</b>This field is <i>REQUIRED</i>!
+        <b>Warnung!&nbsp;</b>Dieses Feld ist nicht optional!
       </div>
     </div>
     </form>
@@ -56,16 +56,18 @@
     <div class="panel-footer">
       <table class="table"><br>
         <tr>
+          <th>ID</th>
           <th>Name</th>
           <th>First Name</th>
           <th>Action</th>
         </tr>
-        <tr *ngFor="let passenger of passengers" [ngClass]="{ 'active': passenger == selectedPassenger }">
-          <td>{{passenger.name}}</td>
-          <td>{{passenger.vorname}}</td>
+        <tr *ngFor="let mitarbeiter of mitarbeiters" [ngClass]="{ 'active': mitarbeiter == selectedMitarbeiter }">
+          <td>{{mitarbeiter.id}}</td>
+          <td>{{mitarbeiter.name}}</td>
+          <td>{{mitarbeiter.vorname}}</td>
 
           <td>
-            <button type="button" class="btn btn-default btn-sm" (click)="select(passenger)">
+            <button type="button" class="btn btn-default btn-sm" (click)="select(mitarbeiter)">
               <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
             </button>
             <!--
@@ -82,7 +84,7 @@
 
 <div class="panel panel-primary" *ngIf="menu == 2">
   <div class="panel-heading">
-    <h2 class="panel-title">Create Passenger</h2>
+    <h2 class="panel-title">Mitarbeiter anlegen</h2>
   </div>
   <div class="panel-body">
     <div class="col-md-12">
@@ -90,14 +92,11 @@
         <input [(ngModel)]="name" class="form-control" placeholder="Name">
       </div>
       <div class="col-lg-3 col-md-2">
-        <input [(ngModel)]="firstName" class="form-control" placeholder="First Name">
-      </div>
-      <div class="col-lg-3 col-md-2">
-        <input [(ngModel)]="bonusMiles" class="form-control" placeholder="Bonus Miles">
+        <input [(ngModel)]="vorname" class="form-control" placeholder="First Name">
       </div>
       <div class="col-lg-2 col-md-1">
         <button class="btn btn-default" type="button" (click)="create()">
-          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp;Create Passenger
+          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp;Mitarbeiter anlegen
         </button>
       </div>
 
@@ -110,14 +109,14 @@
     <h2 class="panel-title">Passenger Info</h2>
   </div>
   <div class="panel-body">
-    <div *ngFor="let p of passengers" class="col-xs-12 col-lg-3 col-md-4 col-sm-6 ">
-      <passenger-card
-        [item]="p"
-        [(selectedItem)]="selectedPassenger">
-      </passenger-card>
+    <div *ngFor="let mitarbeiter of mitarbeiters" class="col-xs-12 col-lg-3 col-md-4 col-sm-6 ">
+      <mitarbeiter-card
+        [item]="mitarbeiter"
+        [(selectedItem)]="selectedMitarbeiter">
+      </mitarbeiter-card>
     </div>
     <pre>
-      {{ selectedPassenger | json }}
+      {{ selectedMitarbeiter | json }}
     </pre>
   </div>
 </div>
