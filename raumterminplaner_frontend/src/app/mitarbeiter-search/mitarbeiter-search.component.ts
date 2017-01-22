@@ -28,6 +28,10 @@ export class MitarbeiterSearchComponent {
     this.mitarbeiterService.find(this.name);
   }
 
+  delete(mitarbeiter: Mitarbeiter): void {
+    this.mitarbeiterService.delete(mitarbeiter.id);
+  }
+
   select(mitarbeiter: Mitarbeiter): void {
     this.selectedMitarbeiter = mitarbeiter;
   }

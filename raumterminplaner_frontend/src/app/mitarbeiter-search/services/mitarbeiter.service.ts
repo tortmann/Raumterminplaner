@@ -106,4 +106,22 @@ export class MitarbeiterService{
 
   }
 
+  public delete(id: number): void {
+
+    let url = this.baseUrl+this.class_suffix+'/'+id;
+
+    let headers = new Headers();
+    headers.set('Accept', 'application/json');
+    headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
+
+    console.debug('ID: '+id.toString());
+    console.debug('URL: '+url);
+
+    this
+      .http
+      .delete(url.toString(),{ headers })
+      .map(resp => resp.json());
+
+  }
+
 }
