@@ -12,6 +12,10 @@ import { Mitarbeiter } from '../../entities/mitarbeiter';
     </div>
     <div *ngIf="mitarbeiter">
       <div class="form-group">
+        <label>Id</label>
+        <input [(ngModel)]="mitarbeiter.id" class="form-control">
+      </div>
+      <div class="form-group">
         <label>Name</label>
         <input [(ngModel)]="mitarbeiter.name" class="form-control">
       </div>
@@ -50,7 +54,7 @@ export class MitarbeiterEditComponent {
   load(id: number): void {
     this
       .mitarbeiterService
-      .findById(id)
+      .findById(id.toString())
       .subscribe(
         mitarbeiter => {
           this.mitarbeiter = mitarbeiter;

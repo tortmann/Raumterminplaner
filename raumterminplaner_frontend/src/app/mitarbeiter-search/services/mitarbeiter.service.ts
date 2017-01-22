@@ -76,12 +76,12 @@ export class MitarbeiterService{
 
   }
 
-  public findById(id: number): Observable<Mitarbeiter> {
+  public findById(id: string): Observable<Mitarbeiter> {
 
     let url = this.baseUrl+this.class_suffix;
 
     let search = new URLSearchParams();
-    search.set('id', id.toString());
+    search.set('id', id);
 
     let headers = new Headers();
     headers.set('Accept', 'application/json');

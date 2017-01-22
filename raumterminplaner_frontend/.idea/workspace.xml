@@ -5,9 +5,7 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../raumterminplaner_backend/src/main/java/at/fh/ima/swengs/raumterminplaner/WebConfig.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../raumterminplaner_backend/src/main/java/at/fh/ima/swengs/raumterminplaner/model/ExposeEntityIdRestConfiguration.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-card.component.html" afterPath="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-card.component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-edit/mitarbeiter-edit.component.ts" afterPath="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-edit/mitarbeiter-edit.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.html" afterPath="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts" afterPath="$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts" />
     </list>
     <ignored path="angular2-seed.iws" />
@@ -42,27 +40,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mitarbeiter-edit.component.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mitarbeiter-search.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mitarbeiter-edit.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-edit/mitarbeiter-edit.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="47" column="18" lean-forward="true" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
+            <state relative-caret-position="462">
+              <caret line="51" column="18" lean-forward="true" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
               <folding>
-                <marker date="1485117275694" expanded="true" signature="289:320" ph="..." />
-                <marker date="1485117275694" expanded="true" signature="350:767" ph="..." />
-                <marker date="1485117275694" expanded="true" signature="381:490" ph="..." />
-                <marker date="1485117275694" expanded="true" signature="521:636" ph="..." />
-                <marker date="1485117275694" expanded="true" signature="667:756" ph="..." />
+                <marker date="1485119047949" expanded="true" signature="289:320" ph="..." />
+                <marker date="1485119047949" expanded="true" signature="350:903" ph="..." />
+                <marker date="1485119047949" expanded="true" signature="381:486" ph="..." />
+                <marker date="1485119047949" expanded="true" signature="517:626" ph="..." />
+                <marker date="1485119047949" expanded="true" signature="657:772" ph="..." />
+                <marker date="1485119047949" expanded="true" signature="803:892" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mitarbeiter.service.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mitarbeiter.service.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="83" column="36" lean-forward="true" selection-start-line="83" selection-start-column="36" selection-end-line="83" selection-end-column="36" />
+            <state relative-caret-position="280">
+              <caret line="83" column="23" lean-forward="false" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -71,8 +80,8 @@
       <file leaf-file-name="mitarbeiter-search.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="69" column="14" lean-forward="true" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
+            <state relative-caret-position="380">
+              <caret line="92" column="10" lean-forward="true" selection-start-line="92" selection-start-column="10" selection-end-line="92" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -83,6 +92,38 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="220">
               <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mitarbeiter-card.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-card.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding>
+                <marker date="1485116681434" expanded="true" signature="135:261" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.routes.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/app.routes.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="8" column="21" lean-forward="false" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shared.module.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/shared/shared.module.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -155,9 +196,9 @@
         <option value="$PROJECT_DIR$/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/src/app/app.component.html" />
         <option value="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts" />
         <option value="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-card.component.html" />
         <option value="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.html" />
+        <option value="$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts" />
         <option value="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-edit/mitarbeiter-edit.component.ts" />
       </list>
     </option>
@@ -411,6 +452,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="mitarbeiter-edit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="raumterminplaner_frontend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="raumterminplaner_frontend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mitarbeiter-search" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flight-search" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -981,7 +1048,7 @@
       <workItem from="1484825635858" duration="1446000" />
       <workItem from="1484861921904" duration="556000" />
       <workItem from="1485109030527" duration="174000" />
-      <workItem from="1485109257800" duration="7997000" />
+      <workItem from="1485109257800" duration="9855000" />
     </task>
     <task id="LOCAL-00001" summary="Erstellung der entities: mitarbeiter, raum, termin&#10;Umsetzung von Mitarbeiter Components, Services und Routen&#10;Working features create, read">
       <created>1485115933404</created>
@@ -990,11 +1057,18 @@
       <option name="project" value="LOCAL" />
       <updated>1485115933404</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="kleine Änderungen an search und edit Mitarbeiter html">
+      <created>1485117306534</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1485117306534</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72761000" />
+    <option name="totallyTimeSpent" value="74619000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1094,7 +1168,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Erstellung der entities: mitarbeiter, raum, termin&#10;Umsetzung von Mitarbeiter Components, Services und Routen&#10;Working features create, read" />
-    <option name="LAST_COMMIT_MESSAGE" value="Erstellung der entities: mitarbeiter, raum, termin&#10;Umsetzung von Mitarbeiter Components, Services und Routen&#10;Working features create, read" />
+    <MESSAGE value="kleine Änderungen an search und edit Mitarbeiter html" />
+    <option name="LAST_COMMIT_MESSAGE" value="kleine Änderungen an search und edit Mitarbeiter html" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1331,14 +1406,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-card.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.routes.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
@@ -1387,14 +1454,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/app.routes.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="8" column="21" lean-forward="false" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/app.tokens.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1421,6 +1480,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/entities/mitarbeiter.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/app.routes.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="8" column="21" lean-forward="false" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/shared/shared.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1429,10 +1504,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/entities/mitarbeiter.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-card.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state relative-caret-position="440">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <marker date="1485116681434" expanded="true" signature="135:261" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-card.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/app.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1445,51 +1538,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-card.component.html">
+    <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="27" lean-forward="false" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
-          <folding>
-            <marker date="1485116681434" expanded="true" signature="135:261" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/app.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="380">
+          <caret line="92" column="10" lean-forward="true" selection-start-line="92" selection-start-column="10" selection-end-line="92" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.html">
+    <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="69" column="14" lean-forward="true" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
+        <state relative-caret-position="280">
+          <caret line="83" column="23" lean-forward="false" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-edit/mitarbeiter-edit.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="47" column="18" lean-forward="true" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
+        <state relative-caret-position="462">
+          <caret line="51" column="18" lean-forward="true" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
           <folding>
-            <marker date="1485117275694" expanded="true" signature="289:320" ph="..." />
-            <marker date="1485117275694" expanded="true" signature="350:767" ph="..." />
-            <marker date="1485117275694" expanded="true" signature="381:490" ph="..." />
-            <marker date="1485117275694" expanded="true" signature="521:636" ph="..." />
-            <marker date="1485117275694" expanded="true" signature="667:756" ph="..." />
+            <marker date="1485119047949" expanded="true" signature="289:320" ph="..." />
+            <marker date="1485119047949" expanded="true" signature="350:903" ph="..." />
+            <marker date="1485119047949" expanded="true" signature="381:486" ph="..." />
+            <marker date="1485119047949" expanded="true" signature="517:626" ph="..." />
+            <marker date="1485119047949" expanded="true" signature="657:772" ph="..." />
+            <marker date="1485119047949" expanded="true" signature="803:892" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="83" column="36" lean-forward="true" selection-start-line="83" selection-start-column="36" selection-end-line="83" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
