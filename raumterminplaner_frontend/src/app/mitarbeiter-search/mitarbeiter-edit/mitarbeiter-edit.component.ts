@@ -54,7 +54,7 @@ export class MitarbeiterEditComponent {
   load(id: number): void {
     this
       .mitarbeiterService
-      .findById(id.toString())
+      .findById(id)
       .subscribe(
         mitarbeiter => {
           this.mitarbeiter = mitarbeiter;
@@ -69,7 +69,7 @@ export class MitarbeiterEditComponent {
   save(): void {
     this
       .mitarbeiterService
-      .save(this.mitarbeiter)
+      .save(this.mitarbeiter,this.id)
       .subscribe(
         mitarbeiter => {
           this.mitarbeiter = mitarbeiter;
@@ -77,6 +77,7 @@ export class MitarbeiterEditComponent {
         },
         (err) => {
           this.message = "Fehler beim Speichern: " + err.text();
+
         }
       )
 

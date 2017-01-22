@@ -5,6 +5,7 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../raumterminplaner_backend/src/main/java/at/fh/ima/swengs/raumterminplaner/WebConfig.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../raumterminplaner_backend/src/main/java/at/fh/ima/swengs/raumterminplaner/model/ExposeEntityIdRestConfiguration.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-edit/mitarbeiter-edit.component.ts" afterPath="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-edit/mitarbeiter-edit.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts" afterPath="$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts" />
     </list>
     <ignored path="angular2-seed.iws" />
@@ -52,15 +53,15 @@
       <file leaf-file-name="mitarbeiter-edit.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-edit/mitarbeiter-edit.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="50" column="27" lean-forward="true" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
+            <state relative-caret-position="632">
+              <caret line="72" column="17" lean-forward="true" selection-start-line="72" selection-start-column="17" selection-end-line="72" selection-end-column="17" />
               <folding>
-                <marker date="1485119047949" expanded="true" signature="289:320" ph="..." />
-                <marker date="1485119047949" expanded="true" signature="350:903" ph="..." />
-                <marker date="1485119047949" expanded="true" signature="381:486" ph="..." />
-                <marker date="1485119047949" expanded="true" signature="517:626" ph="..." />
-                <marker date="1485119047949" expanded="true" signature="657:772" ph="..." />
-                <marker date="1485119047949" expanded="true" signature="803:892" ph="..." />
+                <marker date="1485121287198" expanded="true" signature="289:320" ph="..." />
+                <marker date="1485121287198" expanded="true" signature="350:903" ph="..." />
+                <marker date="1485121287198" expanded="true" signature="381:486" ph="..." />
+                <marker date="1485121287198" expanded="true" signature="517:626" ph="..." />
+                <marker date="1485121287198" expanded="true" signature="657:772" ph="..." />
+                <marker date="1485121287198" expanded="true" signature="803:892" ph="..." />
               </folding>
             </state>
           </provider>
@@ -69,8 +70,8 @@
       <file leaf-file-name="mitarbeiter.service.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="88" column="17" lean-forward="false" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
+            <state relative-caret-position="786">
+              <caret line="109" column="0" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1047,7 +1048,7 @@
       <workItem from="1484825635858" duration="1446000" />
       <workItem from="1484861921904" duration="556000" />
       <workItem from="1485109030527" duration="174000" />
-      <workItem from="1485109257800" duration="10378000" />
+      <workItem from="1485109257800" duration="12662000" />
     </task>
     <task id="LOCAL-00001" summary="Erstellung der entities: mitarbeiter, raum, termin&#10;Umsetzung von Mitarbeiter Components, Services und Routen&#10;Working features create, read">
       <created>1485115933404</created>
@@ -1070,11 +1071,18 @@
       <option name="project" value="LOCAL" />
       <updated>1485119190397</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Daten werden jetzt korrekt im Edit Form angezeigt. Das speichern der neuen Daten funktioniert noch NICHT!&#10;&#10;changes bei der findById Methode - search params entfernt --&gt; url angepasst">
+      <created>1485119743102</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1485119743102</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75142000" />
+    <option name="totallyTimeSpent" value="77426000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1176,7 +1184,8 @@
     <MESSAGE value="Erstellung der entities: mitarbeiter, raum, termin&#10;Umsetzung von Mitarbeiter Components, Services und Routen&#10;Working features create, read" />
     <MESSAGE value="kleine Änderungen an search und edit Mitarbeiter html" />
     <MESSAGE value="Edit funktioniert nicht weil findById nicht nur den jeweiligen Mitarbeiter zurückliefert sondern alle Mitarbeiter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edit funktioniert nicht weil findById nicht nur den jeweiligen Mitarbeiter zurückliefert sondern alle Mitarbeiter" />
+    <MESSAGE value="Daten werden jetzt korrekt im Edit Form angezeigt. Das speichern der neuen Daten funktioniert noch NICHT!&#10;&#10;changes bei der findById Methode - search params entfernt --&gt; url angepasst" />
+    <option name="LAST_COMMIT_MESSAGE" value="Daten werden jetzt korrekt im Edit Form angezeigt. Das speichern der neuen Daten funktioniert noch NICHT!&#10;&#10;changes bei der findById Methode - search params entfernt --&gt; url angepasst" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1555,23 +1564,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-edit/mitarbeiter-edit.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="50" column="27" lean-forward="true" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
+        <state relative-caret-position="632">
+          <caret line="72" column="17" lean-forward="true" selection-start-line="72" selection-start-column="17" selection-end-line="72" selection-end-column="17" />
           <folding>
-            <marker date="1485119047949" expanded="true" signature="289:320" ph="..." />
-            <marker date="1485119047949" expanded="true" signature="350:903" ph="..." />
-            <marker date="1485119047949" expanded="true" signature="381:486" ph="..." />
-            <marker date="1485119047949" expanded="true" signature="517:626" ph="..." />
-            <marker date="1485119047949" expanded="true" signature="657:772" ph="..." />
-            <marker date="1485119047949" expanded="true" signature="803:892" ph="..." />
+            <marker date="1485121287198" expanded="true" signature="289:320" ph="..." />
+            <marker date="1485121287198" expanded="true" signature="350:903" ph="..." />
+            <marker date="1485121287198" expanded="true" signature="381:486" ph="..." />
+            <marker date="1485121287198" expanded="true" signature="517:626" ph="..." />
+            <marker date="1485121287198" expanded="true" signature="657:772" ph="..." />
+            <marker date="1485121287198" expanded="true" signature="803:892" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="88" column="17" lean-forward="false" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
+        <state relative-caret-position="786">
+          <caret line="109" column="0" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
           <folding />
         </state>
       </provider>

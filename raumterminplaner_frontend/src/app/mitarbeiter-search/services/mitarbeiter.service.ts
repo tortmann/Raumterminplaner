@@ -76,7 +76,7 @@ export class MitarbeiterService{
 
   }
 
-  public findById(id: string): Observable<Mitarbeiter> {
+  public findById(id: number): Observable<Mitarbeiter> {
 
     let url = this.baseUrl+this.class_suffix+'/'+id;
 
@@ -91,9 +91,9 @@ export class MitarbeiterService{
 
   }
 
-  public save(mitarbeiter: Mitarbeiter): Observable<Mitarbeiter> {
+  public save(mitarbeiter: Mitarbeiter, id:number): Observable<Mitarbeiter> {
 
-    let url = this.baseUrl+this.class_suffix;
+    let url = this.baseUrl+this.class_suffix+'/'+id;
 
     let headers = new Headers();
     headers.set('Accept', 'application/json');
@@ -101,7 +101,7 @@ export class MitarbeiterService{
 
     return this
       .http
-      .post(url, mitarbeiter, { headers })
+      .put(url, mitarbeiter, { headers })
       .map(resp => resp.json());
 
   }
