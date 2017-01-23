@@ -10,6 +10,8 @@ import {MitarbeiterService} from "./services/mitarbeiter.service";
 
 export class MitarbeiterSearchComponent {
 
+  public deleteResponse: number = 0;
+  public createResponse: number = 0;
   public menu: number = 1;
   public id: number;
   public name: string;
@@ -29,14 +31,25 @@ export class MitarbeiterSearchComponent {
   }
 
   delete(mitarbeiter: Mitarbeiter): void {
-    this.mitarbeiterService.delete(mitarbeiter.id.toString());
+    this.deleteResponse = 0;
+    this.deleteResponse = this.mitarbeiterService.delete(mitarbeiter.id.toString());
+    if(this.deleteResponse = 1){
+      setTimeout(() => {
+        this.mitarbeiterService.find(mitarbeiter.name);
+      }, 1000)
+    }
   }
 
   select(mitarbeiter: Mitarbeiter): void {
     this.selectedMitarbeiter = mitarbeiter;
   }
-  create(): void{
-    this.mitarbeiterService.create(this.name,this.vorname);
+  create(): void {
+    this.createResponse = 0;
+    this.createResponse = this.mitarbeiterService.create(this.name, this.vorname);
+    if (this.createResponse = 1) {
+      setTimeout(() => {
+        this.mitarbeiterService.find(this.name);
+      }, 1000)
+    }
   }
-
 }

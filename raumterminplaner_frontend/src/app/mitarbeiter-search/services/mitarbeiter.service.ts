@@ -5,6 +5,7 @@ import {BASE_URL} from "../../app.tokens";
 import {Observable} from "rxjs";
 import {OAuthService} from "angular-oauth2-oidc";
 import {find} from "rxjs/operator/find";
+import {httpFactory} from "@angular/http/src/http_module";
 
 @Injectable()
 export class MitarbeiterService{
@@ -12,6 +13,9 @@ export class MitarbeiterService{
   classSuffix: string = 'mitarbeiters';
   mitarbeiters: Array<Mitarbeiter> = [];
   mitarbeitersSorted: Array<Mitarbeiter> = [];
+  deleteResponse: number = 0;
+  createResponse: number = 0;
+
 
   constructor(
     @Inject(BASE_URL) private baseUrl: string,
@@ -35,17 +39,18 @@ export class MitarbeiterService{
       "vorname": vorname
     };
 
-    return this
+    this
       .http
       .post(url, dummyMitarbeiter, {headers})
       .map(resp => resp.json())
       .subscribe(
         (mitarbeiter: Mitarbeiter) => {
-          console.debug('sucess',mitarbeiter);
+          this.createResponse = 1;
         },
         (err) => {
       console.error('Create Mitarbeiter - ERROR',err);
-    })
+      })
+    return this.createResponse;
 
   }
 
@@ -116,25 +121,28 @@ export class MitarbeiterService{
 
   }
 
-  public delete(id: string,) {
+  public delete(id: string) {
 
     let url = this.baseUrl+this.classSuffix+'/'+id;
+
+    this.mitarbeiters = [];
+    this.mitarbeitersSorted = [];
+    this.deleteResponse = 0;
 
     let headers = new Headers();
     headers.set('Accept', 'application/json');
     headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
 
-    console.debug('ID: '+id);
-    console.debug('URL: '+url);
-
-    return this
+    this
       .http
       .delete(url, {headers})
       .map(resp => resp.json())
-      .subscribe((res) => {
-      });
-    
-
+      .subscribe(
+        function(response) {},
+        function(error) { console.log("Error happened" + error)},
+        function() { this.deleteResponse = 1; }
+        );
+    return this.deleteResponse;
   }
 
 }
