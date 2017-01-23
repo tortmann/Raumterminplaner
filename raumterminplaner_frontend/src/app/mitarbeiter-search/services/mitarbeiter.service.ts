@@ -38,19 +38,10 @@ export class MitarbeiterService{
       "vorname": vorname
     };
 
-    this
+    return this
       .http
       .post(url, dummyMitarbeiter, {headers})
       .map(resp => resp.json())
-      .subscribe(
-        (mitarbeiter: Mitarbeiter) => {
-          this.createResponse = 1;
-        },
-        (err) => {
-      console.error('Create Mitarbeiter - ERROR',err);
-      })
-    return this.createResponse;
-
   }
 
 
@@ -126,24 +117,16 @@ export class MitarbeiterService{
 
     this.mitarbeiters = [];
     this.mitarbeitersSorted = [];
-    this.deleteResponse = 0;
+    //this.deleteResponse = 0;
 
     let headers = new Headers();
     headers.set('Accept', 'application/json');
     headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
 
-    this
+    return this
       .http
       .delete(url, {headers})
       .map(resp => resp.json())
-      .subscribe(
-        function(response) {},
-        function(error) { console.log("Error happened" + error)},
-        function() {
-          this.deleteResponse = 1;
-          }
-        );
-    return this.deleteResponse;
   }
 
 }
