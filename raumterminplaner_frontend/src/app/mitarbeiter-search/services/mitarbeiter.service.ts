@@ -133,8 +133,7 @@ export class MitarbeiterService{
       .map(resp => resp.json())
       .subscribe((res) => {
       });
-
-    find(name);
+    
 
   }
 
