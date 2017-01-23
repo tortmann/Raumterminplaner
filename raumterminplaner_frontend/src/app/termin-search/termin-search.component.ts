@@ -14,6 +14,10 @@ export class TerminSearchComponent {
   public id: number;
   public datum: string;
   public kommentar: string;
+  //public mitarbeiter_id: number;
+ // public raum_id: number;
+  public selectedTermin: Termin;
+
 
   constructor (private terminService: TerminService){
 
@@ -28,19 +32,18 @@ export class TerminSearchComponent {
   }
 
 
-  /*
 
-    delete(mitarbeiter: Mitarbeiter): void {
-      this.mitarbeiterService.delete(mitarbeiter.id.toString());
+    delete(termin: Termin): void {
+      this.terminService.delete(termin.id.toString());
     }
 
-    select(mitarbeiter: Mitarbeiter): void {
-      this.selectedMitarbeiter = mitarbeiter;
+    select(termin: Termin): void {
+      this.selectedTermin = termin;
     }
     create(): void{
-      this.mitarbeiterService.create(this.name,this.vorname);
+      this.terminService.create(this.datum,this.kommentar);
     }
-  */
+
 }
 
 
