@@ -5,10 +5,6 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../raumterminplaner_backend/src/main/java/at/fh/ima/swengs/raumterminplaner/WebConfig.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../raumterminplaner_backend/src/main/java/at/fh/ima/swengs/raumterminplaner/model/ExposeEntityIdRestConfiguration.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-card.component.html" afterPath="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-card.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.html" afterPath="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.ts" afterPath="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts" afterPath="$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts" />
     </list>
     <ignored path="angular2-seed.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -981,7 +977,7 @@
       <workItem from="1484825635858" duration="1446000" />
       <workItem from="1484861921904" duration="556000" />
       <workItem from="1485109030527" duration="174000" />
-      <workItem from="1485109257800" duration="16257000" />
+      <workItem from="1485109257800" duration="16502000" />
     </task>
     <task id="LOCAL-00001" summary="Erstellung der entities: mitarbeiter, raum, termin&#10;Umsetzung von Mitarbeiter Components, Services und Routen&#10;Working features create, read">
       <created>1485115933404</created>
@@ -1018,11 +1014,18 @@
       <option name="project" value="LOCAL" />
       <updated>1485122018237</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Hab jetzt delete implementiert aber irgendwie gehts noch immer nicht obwohl da eig alles stimmen sollte. er setzt einfach den http request nicht ab wenn ich aufs knopferl drück&#10;man sieht zur kontrolle in der browser konsole die id und die url die ich verwend fürs Http.delete aber es geht trotzdem net - im TAB Netzwerk zeig er auch mein delete garnet an">
+      <created>1485125673574</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1485125673574</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81021000" />
+    <option name="totallyTimeSpent" value="81266000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1126,7 +1129,9 @@
     <MESSAGE value="Edit funktioniert nicht weil findById nicht nur den jeweiligen Mitarbeiter zurückliefert sondern alle Mitarbeiter" />
     <MESSAGE value="Daten werden jetzt korrekt im Edit Form angezeigt. Das speichern der neuen Daten funktioniert noch NICHT!&#10;&#10;changes bei der findById Methode - search params entfernt --&gt; url angepasst" />
     <MESSAGE value="Update/Edit geht jetzt auch, allerdings nur mit der put und net post methode, is mir aber jetzt egal ;)&#10;Jetzt fehlt nur noch delete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update/Edit geht jetzt auch, allerdings nur mit der put und net post methode, is mir aber jetzt egal ;)&#10;Jetzt fehlt nur noch delete" />
+    <MESSAGE value="Hab jetzt delete implementiert aber irgendwie gehts noch immer nicht obwohl da eig alles stimmen sollte. er setzt einfach den http request nicht ab wenn ich aufs knopferl drück" />
+    <MESSAGE value="Hab jetzt delete implementiert aber irgendwie gehts noch immer nicht obwohl da eig alles stimmen sollte. er setzt einfach den http request nicht ab wenn ich aufs knopferl drück&#10;man sieht zur kontrolle in der browser konsole die id und die url die ich verwend fürs Http.delete aber es geht trotzdem net - im TAB Netzwerk zeig er auch mein delete garnet an" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hab jetzt delete implementiert aber irgendwie gehts noch immer nicht obwohl da eig alles stimmen sollte. er setzt einfach den http request nicht ab wenn ich aufs knopferl drück&#10;man sieht zur kontrolle in der browser konsole die id und die url die ich verwend fürs Http.delete aber es geht trotzdem net - im TAB Netzwerk zeig er auch mein delete garnet an" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
