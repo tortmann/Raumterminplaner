@@ -4,8 +4,7 @@ import {Mitarbeiter} from "../../entities/mitarbeiter";
 import {BASE_URL} from "../../app.tokens";
 import {Observable} from "rxjs";
 import {OAuthService} from "angular-oauth2-oidc";
-import {find} from "rxjs/operator/find";
-import {httpFactory} from "@angular/http/src/http_module";
+
 
 @Injectable()
 export class MitarbeiterService{
@@ -121,7 +120,7 @@ export class MitarbeiterService{
 
   }
 
-  public delete(id: string) {
+  public delete(id: string, name: string, vorname: string) {
 
     let url = this.baseUrl+this.classSuffix+'/'+id;
 
@@ -140,7 +139,9 @@ export class MitarbeiterService{
       .subscribe(
         function(response) {},
         function(error) { console.log("Error happened" + error)},
-        function() { this.deleteResponse = 1; }
+        function() {
+          this.deleteResponse = 1;
+          }
         );
     return this.deleteResponse;
   }

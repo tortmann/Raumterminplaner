@@ -6,13 +6,14 @@ import { Mitarbeiter } from '../../entities/mitarbeiter';
 
 @Component({
   template: `
-    <h1>Mitarbeiter Edit!</h1>
+    <h2>Mitarbeiter bearbeiten!</h2>
+    <hr>
     <div>
       {{ message }}
     </div>
     <div *ngIf="mitarbeiter">
       <div class="form-group">
-        <label>Id</label>
+        <label>ID</label>
         <input [(ngModel)]="mitarbeiter.id" class="form-control">
       </div>
       <div class="form-group">
@@ -23,10 +24,16 @@ import { Mitarbeiter } from '../../entities/mitarbeiter';
         <label>Vorname</label>
         <input [(ngModel)]="mitarbeiter.vorname" class="form-control">
       </div>
-      <div class="form-group">
-        <button (click)="save()" class="btn btn-default">Speichern</button>
+      <div class="form-group">        
+        <a class="btn btn-sm btn-danger" [routerLink]="['/mitarbeiter-search']">
+          <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+        </a>
+        <button (click)="save()" class="btn btn-sm btn-success">
+          <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+        </button>
       </div>
     </div>
+    <hr>
     `
 })
 export class MitarbeiterEditComponent {

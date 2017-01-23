@@ -17,6 +17,7 @@ export class MitarbeiterSearchComponent {
   public name: string;
   public vorname: string;
   public selectedMitarbeiter: Mitarbeiter;
+  public message: string;
 
   constructor (private mitarbeiterService: MitarbeiterService){
 
@@ -32,10 +33,11 @@ export class MitarbeiterSearchComponent {
 
   delete(mitarbeiter: Mitarbeiter): void {
     this.deleteResponse = 0;
-    this.deleteResponse = this.mitarbeiterService.delete(mitarbeiter.id.toString());
+    this.deleteResponse = this.mitarbeiterService.delete(mitarbeiter.id.toString(),mitarbeiter.name, mitarbeiter.vorname);
     if(this.deleteResponse = 1){
       setTimeout(() => {
         this.mitarbeiterService.find(mitarbeiter.name);
+        this.message = 'Mitarbeiter '+ mitarbeiter.vorname + ' ' +mitarbeiter.name + ' wurde gelöscht!';
       }, 1000)
     }
   }
@@ -49,6 +51,7 @@ export class MitarbeiterSearchComponent {
     if (this.createResponse = 1) {
       setTimeout(() => {
         this.mitarbeiterService.find(this.name);
+        this.message = this.vorname + ' ' + this.name +' wurde als neuer Mitarbeiter angelegt!';
       }, 1000)
     }
   }

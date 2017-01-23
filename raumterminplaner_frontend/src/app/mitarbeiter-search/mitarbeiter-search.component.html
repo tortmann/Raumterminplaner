@@ -12,6 +12,9 @@
     <h2 class="panel-title">Suche Mitarbeiter</h2>
   </div>
   <div class="panel-body">
+    <div>
+      {{ message }}
+    </div>
     <form #f="ngForm" novalidate>
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">Name</span>
@@ -66,10 +69,16 @@
           <td>{{mitarbeiter.id}}</td>
           <td>{{mitarbeiter.name}}</td>
           <td>{{mitarbeiter.vorname}}</td>
-          <td><button type="button" class="btn btn-primary btn-sm" (click)="select(mitarbeiter)">
-            <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span></button>
-          <button type="button" class="btn btn-danger btn-sm" (click)="delete(mitarbeiter)">
-            <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+          <td>
+            <button type="button" class="btn btn-success btn-sm" (click)="select(mitarbeiter)">
+              <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
+            </button>
+            <a class="btn btn-sm btn-primary" [routerLink]="['/mitarbeiter-edit', mitarbeiter.id]">
+              <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            </a>
+            <button type="button" class="btn btn-danger btn-sm" (click)="delete(mitarbeiter)">
+              <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+            </button>
           </td>
         </tr>
       </table>
