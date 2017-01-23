@@ -1,17 +1,23 @@
-<h1>Mitglieder</h1><hr><br>
-
+<br>
+<br>
 <ul class="nav nav-tabs">
-    <li [ngClass]="{ 'active':  menu == 1}" role="presentation"><a (click)="menu = 1">Search</a></li>
-    <li [ngClass]="{ 'active':  menu == 2}" role="presentation"><a (click)="menu = 2">Create</a></li>
-    <li [ngClass]="{ 'active':  menu == 3}" role="presentation"><a (click)="menu = 3">Info</a></li>
+    <li [ngClass]="{ 'active':  menu == 1}" role="presentation"><a (click)="menu = 1"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
+    <li [ngClass]="{ 'active':  menu == 2}" role="presentation"><a (click)="menu = 2"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a></li>
+    <li [ngClass]="{ 'active':  menu == 3}" role="presentation"><a (click)="menu = 3"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></li>
 </ul>
 
 
 <div class="panel panel-primary" *ngIf="menu == 1">
   <div class="panel-heading">
-    <h2 class="panel-title">Suche Mitarbeiter</h2>
+    <h2 class="panel-title">Mitarbeiter suchen</h2>
   </div>
   <div class="panel-body">
+    <div class="alert alert-info" role="alert" *ngIf="messageExists == true">
+      <b>{{ message }}</b>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessageExists == true">
+      <b>{{ message }}</b>
+    </div>
     <form #f="ngForm" novalidate>
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">Name</span>
@@ -66,10 +72,16 @@
           <td>{{mitarbeiter.id}}</td>
           <td>{{mitarbeiter.name}}</td>
           <td>{{mitarbeiter.vorname}}</td>
-          <td><button type="button" class="btn btn-primary btn-sm" (click)="select(mitarbeiter)">
-            <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span></button>
-          <button type="button" class="btn btn-danger btn-sm" (click)="delete(mitarbeiter)">
-            <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+          <td>
+            <button type="button" class="btn btn-success btn-sm" (click)="select(mitarbeiter)">
+              <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
+            </button>
+            <a class="btn btn-sm btn-primary" [routerLink]="['/mitarbeiter-edit', mitarbeiter.id]">
+              <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            </a>
+            <button type="button" class="btn btn-danger btn-sm" (click)="delete(mitarbeiter)">
+              <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+            </button>
           </td>
         </tr>
       </table>
@@ -91,7 +103,7 @@
         <input [(ngModel)]="vorname" class="form-control" placeholder="Vorname">
       </div>
       <div class="col-lg-2 col-md-1">
-        <button class="btn btn-success" type="button" (click)="create()">
+        <button class="btn btn-success" type="button" (click)="create();menu = 1">
           <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
       </div>
 

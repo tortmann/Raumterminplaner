@@ -4,15 +4,17 @@ import {Mitarbeiter} from "../../entities/mitarbeiter";
 import {BASE_URL} from "../../app.tokens";
 import {Observable} from "rxjs";
 import {OAuthService} from "angular-oauth2-oidc";
-import {find} from "rxjs/operator/find";
+
 
 @Injectable()
 export class MitarbeiterService{
 
   classSuffix: string = 'mitarbeiters';
   mitarbeiters: Array<Mitarbeiter> = [];
-
   mitarbeitersSorted: Array<Mitarbeiter> = [];
+  deleteResponse: number = 0;
+  createResponse: number = 0;
+
 
   constructor(
     @Inject(BASE_URL) private baseUrl: string,
@@ -40,17 +42,6 @@ export class MitarbeiterService{
       .http
       .post(url, dummyMitarbeiter, {headers})
       .map(resp => resp.json())
-<<<<<<< HEAD
-=======
-      .subscribe(
-        (mitarbeiter: Mitarbeiter) => {
-          console.debug('sucess',mitarbeiter);
-        },
-        (err) => {
-      console.error('Create Mitarbeiter - ERROR',err);
-    })
-
->>>>>>> 7307eec01e4af846f308f7843ce3867218474e97
   }
 
 
@@ -120,38 +111,22 @@ export class MitarbeiterService{
 
   }
 
-  public delete(id: string,) {
+  public delete(id: string, name: string, vorname: string) {
 
     let url = this.baseUrl+this.classSuffix+'/'+id;
 
-<<<<<<< HEAD
     this.mitarbeiters = [];
     this.mitarbeitersSorted = [];
     //this.deleteResponse = 0;
 
-=======
->>>>>>> 7307eec01e4af846f308f7843ce3867218474e97
     let headers = new Headers();
     headers.set('Accept', 'application/json');
     headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
 
-<<<<<<< HEAD
-=======
-    console.debug('ID: '+id);
-    console.debug('URL: '+url);
-
->>>>>>> 7307eec01e4af846f308f7843ce3867218474e97
     return this
       .http
       .delete(url, {headers})
       .map(resp => resp.json())
-<<<<<<< HEAD
-=======
-      .subscribe((res) => {
-      });
-
-
->>>>>>> 7307eec01e4af846f308f7843ce3867218474e97
   }
 
 }

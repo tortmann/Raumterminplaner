@@ -10,11 +10,17 @@ import {MitarbeiterService} from "./services/mitarbeiter.service";
 
 export class MitarbeiterSearchComponent {
 
+  public deleteResponse: number = 0;
+  public createResponse: number = 0;
   public menu: number = 1;
+  public messageExists: boolean = false;
+  public errorMessageExists: boolean = false;
   public id: number;
   public name: string;
   public vorname: string;
   public selectedMitarbeiter: Mitarbeiter;
+  public message: string;
+  public errorMessage: string;
 
   constructor (private mitarbeiterService: MitarbeiterService){
 
@@ -29,38 +35,46 @@ export class MitarbeiterSearchComponent {
   }
 
   delete(mitarbeiter: Mitarbeiter): void {
-<<<<<<< HEAD
 
     this.mitarbeiterService.delete(mitarbeiter.id.toString(),mitarbeiter.name, mitarbeiter.vorname)
       .subscribe((resp) => {
         this.mitarbeiterService.find(mitarbeiter.name);
         this.message = 'Mitarbeiter '+ mitarbeiter.vorname + ' ' +mitarbeiter.name + ' wurde gelöscht!';
-      }
+        this.messageExists = true;
+        setTimeout(() => {
+            this.messageExists = false;
+          }, 5000)
+      },
+        (err) => {
+          this.errorMessage = 'Fehler beim Löschen: ' + err;
+          this.errorMessageExists = true;
+        }
     );
-=======
-    this.mitarbeiterService.delete(mitarbeiter.id.toString());
->>>>>>> 7307eec01e4af846f308f7843ce3867218474e97
   }
 
   select(mitarbeiter: Mitarbeiter): void {
     this.selectedMitarbeiter = mitarbeiter;
+    this.message = mitarbeiter.vorname + ' ' +mitarbeiter.name + ' ausgewählt!';
+    this.messageExists = true;
+    setTimeout(() => {
+      this.messageExists = false;
+    }, 3000)
   }
-<<<<<<< HEAD
 
   create(): void {
     this.mitarbeiterService.create(this.name, this.vorname)
       .subscribe((resp) => {
         this.mitarbeiterService.find(this.name);
         this.message = this.vorname + ' ' + this.name +' wurde als neuer Mitarbeiter angelegt!';
+        this.messageExists = true;
+        setTimeout(() => {
+          this.messageExists = false;
+        }, 5000)
       },
       (err) => {
-        console.error('Fehler beim Erstellen', err);
+        this.errorMessage = 'Fehler beim Erstellen: ' + err ;
+        this.errorMessageExists = true;
       }
     );
-=======
-  create(): void{
-    this.mitarbeiterService.create(this.name,this.vorname);
->>>>>>> 7307eec01e4af846f308f7843ce3867218474e97
   }
-
 }
