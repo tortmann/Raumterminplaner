@@ -106,7 +106,7 @@ export class MitarbeiterService{
 
   }
 
-  public delete(id: number): void {
+  public delete(id: string) {
 
     let url = this.baseUrl+this.class_suffix+'/'+id;
 
@@ -114,13 +114,15 @@ export class MitarbeiterService{
     headers.set('Accept', 'application/json');
     headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
 
-    console.debug('ID: '+id.toString());
+    console.debug('ID: '+id);
     console.debug('URL: '+url);
 
-    this
+    return this
       .http
-      .delete(url.toString(),{ headers })
-      .map(resp => resp.json());
+      .delete(url, {headers})
+      .map(resp => resp.json())
+      .subscribe((res) => {
+      });
 
   }
 

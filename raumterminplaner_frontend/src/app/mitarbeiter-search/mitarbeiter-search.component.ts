@@ -29,7 +29,7 @@ export class MitarbeiterSearchComponent {
   }
 
   delete(mitarbeiter: Mitarbeiter): void {
-    this.mitarbeiterService.delete(mitarbeiter.id);
+    this.mitarbeiterService.delete(mitarbeiter.id.toString());
   }
 
   select(mitarbeiter: Mitarbeiter): void {
