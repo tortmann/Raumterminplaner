@@ -10,14 +10,11 @@ import {MitarbeiterService} from "./services/mitarbeiter.service";
 
 export class MitarbeiterSearchComponent {
 
-  public deleteResponse: number = 0;
-  public createResponse: number = 0;
   public menu: number = 1;
   public id: number;
   public name: string;
   public vorname: string;
   public selectedMitarbeiter: Mitarbeiter;
-  public message: string;
 
   constructor (private mitarbeiterService: MitarbeiterService){
 
@@ -32,6 +29,7 @@ export class MitarbeiterSearchComponent {
   }
 
   delete(mitarbeiter: Mitarbeiter): void {
+<<<<<<< HEAD
 
     this.mitarbeiterService.delete(mitarbeiter.id.toString(),mitarbeiter.name, mitarbeiter.vorname)
       .subscribe((resp) => {
@@ -39,11 +37,15 @@ export class MitarbeiterSearchComponent {
         this.message = 'Mitarbeiter '+ mitarbeiter.vorname + ' ' +mitarbeiter.name + ' wurde gelöscht!';
       }
     );
+=======
+    this.mitarbeiterService.delete(mitarbeiter.id.toString());
+>>>>>>> 7307eec01e4af846f308f7843ce3867218474e97
   }
 
   select(mitarbeiter: Mitarbeiter): void {
     this.selectedMitarbeiter = mitarbeiter;
   }
+<<<<<<< HEAD
 
   create(): void {
     this.mitarbeiterService.create(this.name, this.vorname)
@@ -55,5 +57,10 @@ export class MitarbeiterSearchComponent {
         console.error('Fehler beim Erstellen', err);
       }
     );
+=======
+  create(): void{
+    this.mitarbeiterService.create(this.name,this.vorname);
+>>>>>>> 7307eec01e4af846f308f7843ce3867218474e97
   }
+
 }

@@ -1,8 +1,10 @@
 
-export interface Mitarbeiter{
+export interface Termin{
 
   id: number;
-  datum: number;
+  datum: string;
   kommentar: string;
+  raum_id: number;
+  mitarbeiter_id: number;
 
 }
