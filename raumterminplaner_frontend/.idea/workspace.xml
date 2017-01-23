@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b477ca1c-5056-4763-8995-a93cafd5278e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.html" afterPath="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.ts" afterPath="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts" afterPath="$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts" />
     </list>
     <ignored path="angular2-seed.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,8 +49,8 @@
       <file leaf-file-name="mitarbeiter-search.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="28" lean-forward="true" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
+            <state relative-caret-position="660">
+              <caret line="99" column="6" lean-forward="true" selection-start-line="99" selection-start-column="6" selection-end-line="99" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -983,7 +980,7 @@
       <workItem from="1485109257800" duration="16502000" />
       <workItem from="1485171801478" duration="952000" />
       <workItem from="1485175961738" duration="4215000" />
-      <workItem from="1485181236067" duration="7165000" />
+      <workItem from="1485181236067" duration="7413000" />
     </task>
     <task id="LOCAL-00001" summary="Erstellung der entities: mitarbeiter, raum, termin&#10;Umsetzung von Mitarbeiter Components, Services und Routen&#10;Working features create, read">
       <created>1485115933404</created>
@@ -1038,7 +1035,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93598000" />
+    <option name="totallyTimeSpent" value="93846000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1531,8 +1528,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="28" lean-forward="true" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
+        <state relative-caret-position="660">
+          <caret line="99" column="6" lean-forward="true" selection-start-line="99" selection-start-column="6" selection-end-line="99" selection-end-column="6" />
           <folding />
         </state>
       </provider>
