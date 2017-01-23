@@ -54,6 +54,7 @@
     </form>
     <br>
     <div class="panel-footer">
+      <div class="col-md-12">
       <table class="table"><br>
         <tr>
           <th>ID</th>
@@ -65,10 +66,14 @@
           <td>{{mitarbeiter.id}}</td>
           <td>{{mitarbeiter.name}}</td>
           <td>{{mitarbeiter.vorname}}</td>
-          <td><button type="button" class="btn btn-default btn-sm" (click)="select(mitarbeiter)">Auswählen</button></td>
-          <td><button type="button" class="btn btn-default btn-sm" (click)="delete(mitarbeiter)">Löschen</button></td>
+          <td><button type="button" class="btn btn-primary btn-sm" (click)="select(mitarbeiter)">
+            <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span></button>
+          <button type="button" class="btn btn-danger btn-sm" (click)="delete(mitarbeiter)">
+            <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+          </td>
         </tr>
       </table>
+      </div>
     </div>
   </div>
 </div>
@@ -83,12 +88,11 @@
         <input [(ngModel)]="name" class="form-control" placeholder="Name">
       </div>
       <div class="col-lg-3 col-md-2">
-        <input [(ngModel)]="vorname" class="form-control" placeholder="First Name">
+        <input [(ngModel)]="vorname" class="form-control" placeholder="Vorname">
       </div>
       <div class="col-lg-2 col-md-1">
-        <button class="btn btn-default" type="button" (click)="create()">
-          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp;Mitarbeiter anlegen
-        </button>
+        <button class="btn btn-success" type="button" (click)="create()">
+          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
       </div>
 
     </div>

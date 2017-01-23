@@ -4,13 +4,14 @@ import {Mitarbeiter} from "../../entities/mitarbeiter";
 import {BASE_URL} from "../../app.tokens";
 import {Observable} from "rxjs";
 import {OAuthService} from "angular-oauth2-oidc";
+import {find} from "rxjs/operator/find";
 
 @Injectable()
 export class MitarbeiterService{
 
-  class_suffix: string = 'mitarbeiters';
+  classSuffix: string = 'mitarbeiters';
   mitarbeiters: Array<Mitarbeiter> = [];
-  mitarbeiter_obj: any = {};
+  mitarbeitersSorted: Array<Mitarbeiter> = [];
 
   constructor(
     @Inject(BASE_URL) private baseUrl: string,
@@ -22,7 +23,7 @@ export class MitarbeiterService{
 
   public create(name: string, vorname: string){
 
-    let url = this.baseUrl+this.class_suffix;
+    let url = this.baseUrl+this.classSuffix;
 
     let headers = new Headers();
     headers.set('Accept', 'application/json');
@@ -51,7 +52,10 @@ export class MitarbeiterService{
 
   public find(name: string) {
 
-    let url = this.baseUrl+this.class_suffix;
+    let url = this.baseUrl+this.classSuffix;
+
+    this.mitarbeiters = [];
+    this.mitarbeitersSorted = [];
 
     let search = new URLSearchParams();
     search.set('name', name);
@@ -65,9 +69,15 @@ export class MitarbeiterService{
       .get(url, { headers, search })
       .map(resp => resp.json())
       .subscribe(
-        (mitarbeiter_obj) => {
-          this.mitarbeiters = mitarbeiter_obj._embedded.mitarbeiters;
-          console.debug(mitarbeiter_obj._embedded.mitarbeiters);
+        (mitarbeiterObj) => {
+          this.mitarbeiters = mitarbeiterObj._embedded.mitarbeiters;
+          for (let i of this.mitarbeiters) {
+            if(i.name == name) {
+              this.mitarbeitersSorted.push(i);
+              //console.log('Match found for:'+ i.name);
+            }
+          }
+          this.mitarbeiters = this.mitarbeitersSorted;
         },
         (err) => {
           console.error('Fehler beim Laden', err);
@@ -78,7 +88,7 @@ export class MitarbeiterService{
 
   public findById(id: number): Observable<Mitarbeiter> {
 
-    let url = this.baseUrl+this.class_suffix+'/'+id;
+    let url = this.baseUrl+this.classSuffix+'/'+id;
 
     let headers = new Headers();
     headers.set('Accept', 'application/json');
@@ -93,7 +103,7 @@ export class MitarbeiterService{
 
   public save(mitarbeiter: Mitarbeiter, id:number): Observable<Mitarbeiter> {
 
-    let url = this.baseUrl+this.class_suffix+'/'+id;
+    let url = this.baseUrl+this.classSuffix+'/'+id;
 
     let headers = new Headers();
     headers.set('Accept', 'application/json');
@@ -106,9 +116,9 @@ export class MitarbeiterService{
 
   }
 
-  public delete(id: string) {
+  public delete(id: string,) {
 
-    let url = this.baseUrl+this.class_suffix+'/'+id;
+    let url = this.baseUrl+this.classSuffix+'/'+id;
 
     let headers = new Headers();
     headers.set('Accept', 'application/json');
@@ -123,6 +133,8 @@ export class MitarbeiterService{
       .map(resp => resp.json())
       .subscribe((res) => {
       });
+
+    find(name);
 
   }
 
