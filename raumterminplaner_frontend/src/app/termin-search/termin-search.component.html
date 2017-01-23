@@ -1,0 +1,90 @@
+<h1>Termine</h1><hr><br>
+
+<ul class="nav nav-tabs">
+  <li [ngClass]="{ 'active':  menu == 1}" role="presentation"><a (click)="menu = 1">Search</a></li>
+  <li [ngClass]="{ 'active':  menu == 2}" role="presentation"><a (click)="menu = 2">Create</a></li>
+  <li [ngClass]="{ 'active':  menu == 3}" role="presentation"><a (click)="menu = 3">Info</a></li>
+</ul>
+
+
+<div class="panel panel-primary" *ngIf="menu == 1">
+  <div class="panel-heading">
+    <h2 class="panel-title">Suche Termine</h2>
+  </div>
+  <div class="panel-body">
+       <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Datum</span>
+        <input [(ngModel)]="datum" placeholder="Suche nach Terminen..."
+               name="datum"
+               class="form-control">
+
+        <span class="input-group-btn">
+       <!-- <button [disabled]="!f?.controls?.name?.valid" class="btn btn-default" type="button" (click)="search()">-->
+          <button class="btn btn-default" type="button" (click)="search()">
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        </button>
+      </span>
+      </div>
+    <br>
+    <div class="panel-footer">
+      <div class="col-md-12">
+        <table class="table"><br>
+          <tr>
+            <th>ID</th>
+            <th>Datum</th>
+            <th>Kommentar</th>
+            <th>Aktion</th>
+          </tr>
+          <tr *ngFor="let termin of termine" [ngClass]="{ 'active': termin == selectedTermin }">
+            <td>{{termin.id}}</td>
+            <td>{{termin.datum}}</td>
+            <td>{{termin.kommentar}}</td>
+            <td><button type="button" class="btn btn-primary btn-sm" (click)="select(termin)">
+              <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span></button>
+              <button type="button" class="btn btn-danger btn-sm" (click)="delete(termin)">
+                <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-primary" *ngIf="menu == 2">
+  <div class="panel-heading">
+    <h2 class="panel-title">Termin anlegen</h2>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-12">
+      <div class="col-lg-3 col-md-2">
+        <input [(ngModel)]="datum" class="form-control" placeholder="Datum">
+      </div>
+      <div class="col-lg-3 col-md-2">
+        <input [(ngModel)]="kommentar" class="form-control" placeholder="Kommentar">
+      </div>
+      <div class="col-lg-2 col-md-1">
+        <button class="btn btn-success" type="button" (click)="create()">
+          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-primary" *ngIf="menu == 3">
+  <div class="panel-heading">
+    <h2 class="panel-title">Termin Info</h2>
+  </div>
+  <div class="panel-body">
+    <div *ngFor="let termin of termins" class="col-xs-12 col-lg-3 col-md-4 col-sm-6 ">
+      <termin-card
+        [item]="termin"
+        [(selectedItem)]="selectedTermin">
+      </termin-card>
+    </div>
+    <pre>
+      {{ selectedTermin | json }}
+    </pre>
+  </div>
+</div>

@@ -8,6 +8,7 @@ import {MitarbeiterSearchModule} from "./mitarbeiter-search/mitarbeiter-search.m
 import {AppRouterModule} from "./app.routes";
 import {HomeComponent} from "./home/home.component";
 import {OAuthModule} from "angular-oauth2-oidc";
+import {TerminSearchModule} from "./termin-search/termin-search.module";
 
 const BASE_URL_FOR_PRODUCTION = "http://localhost:8080/api/";
 
@@ -17,6 +18,7 @@ const BASE_URL_FOR_PRODUCTION = "http://localhost:8080/api/";
     FormsModule,
     HttpModule,
     MitarbeiterSearchModule,
+    TerminSearchModule,
     AppRouterModule,
     OAuthModule.forRoot()
   ],

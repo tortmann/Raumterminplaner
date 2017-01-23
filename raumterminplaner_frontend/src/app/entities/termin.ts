@@ -1,8 +1,8 @@
 
-export interface Mitarbeiter{
+export interface Termin{
 
   id: number;
-  datum: number;
+  datum: string;
   kommentar: string;
 
 }
