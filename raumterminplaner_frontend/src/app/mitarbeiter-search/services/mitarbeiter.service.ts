@@ -71,32 +71,28 @@ export class MitarbeiterService{
       .subscribe(
         (mitarbeiterObj) => {
           this.mitarbeiters = mitarbeiterObj._embedded.mitarbeiters;
-
-
           for (let i of this.mitarbeiters) {
             if (i.name == name) {
               this.mitarbeitersSorted.push(i);
-                this.urlTermine = 'http://localhost:8080/api/mitarbeiters/'+i.id+'/termine';
-                this.http.get(this.urlTermine, {headers}).map(resp => resp.json()).subscribe((termineObj) => {
+              this.urlTermine = 'http://localhost:8080/api/mitarbeiters/'+i.id+'/termine';
+              this.http.get(this.urlTermine, {headers}).map(resp => resp.json())
+                .subscribe((termineObj) => {
                   this.termins = termineObj._embedded.termins;
-                  for (let j of this.termins){
-                  this.terminsSorted.push(j);
-                  this.mitarbeitersSorted['termin'] = j;
-                  }
+                    for (let j of this.termins){
+                      this.terminsSorted.push(j);
+                      for (var k=0; k < this.mitarbeitersSorted.length; k++){
+                        if (this.mitarbeitersSorted[k].id == i.id){
+                          this.mitarbeitersSorted[k]['termin'] = this.termins
+                        }
+                      }
+                    }
                 })
-                //console.log('Match found for:'+ i.name);
             }
           }
           this.mitarbeiters = this.mitarbeitersSorted;
           this.termins = this.terminsSorted;
-
-          console.log('mitarbeiters:');
-          console.log(this.mitarbeiters);
-          console.log('termins:');
-          console.log(this.termins);
         }
       );
-
   }
 
   public findById(id: number): Observable<Mitarbeiter> {
