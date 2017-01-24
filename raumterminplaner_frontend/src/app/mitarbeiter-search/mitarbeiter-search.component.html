@@ -69,6 +69,7 @@
           <th>Aktion</th>
         </tr>
         <tr *ngFor="let mitarbeiter of mitarbeiters" [ngClass]="{ 'active': mitarbeiter == selectedMitarbeiter }">
+
           <td>{{mitarbeiter.id}}</td>
           <td>{{mitarbeiter.name}}</td>
           <td>{{mitarbeiter.vorname}}</td>
@@ -83,6 +84,18 @@
               <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
             </button>
           </td>
+        </tr>
+        <br>
+        <h4>Termine</h4>
+        <tr>
+          <th>ID</th>
+          <th>Datum</th>
+          <th>Kommentar</th>
+        </tr>
+        <tr *ngFor="let termine of termins">
+          <td>{{termine.id}}</td>
+          <td>{{termine.datum}}</td>
+          <td>{{termine.kommentar}}</td>
         </tr>
       </table>
       </div>

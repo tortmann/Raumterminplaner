@@ -4,6 +4,7 @@ import {Mitarbeiter} from "../../entities/mitarbeiter";
 import {BASE_URL} from "../../app.tokens";
 import {Observable} from "rxjs";
 import {OAuthService} from "angular-oauth2-oidc";
+import {Termin} from "../../entities/termin";
 
 
 @Injectable()
@@ -11,9 +12,10 @@ export class MitarbeiterService{
 
   classSuffix: string = 'mitarbeiters';
   mitarbeiters: Array<Mitarbeiter> = [];
+  termins: Array<Termin> = [];
   mitarbeitersSorted: Array<Mitarbeiter> = [];
-  deleteResponse: number = 0;
-  createResponse: number = 0;
+  terminsSorted: Array<Termin> = [];
+  urlTermine: string;
 
 
   constructor(
@@ -51,6 +53,9 @@ export class MitarbeiterService{
 
     this.mitarbeiters = [];
     this.mitarbeitersSorted = [];
+    this.termins = [];
+    this.terminsSorted = [];
+
 
     let search = new URLSearchParams();
     search.set('name', name);
@@ -66,16 +71,28 @@ export class MitarbeiterService{
       .subscribe(
         (mitarbeiterObj) => {
           this.mitarbeiters = mitarbeiterObj._embedded.mitarbeiters;
+
+
           for (let i of this.mitarbeiters) {
-            if(i.name == name) {
+            if (i.name == name) {
               this.mitarbeitersSorted.push(i);
-              //console.log('Match found for:'+ i.name);
+                this.urlTermine = 'http://localhost:8080/api/mitarbeiters/'+i.id+'/termine';
+                this.http.get(this.urlTermine, {headers}).map(resp => resp.json()).subscribe((termineObj) => {
+                  this.termins = termineObj._embedded.termins;
+                  for (let j of this.termins){
+                  this.terminsSorted.push(j);
+                  }
+                })
+                //console.log('Match found for:'+ i.name);
             }
           }
           this.mitarbeiters = this.mitarbeitersSorted;
-        },
-        (err) => {
-          console.error('Fehler beim Laden', err);
+          this.termins = this.terminsSorted;
+
+          console.log('mitarbeiters:');
+          console.log(this.mitarbeiters);
+          console.log('termins:');
+          console.log(this.termins);
         }
       );
 

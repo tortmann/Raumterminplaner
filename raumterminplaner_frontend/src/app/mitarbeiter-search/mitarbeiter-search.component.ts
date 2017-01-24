@@ -1,6 +1,7 @@
 import {Component} from "@angular/core";
 import {Mitarbeiter} from "../entities/mitarbeiter";
 import {MitarbeiterService} from "./services/mitarbeiter.service";
+import {Termin} from "../entities/termin";
 
 @Component({
   selector: 'mitarbeiter-search',
@@ -28,6 +29,10 @@ export class MitarbeiterSearchComponent {
 
   public get mitarbeiters(): Array<Mitarbeiter> {
     return this.mitarbeiterService.mitarbeiters;
+  }
+
+  public get termins(): Array<Termin> {
+    return this.mitarbeiterService.termins;
   }
 
   search(): void {
