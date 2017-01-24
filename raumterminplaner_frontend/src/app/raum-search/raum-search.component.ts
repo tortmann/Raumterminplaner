@@ -38,7 +38,7 @@ export class RaumSearchComponent {
     this.raumService.find(this.bezeichnung);
   }
 
-  /*delete(raum: Raum): void {
+  delete(raum: Raum): void {
 
     this.raumService.delete(raum.id.toString(),raum.bezeichnung)
       .subscribe((resp) => {
@@ -54,7 +54,7 @@ export class RaumSearchComponent {
           this.errorMessageExists = true;
         }
       );
-  }*/
+  }
 
   select(raum: Raum): void {
     this.selectedRaum = raum;

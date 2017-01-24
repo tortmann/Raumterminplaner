@@ -18,7 +18,7 @@ import {Raum} from "../../entities/raum";
       </div>
       <div class="form-group">
         <label>Bezeichnung</label>
-        <input [(ngModel)]="raum.Bezeichnung" class="form-control">
+        <input [(ngModel)]="raum.bezeichnung" class="form-control">
       </div>
     
       <div class="form-group">        

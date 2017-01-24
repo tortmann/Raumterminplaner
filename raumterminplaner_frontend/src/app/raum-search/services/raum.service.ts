@@ -5,6 +5,7 @@ import {Http, Headers, URLSearchParams} from "@angular/http";
 import {OAuthService} from "angular-oauth2-oidc";
 import {Raum} from "../../entities/raum";
 import {Termin} from "../../entities/termin";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class RaumService{
@@ -97,4 +98,50 @@ export class RaumService{
       );
   }
 
+  public findById(id: number): Observable<Raum> {
+
+    let url = this.baseUrl+this.classSuffix+'/'+id;
+
+    let headers = new Headers();
+    headers.set('Accept', 'application/json');
+    headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
+
+    return this
+      .http
+      .get(url, {headers})
+      .map(resp => resp.json());
+
+  }
+
+  public save(raum: Raum, id:number): Observable<Raum> {
+
+    let url = this.baseUrl+this.classSuffix+'/'+id;
+
+    let headers = new Headers();
+    headers.set('Accept', 'application/json');
+    headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
+
+    return this
+      .http
+      .put(url, raum, { headers })
+      .map(resp => resp.json());
+
+  }
+
+  public delete(id: string, bezeichnung: string) {
+
+    let url = this.baseUrl+this.classSuffix+'/'+id;
+
+    this.raums = [];
+    this.raumsSorted = [];
+
+    let headers = new Headers();
+    headers.set('Accept', 'application/json');
+    headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
+
+    return this
+      .http
+      .delete(url, {headers})
+      .map(resp => resp.json())
+  }
 }
