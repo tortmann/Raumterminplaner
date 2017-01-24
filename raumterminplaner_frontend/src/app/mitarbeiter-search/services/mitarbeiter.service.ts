@@ -5,6 +5,7 @@ import {BASE_URL} from "../../app.tokens";
 import {Observable} from "rxjs";
 import {OAuthService} from "angular-oauth2-oidc";
 import {Termin} from "../../entities/termin";
+import {Raum} from "../../entities/raum";
 
 
 @Injectable()
@@ -13,9 +14,11 @@ export class MitarbeiterService{
   classSuffix: string = 'mitarbeiters';
   mitarbeiters: Array<Mitarbeiter> = [];
   termins: Array<Termin> = [];
+  raums: Array<any> = [];
   mitarbeitersSorted: Array<Mitarbeiter> = [];
   terminsSorted: Array<Termin> = [];
   urlTermine: string;
+  urlRaum: string;
 
 
   constructor(
@@ -85,22 +88,36 @@ export class MitarbeiterService{
               // http-GET returns all termine of the respective mitarbeiter (current mitarbeiter = i)
               this.http.get(this.urlTermine, {headers}).map(resp => resp.json())
                 .subscribe((termineObj) => {
-                // same as above - match data type of http return and termins Array
-                this.termins = termineObj._embedded.termins;
-                    // iterate over all termins found for the current mitarbeiter
-                    for (let j of this.termins){
-                      // add the termins to a sorted array
-                      this.terminsSorted.push(j);
-                      // iterate over the sorted termins array exactly once (--> k++ while iterator is smaller then the the amount of entries in the array (array.length)
-                      for (var k=0; k < this.mitarbeitersSorted.length; k++){
-                        // check if the id of the mitarbeiter in the sorted mitarbeiter array matches the id of the current mitarbeiter (i)
-                        if (this.mitarbeitersSorted[k].id == i.id){
-                          // if the ids match then this termin belongs to exactly this mitarbeiter and can therefore be added to the sorted mitarbeiter array
-                          this.mitarbeitersSorted[k]['termin'] = this.termins
+                  // same as above - match data type of http return and termins Array
+                  this.termins = termineObj._embedded.termins;
+                  // iterate over all termins found for the current mitarbeiter
+                  for (let j of this.termins){
+                    // add the termins to a sorted array
+                    this.terminsSorted.push(j);
+                    // http-GET returns the raum of the respective termin (current termin = j)
+                    // proceed to build url similar to getting termins
+                    this.urlRaum = 'http://localhost:8080/api/termins/'+j.id+'/raum';
+                    this.http.get(this.urlRaum, {headers}).map(resp => resp.json())
+                      .subscribe((raumObj) => {
+                        // this time the data types match receive Object from response this.raums expects an array of raum objects
+                        this.raums = raumObj;
+                      })
+                    // iterate over the sorted termins array exactly once (--> k++ while iterator is smaller then the the amount of entries in the array (array.length)
+                    for (var k=0; k < this.mitarbeitersSorted.length; k++){
+                      // check if the id of the mitarbeiter in the sorted mitarbeiter array matches the id of the current mitarbeiter (i)
+                      if (this.mitarbeitersSorted[k].id == i.id){
+                        // if the ids match then this termin belongs to exactly this mitarbeiter and can therefore be added to the sorted mitarbeiter array
+                        this.mitarbeitersSorted[k]['termin'] = this.termins;
+                        // iterate once again - this time iterate over all the termins of the current user
+                        for (var n=0; n < this.mitarbeitersSorted[k]['termin'].length; n++){
+                          // append the raums object to the respective users termins
+                          this.mitarbeitersSorted[k]['termin'][n].raum = this.raums;
                         }
                       }
                     }
+                  }
                 })
+              //http-Get return all raums of the respective termins
             }
           }
           // save the sorted data into the main array for mitarbeiter and termin

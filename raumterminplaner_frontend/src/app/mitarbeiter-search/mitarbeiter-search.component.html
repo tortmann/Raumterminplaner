@@ -83,8 +83,9 @@
               <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
             </button>
           </td>
-          <td *ngFor="let termin of mitarbeiter.termin"><b>{{termin.kommentar}}</b> am <i>{{termin.datum}}</i></td>
-
+          <td *ngFor="let termin of mitarbeiter.termin">
+            <b>{{termin.kommentar}}</b> am <i>{{termin.datum}}</i> in Raum: <u>{{termin.raum.bezeichnung}}</u>
+          </td>
         </tr>
         </table>
       </div>
