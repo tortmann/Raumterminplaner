@@ -14,7 +14,7 @@ export class MitarbeiterService{
   classSuffix: string = 'mitarbeiters';
   mitarbeiters: Array<Mitarbeiter> = [];
   termins: Array<Termin> = [];
-  raums: Array<any> = [];
+  raums: Array<any>;
   mitarbeitersSorted: Array<Mitarbeiter> = [];
   terminsSorted: Array<Termin> = [];
   urlTermine: string;
@@ -101,31 +101,33 @@ export class MitarbeiterService{
                       .subscribe((raumObj) => {
                         // this time the data types match receive Object from response this.raums expects an array of raum objects
                         this.raums = raumObj;
-                      })
-                    // iterate over the sorted termins array exactly once (--> k++ while iterator is smaller then the the amount of entries in the array (array.length)
-                    for (var k=0; k < this.mitarbeitersSorted.length; k++){
-                      // check if the id of the mitarbeiter in the sorted mitarbeiter array matches the id of the current mitarbeiter (i)
-                      if (this.mitarbeitersSorted[k].id == i.id){
-                        // if the ids match then this termin belongs to exactly this mitarbeiter and can therefore be added to the sorted mitarbeiter array
-                        this.mitarbeitersSorted[k]['termin'] = this.termins;
-                        // iterate once again - this time iterate over all the termins of the current user
-                        for (var n=0; n < this.mitarbeitersSorted[k]['termin'].length; n++){
-                          // append the raums object to the respective users termins
-                          this.mitarbeitersSorted[k]['termin'][n].raum = this.raums;
+                        // iterate over the sorted termins array exactly once (--> k++ while iterator is smaller then the the amount of entries in the array (array.length)
+                        for (var k=0; k < this.mitarbeitersSorted.length; k++){
+                          // check if the id of the mitarbeiter in the sorted mitarbeiter array matches the id of the current mitarbeiter (i)
+                          if (this.mitarbeitersSorted[k].id == i.id){
+                            // if the ids match then this termin belongs to exactly this mitarbeiter and can therefore be added to the sorted mitarbeiter array
+                            this.mitarbeitersSorted[k]['termin'] = this.termins;
+                            // iterate once again - this time iterate over all the termins of the current user
+                            for (var n=0; n < this.mitarbeitersSorted[k]['termin'].length; n++){
+                              // append the raums object to the respective users termins
+                              console.log(this.mitarbeitersSorted[k]['termin']);
+                              this.mitarbeitersSorted[k]['termin'][n].raum = this.raums;
+                            }
+                          }
                         }
-                      }
-                    }
+                      // Ende des callbacks von http-GET raum
+                      })
                   }
+                // Ende des callbacks von http-GET termine
                 })
-              //http-Get return all raums of the respective termins
             }
           }
           // save the sorted data into the main array for mitarbeiter and termin
           // these are used to display the data in the frontend
           this.mitarbeiters = this.mitarbeitersSorted;
           this.termins = this.terminsSorted;
-        }
-      );
+        //Ende des callbacks von http-GET mitarbeiter
+        });
   }
 
   public findById(id: number): Observable<Mitarbeiter> {
