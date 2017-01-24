@@ -86,6 +86,7 @@ export class MitarbeiterService{
               this.http.get(this.urlTermine, {headers}).map(resp => resp.json())
                 .subscribe((termineObj) => {
                 // same as above - match data type of http return and termins Array
+                  console.log(termineObj);
                 this.termins = termineObj._embedded.termins;
                     // iterate over all termins found for the current mitarbeiter
                     for (let j of this.termins){
@@ -101,6 +102,7 @@ export class MitarbeiterService{
                       }
                     }
                 })
+              //http-Get return all raums of the respective termins
             }
           }
           // save the sorted data into the main array for mitarbeiter and termin
