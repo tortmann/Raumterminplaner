@@ -81,6 +81,7 @@ export class MitarbeiterService{
                   this.termins = termineObj._embedded.termins;
                   for (let j of this.termins){
                   this.terminsSorted.push(j);
+                  this.mitarbeitersSorted['termin'] = j;
                   }
                 })
                 //console.log('Match found for:'+ i.name);
