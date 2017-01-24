@@ -54,13 +54,16 @@
             <th>Datum</th>
             <th>Kommentar</th>
             <th>Raum</th>
+            <th>Mitarbeiter</th>
             <th>Aktion</th>
           </tr>
           <tr *ngFor="let termin of termine" [ngClass]="{ 'active': termin == selectedTermin }">
             <td>{{termin.id}}</td>
             <td>{{termin.datum}}</td>
             <td>{{termin.kommentar}}</td>
-            <td>{{termin.raum_id}}</td>
+            <td>{{termin.mitarbeiter.name}} {{termin.mitarbeiter.vorname}}</td>
+            <td> {{termin.raum.bezeichnung}}</td>
+
             <td><button type="button" class="btn btn-primary btn-sm" (click)="select(termin)">
               <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span></button>
               <button type="button" class="btn btn-danger btn-sm" (click)="delete(termin)">

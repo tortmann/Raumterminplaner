@@ -13,7 +13,10 @@ export class TerminService{
   classSuffix: string = 'termins';
   termins: Array<Termin> = [];
   termineSorted: Array<Termin> = [];
-
+  mitarbeiters: Array<any> = [];
+  mitarbeiterUrl: string;
+  raums: Array<any> = [];
+  raumUrl: string;
 
   constructor(
     @Inject(BASE_URL) private baseUrl: string,
@@ -27,6 +30,8 @@ export class TerminService{
 
     this.termins = [];
     this.termineSorted = [];
+    this.mitarbeiters = [];
+    this.raums = [];
 
     let search = new URLSearchParams();
     search.set('datum', datum);
@@ -42,19 +47,38 @@ export class TerminService{
       .subscribe(
         (terminObj) => {
           this.termins = terminObj._embedded.termins;
-          for (let i of this.termins) {
-            if(i.datum == datum) {
-              this.termineSorted.push(i);
-              //console.log('Match found for:'+ i.name);
+          for (let termin of this.termins) {
+            if(termin.datum == datum) {
+              this.termineSorted.push(termin);
+              this.mitarbeiterUrl = this.baseUrl+this.classSuffix+"/"+termin.id+"/mitarbeiter";
+              this.http.get(this.mitarbeiterUrl, {headers}).map(resp=>resp.json())
+                .subscribe((mitarbeiterObj) => {
+                  this.mitarbeiters = mitarbeiterObj;
+
+               this.raumUrl = this.baseUrl+this.classSuffix+"/"+termin.id+"/raum";
+               this.http.get(this.raumUrl, {headers}).map(resp => resp.json())
+                 .subscribe((raumObj)=>{
+                   this.raums = raumObj;
+
+                   for (var t=0; t<this.termineSorted.length;t++){
+                     if (this.termineSorted[t].id == termin.id){
+                       this.termineSorted[t].mitarbeiter = this.mitarbeiters;
+                       this.termineSorted[t].raum = this.raums;
+
+                     }
+                   }
+                 })
+                })
             }
           }
           this.termins = this.termineSorted;
-        },
-        (err) => {
-          console.error('Fehler beim Laden', err);
-        }
-      );
-
+          console.log('Termine');
+          console.log(this.termineSorted);
+          console.log('Raum');
+          console.log(this.raums);
+          console.log('Mitarbeiter');
+          console.log(this.mitarbeiters);
+        });
   }
 
 

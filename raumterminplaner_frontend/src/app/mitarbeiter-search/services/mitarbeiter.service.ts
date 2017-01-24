@@ -101,7 +101,7 @@ export class MitarbeiterService{
                       .subscribe((raumObj) => {
                         // this time the data types match receive Object from response this.raums expects an array of raum objects
                         this.raums = raumObj;
-                      })
+
                     // iterate over the sorted termins array exactly once (--> k++ while iterator is smaller then the the amount of entries in the array (array.length)
                     for (var k=0; k < this.mitarbeitersSorted.length; k++){
                       // check if the id of the mitarbeiter in the sorted mitarbeiter array matches the id of the current mitarbeiter (i)
@@ -115,6 +115,7 @@ export class MitarbeiterService{
                         }
                       }
                     }
+                  })
                   }
                 })
               //http-Get return all raums of the respective termins
@@ -124,6 +125,9 @@ export class MitarbeiterService{
           // these are used to display the data in the frontend
           this.mitarbeiters = this.mitarbeitersSorted;
           this.termins = this.terminsSorted;
+          console.log(this.terminsSorted);
+          console.log(this.mitarbeitersSorted);
+          console.log(this.raums);
         }
       );
   }
