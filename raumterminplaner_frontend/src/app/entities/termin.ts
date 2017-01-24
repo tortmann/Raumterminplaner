@@ -4,7 +4,7 @@ export interface Termin{
   id: number;
   datum: string;
   kommentar: string;
-  raum_id: number;
+  raum: Object;
   mitarbeiter_id: number;
 
 }
