@@ -20,19 +20,22 @@
     </div>
     <form #f="ngForm" novalidate>
       <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">Name</span>
+        <span class="input-group-addon" id="basic-addon1">Bezeichnung</span>
         <input [(ngModel)]="bezeichnung" placeholder="Suche nach Räumen..."
                name="raum"
                required
-             >
-
+               class="form-control">
         <span class="input-group-btn">
         <button [disabled]="!f?.controls?.raum?.valid" class="btn btn-default" type="button" (click)="search()">
           <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
         </button>
       </span>
       </div>
-
+      <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.raum?.valid">
+        <div *ngIf="f?.controls?.raum?.hasError('required')">
+          <b>Warnung!&nbsp;</b>Dieses Feld ist nicht optional!
+        </div>
+      </div>
     </form>
     <br>
     <div class="panel-footer">
