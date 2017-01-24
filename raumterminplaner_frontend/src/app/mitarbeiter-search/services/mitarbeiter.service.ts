@@ -4,13 +4,19 @@ import {Mitarbeiter} from "../../entities/mitarbeiter";
 import {BASE_URL} from "../../app.tokens";
 import {Observable} from "rxjs";
 import {OAuthService} from "angular-oauth2-oidc";
+import {Termin} from "../../entities/termin";
+
 
 @Injectable()
 export class MitarbeiterService{
 
-  class_suffix: string = 'mitarbeiters';
+  classSuffix: string = 'mitarbeiters';
   mitarbeiters: Array<Mitarbeiter> = [];
-  mitarbeiter_obj: any = {};
+  termins: Array<Termin> = [];
+  mitarbeitersSorted: Array<Mitarbeiter> = [];
+  terminsSorted: Array<Termin> = [];
+  urlTermine: string;
+
 
   constructor(
     @Inject(BASE_URL) private baseUrl: string,
@@ -22,7 +28,7 @@ export class MitarbeiterService{
 
   public create(name: string, vorname: string){
 
-    let url = this.baseUrl+this.class_suffix;
+    let url = this.baseUrl+this.classSuffix;
 
     let headers = new Headers();
     headers.set('Accept', 'application/json');
@@ -38,20 +44,18 @@ export class MitarbeiterService{
       .http
       .post(url, dummyMitarbeiter, {headers})
       .map(resp => resp.json())
-      .subscribe(
-        (mitarbeiter: Mitarbeiter) => {
-          console.debug('sucess',mitarbeiter);
-        },
-        (err) => {
-      console.error('Create Mitarbeiter - ERROR',err);
-    })
-
   }
 
 
   public find(name: string) {
 
-    let url = this.baseUrl+this.class_suffix;
+    let url = this.baseUrl+this.classSuffix;
+
+    this.mitarbeiters = [];
+    this.mitarbeitersSorted = [];
+    this.termins = [];
+    this.terminsSorted = [];
+
 
     let search = new URLSearchParams();
     search.set('name', name);
@@ -65,12 +69,31 @@ export class MitarbeiterService{
       .get(url, { headers, search })
       .map(resp => resp.json())
       .subscribe(
-        (mitarbeiter_obj) => {
-          this.mitarbeiters = mitarbeiter_obj._embedded.mitarbeiters;
-          console.debug(mitarbeiter_obj._embedded.mitarbeiters);
-        },
-        (err) => {
-          console.error('Fehler beim Laden', err);
+        (mitarbeiterObj) => {
+          this.mitarbeiters = mitarbeiterObj._embedded.mitarbeiters;
+
+
+          for (let i of this.mitarbeiters) {
+            if (i.name == name) {
+              this.mitarbeitersSorted.push(i);
+                this.urlTermine = 'http://localhost:8080/api/mitarbeiters/'+i.id+'/termine';
+                this.http.get(this.urlTermine, {headers}).map(resp => resp.json()).subscribe((termineObj) => {
+                  this.termins = termineObj._embedded.termins;
+                  for (let j of this.termins){
+                  this.terminsSorted.push(j);
+                  this.mitarbeitersSorted['termin'] = j;
+                  }
+                })
+                //console.log('Match found for:'+ i.name);
+            }
+          }
+          this.mitarbeiters = this.mitarbeitersSorted;
+          this.termins = this.terminsSorted;
+
+          console.log('mitarbeiters:');
+          console.log(this.mitarbeiters);
+          console.log('termins:');
+          console.log(this.termins);
         }
       );
 
@@ -78,7 +101,7 @@ export class MitarbeiterService{
 
   public findById(id: number): Observable<Mitarbeiter> {
 
-    let url = this.baseUrl+this.class_suffix+'/'+id;
+    let url = this.baseUrl+this.classSuffix+'/'+id;
 
     let headers = new Headers();
     headers.set('Accept', 'application/json');
@@ -93,7 +116,7 @@ export class MitarbeiterService{
 
   public save(mitarbeiter: Mitarbeiter, id:number): Observable<Mitarbeiter> {
 
-    let url = this.baseUrl+this.class_suffix+'/'+id;
+    let url = this.baseUrl+this.classSuffix+'/'+id;
 
     let headers = new Headers();
     headers.set('Accept', 'application/json');
@@ -106,24 +129,22 @@ export class MitarbeiterService{
 
   }
 
-  public delete(id: string) {
+  public delete(id: string, name: string, vorname: string) {
 
-    let url = this.baseUrl+this.class_suffix+'/'+id;
+    let url = this.baseUrl+this.classSuffix+'/'+id;
+
+    this.mitarbeiters = [];
+    this.mitarbeitersSorted = [];
+    //this.deleteResponse = 0;
 
     let headers = new Headers();
     headers.set('Accept', 'application/json');
     headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
 
-    console.debug('ID: '+id);
-    console.debug('URL: '+url);
-
     return this
       .http
       .delete(url, {headers})
       .map(resp => resp.json())
-      .subscribe((res) => {
-      });
-
   }
 
 }
