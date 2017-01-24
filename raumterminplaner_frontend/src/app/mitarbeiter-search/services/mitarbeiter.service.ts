@@ -64,39 +64,51 @@ export class MitarbeiterService{
     headers.set('Accept', 'application/json');
     headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
 
+    // http-GET returns all mitarbeiter
     return this
       .http
       .get(url, { headers, search })
       .map(resp => resp.json())
       .subscribe(
         (mitarbeiterObj) => {
+          // mitarbeiters is of type Array<Mitarbeiter> so we have to go a bit deepr into the return obj(mitarbeiterObj) to match the data type
           this.mitarbeiters = mitarbeiterObj._embedded.mitarbeiters;
-
-
+          // loop over all objects in the mitarbeiter Array
           for (let i of this.mitarbeiters) {
+            // if the name attribute (i.name) in the respective object matches the user input (name) add it to a new sorted array
             if (i.name == name) {
+              // push correct objects<Mitarbeiter> (i) into sorted array
               this.mitarbeitersSorted.push(i);
-                this.urlTermine = 'http://localhost:8080/api/mitarbeiters/'+i.id+'/termine';
-                this.http.get(this.urlTermine, {headers}).map(resp => resp.json()).subscribe((termineObj) => {
-                  this.termins = termineObj._embedded.termins;
-                  for (let j of this.termins){
-                  this.terminsSorted.push(j);
-                  this.mitarbeitersSorted['termin'] = j;
-                  }
+              // modifiy url for next http-GET - http://localhost:8080/api/mitarbeiters/id/termine
+              // the part /id/ is variable and matches the id of the mitarbeiter object (i.id)
+              this.urlTermine = 'http://localhost:8080/api/mitarbeiters/'+i.id+'/termine';
+              // http-GET returns all termine of the respective mitarbeiter (current mitarbeiter = i)
+              this.http.get(this.urlTermine, {headers}).map(resp => resp.json())
+                .subscribe((termineObj) => {
+                // same as above - match data type of http return and termins Array
+                this.termins = termineObj._embedded.termins;
+                    // iterate over all termins found for the current mitarbeiter
+                    for (let j of this.termins){
+                      // add the termins to a sorted array
+                      this.terminsSorted.push(j);
+                      // iterate over the sorted termins array exactly once (--> k++ while iterator is smaller then the the amount of entries in the array (array.length)
+                      for (var k=0; k < this.mitarbeitersSorted.length; k++){
+                        // check if the id of the mitarbeiter in the sorted mitarbeiter array matches the id of the current mitarbeiter (i)
+                        if (this.mitarbeitersSorted[k].id == i.id){
+                          // if the ids match then this termin belongs to exactly this mitarbeiter and can therefore be added to the sorted mitarbeiter array
+                          this.mitarbeitersSorted[k]['termin'] = this.termins
+                        }
+                      }
+                    }
                 })
-                //console.log('Match found for:'+ i.name);
             }
           }
+          // save the sorted data into the main array for mitarbeiter and termin
+          // these are used to display the data in the frontend
           this.mitarbeiters = this.mitarbeitersSorted;
           this.termins = this.terminsSorted;
-
-          console.log('mitarbeiters:');
-          console.log(this.mitarbeiters);
-          console.log('termins:');
-          console.log(this.termins);
         }
       );
-
   }
 
   public findById(id: number): Observable<Mitarbeiter> {
