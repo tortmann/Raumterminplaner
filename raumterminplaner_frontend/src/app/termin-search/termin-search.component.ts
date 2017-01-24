@@ -67,7 +67,7 @@ export class TerminSearchComponent {
   create(): void {
     this.terminService.create(this.datum, this.kommentar).subscribe((resp) => {
           this.terminService.find(this.datum);
-          this.message = 'Termin: '+ this.kommentar + ' am ' + this.datum +' wurde als neu angelegt!';
+          this.message = 'Termin: '+ this.kommentar + ' am ' + this.datum +' wurde neu angelegt!';
           this.messageExists = true;
           setTimeout(() => {
             this.messageExists = false;

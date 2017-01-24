@@ -50,7 +50,7 @@ export class TerminService{
           for (let termin of this.termins) {
             if(termin.datum == datum) {
               this.termineSorted.push(termin);
-              this.mitarbeiterUrl = this.baseUrl+this.classSuffix+"/"+termin.id+"/mitarbeiter";
+            /*  this.mitarbeiterUrl = this.baseUrl+this.classSuffix+"/"+termin.id+"/mitarbeiter";
               this.http.get(this.mitarbeiterUrl, {headers}).map(resp=>resp.json())
                 .subscribe((mitarbeiterObj) => {
                   this.mitarbeiters = mitarbeiterObj;
@@ -68,12 +68,12 @@ export class TerminService{
                      }
                    }
                  })
-                })
+                })*/
             }
           }
           this.termins = this.termineSorted;
           console.log('Termine');
-          console.log(this.termineSorted);
+          console.log(this.termins);
           console.log('Raum');
           console.log(this.raums);
           console.log('Mitarbeiter');
