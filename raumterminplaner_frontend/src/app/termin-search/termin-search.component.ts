@@ -17,13 +17,19 @@ export class TerminSearchComponent {
   //public mitarbeiter_id: number;
  // public raum_id: number;
   public selectedTermin: Termin;
+  public message: string;
+  public messageExists: boolean = false;
+  public errorMessageExists: boolean = false;
+  public errorMessage: string;
+
 
 
   constructor (private terminService: TerminService){
 
   }
 
-  public get termine(): Array<Termin> {
+
+  public get termins(): Array<Termin> {
     return this.terminService.termins;
   }
 
@@ -31,18 +37,48 @@ export class TerminSearchComponent {
     this.terminService.find(this.datum);
   }
 
+  delete(termin: Termin): void {
 
+    this.terminService.delete(termin.id.toString(),termin.datum, termin.kommentar)
+      .subscribe((resp) => {
+          this.terminService.find(termin.datum);
+          this.message = 'Termin '+ termin.kommentar + ' am ' + termin.datum + ' wurde gelöscht!';
+          this.messageExists = true;
+          setTimeout(() => {
+            this.messageExists = false;
+          }, 5000)
+        },
+        (err) => {
+          this.errorMessage = 'Fehler beim Löschen: ' + err;
+          this.errorMessageExists = true;
+        }
+      );
+  }
 
-    delete(termin: Termin): void {
-      this.terminService.delete(termin.id.toString());
-    }
+  select(termin: Termin): void {
+    this.selectedTermin = termin;
+    this.message = 'Termin'+termin.kommentar + ' am ' +termin.datum + ' ausgewählt!';
+    this.messageExists = true;
+    setTimeout(() => {
+      this.messageExists = false;
+    }, 3000)
+  }
 
-    select(termin: Termin): void {
-      this.selectedTermin = termin;
-    }
-    create(): void{
-      this.terminService.create(this.datum,this.kommentar);
-    }
+  create(): void {
+    this.terminService.create(this.datum, this.kommentar).subscribe((resp) => {
+          this.terminService.find(this.datum);
+          this.message = 'Termin: '+ this.kommentar + ' am ' + this.datum +' wurde als neu angelegt!';
+          this.messageExists = true;
+          setTimeout(() => {
+            this.messageExists = false;
+          }, 5000)
+        },
+        (err) => {
+          this.errorMessage = 'Fehler beim Erstellen: ' + err ;
+          this.errorMessageExists = true;
+        }
+      );
+  }
 
 }
 

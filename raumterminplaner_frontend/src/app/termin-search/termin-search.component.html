@@ -1,19 +1,25 @@
-<h1>Termine</h1><hr><br>
-
+<br>
+<br>
 <ul class="nav nav-tabs">
-  <li [ngClass]="{ 'active':  menu == 1}" role="presentation"><a (click)="menu = 1">Search</a></li>
-  <li [ngClass]="{ 'active':  menu == 2}" role="presentation"><a (click)="menu = 2">Create</a></li>
-  <li [ngClass]="{ 'active':  menu == 3}" role="presentation"><a (click)="menu = 3">Info</a></li>
+  <li [ngClass]="{ 'active':  menu == 1}" role="presentation"><a (click)="menu = 1"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
+  <li [ngClass]="{ 'active':  menu == 2}" role="presentation"><a (click)="menu = 2"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a></li>
+  <li [ngClass]="{ 'active':  menu == 3}" role="presentation"><a (click)="menu = 3"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></li>
 </ul>
 
 
 <div class="panel panel-primary" *ngIf="menu == 1">
   <div class="panel-heading">
-    <h2 class="panel-title">Suche Termine</h2>
+    <h2 class="panel-title">Mitarbeiter suchen</h2>
   </div>
   <div class="panel-body">
+    <div class="alert alert-info" role="alert" *ngIf="messageExists == true">
+      <b>{{ message }}</b>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessageExists == true">
+      <b>{{ message }}</b>
+    </div>
     <form #f="ngForm" novalidate>
-       <div class="input-group">
+      <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">Datum</span>
         <input [(ngModel)]="datum" placeholder="Suche nach Terminen..."
                name="datum"
@@ -21,18 +27,14 @@
                pattern="^(0?[1-9]|[12][0-9]|3[01]).(0?[1-9]|1[012]).\d{4}$"
                class="form-control">
 
-         <span class="input-group-btn">
+
+        <span class="input-group-btn">
         <button [disabled]="!f?.controls?.datum?.valid" class="btn btn-default" type="button" (click)="search()">
           <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
         </button>
       </span>
-</div>
-
-      <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.datum?.valid">
-
-        <div *ngIf="f?.controls?.datum?.pending">
-          <b>Validierung...</b>
-        </div>
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.name?.valid">
 
         <div *ngIf="f?.controls?.datum?.hasError('pattern')">
           <b>Warnung!&nbsp;</b>Bitte auf das richtige Format (<i>dd.mm.yyyy</i>) achten!
@@ -42,9 +44,8 @@
         <div *ngIf="f?.controls?.datum?.hasError('required')">
           <b>Warnung!&nbsp;</b>Dieses Feld ist nicht optional!
         </div>
-         </div>
+      </div>
     </form>
-
     <br>
     <div class="panel-footer">
       <div class="col-md-12">
@@ -57,17 +58,22 @@
             <th>Mitarbeiter</th>
             <th>Aktion</th>
           </tr>
-          <tr *ngFor="let termin of termine" [ngClass]="{ 'active': termin == selectedTermin }">
+          <tr *ngFor="let termin of termins" [ngClass]="{ 'active': termin == selectedTermin }">
             <td>{{termin.id}}</td>
             <td>{{termin.datum}}</td>
             <td>{{termin.kommentar}}</td>
-            <td>{{termin.mitarbeiter.name}} {{termin.mitarbeiter.vorname}}</td>
-            <td> {{termin.raum.bezeichnung}}</td>
-
-            <td><button type="button" class="btn btn-primary btn-sm" (click)="select(termin)">
-              <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span></button>
-              <button type="button" class="btn btn-danger btn-sm" (click)="delete(termin)">
-                <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+            <!--<td>{{termin.mitarbeiter.name}} {{termin.mitarbeiter.vorname}}</td>
+            <td>{{termin.raum.bezeichnung}}</td>-->
+            <td>
+              <button type="button" class="btn btn-success btn-sm" (click)="select(mitarbeiter)">
+                <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
+              </button>
+              <a class="btn btn-sm btn-primary" [routerLink]="['/mitarbeiter-edit', mitarbeiter.id]">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+              </a>
+              <button type="button" class="btn btn-danger btn-sm" (click)="delete(mitarbeiter)">
+                <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+              </button>
             </td>
           </tr>
         </table>
@@ -88,14 +94,8 @@
       <div class="col-lg-3 col-md-2">
         <input [(ngModel)]="kommentar" class="form-control" placeholder="Kommentar">
       </div>
-      <!--<div class="col-lg-3 col-md-2">
-        <input [(ngModel)]="mitarbeiter_id" class="form-control" placeholder="Mitarbeiter">
-      </div>
-      <div class="col-lg-3 col-md-2">
-        <input [(ngModel)]="raum_id" class="form-control" placeholder="Raum">
-      </div>-->
       <div class="col-lg-2 col-md-1">
-        <button class="btn btn-success" type="button" (click)="create()">
+        <button class="btn btn-success" type="button" (click)="create();menu = 1">
           <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
       </div>
 
@@ -108,7 +108,7 @@
     <h2 class="panel-title">Termin Info</h2>
   </div>
   <div class="panel-body">
-    <div *ngFor="let termin of termine" class="col-xs-12 col-lg-3 col-md-4 col-sm-6 ">
+    <div *ngFor="let termin of termins" class="col-xs-12 col-lg-3 col-md-4 col-sm-6 ">
       <termin-card
         [item]="termin"
         [(selectedItem)]="selectedTermin">

@@ -13,7 +13,7 @@ export class TerminService{
   classSuffix: string = 'termins';
   termins: Array<Termin> = [];
   termineSorted: Array<Termin> = [];
-  mitarbeiters: Array<any> = [];
+  mitarbeiters: Array<any> =[];
   mitarbeiterUrl: string;
   raums: Array<any> = [];
   raumUrl: string;
@@ -62,8 +62,8 @@ export class TerminService{
 
                    for (var t=0; t<this.termineSorted.length;t++){
                      if (this.termineSorted[t].id == termin.id){
-                       this.termineSorted[t].mitarbeiter = this.mitarbeiters;
-                       this.termineSorted[t].raum = this.raums;
+                       this.termineSorted[t]['mitarbeiter'] = this.mitarbeiters;
+                       this.termineSorted[t]['raum'] = this.raums;
 
                      }
                    }
@@ -77,6 +77,7 @@ export class TerminService{
           console.log('Raum');
           console.log(this.raums);
           console.log('Mitarbeiter');
+          console.log(this.mitarbeiters);
           console.log(this.mitarbeiters);
         });
   }
@@ -103,13 +104,6 @@ export class TerminService{
       .http
       .post(url, dummyTermin, {headers})
       .map(resp => resp.json())
-      .subscribe(
-        (termin: Termin) => {
-          console.debug('sucess',termin);
-        },
-        (err) => {
-          console.error('Create Termin - ERROR',err);
-        })
 
   }
 
@@ -146,7 +140,7 @@ export class TerminService{
 
     }
 
-    public delete(id: string,) {
+    public delete(id: string,datum: string, kommentar: string) {
 
       let url = this.baseUrl+this.classSuffix+'/'+id;
 
@@ -154,16 +148,10 @@ export class TerminService{
       headers.set('Accept', 'application/json');
       headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
 
-      console.debug('ID: '+id);
-      console.debug('URL: '+url);
-
       return this
         .http
         .delete(url, {headers})
         .map(resp => resp.json())
-        .subscribe((res) => {
-        });
-
 
     }
 
