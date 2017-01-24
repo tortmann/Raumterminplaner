@@ -63,14 +63,13 @@
       <div class="col-md-12">
       <table class="table"><br>
         <tr>
-          <th>ID</th>
           <th>Name</th>
           <th>Vorname</th>
           <th>Aktion</th>
+          <th>Termine</th>
         </tr>
         <tr *ngFor="let mitarbeiter of mitarbeiters" [ngClass]="{ 'active': mitarbeiter == selectedMitarbeiter }">
 
-          <td>{{mitarbeiter.id}}</td>
           <td>{{mitarbeiter.name}}</td>
           <td>{{mitarbeiter.vorname}}</td>
           <td>
@@ -84,20 +83,9 @@
               <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
             </button>
           </td>
+          <td *ngFor="let termine of termins"><b>{{termine.kommentar}}</b> am <i>{{termine.datum}}</i></td>
         </tr>
-        <br>
-        <h4>Termine</h4>
-        <tr>
-          <th>ID</th>
-          <th>Datum</th>
-          <th>Kommentar</th>
-        </tr>
-        <tr *ngFor="let termine of termins">
-          <td>{{termine.id}}</td>
-          <td>{{termine.datum}}</td>
-          <td>{{termine.kommentar}}</td>
-        </tr>
-      </table>
+        </table>
       </div>
     </div>
   </div>
