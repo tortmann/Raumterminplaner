@@ -1,0 +1,106 @@
+<br>
+<br>
+<ul class="nav nav-tabs">
+  <li [ngClass]="{ 'active':  menu == 1}" role="presentation"><a (click)="menu = 1"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
+  <li [ngClass]="{ 'active':  menu == 2}" role="presentation"><a (click)="menu = 2"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a></li>
+  <li [ngClass]="{ 'active':  menu == 3}" role="presentation"><a (click)="menu = 3"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></li>
+</ul>
+
+
+<div class="panel panel-primary" *ngIf="menu == 1">
+  <div class="panel-heading">
+    <h2 class="panel-title">Raum suchen</h2>
+  </div>
+  <div class="panel-body">
+    <div class="alert alert-info" role="alert" *ngIf="messageExists == true">
+      <b>{{ message }}</b>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessageExists == true">
+      <b>{{ message }}</b>
+    </div>
+    <form #f="ngForm" novalidate>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Name</span>
+        <input [(ngModel)]="bezeichnung" placeholder="Suche nach Räumen..."
+               name="raum"
+               required
+             >
+
+        <span class="input-group-btn">
+        <button [disabled]="!f?.controls?.raum?.valid" class="btn btn-default" type="button" (click)="search()">
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        </button>
+      </span>
+      </div>
+
+    </form>
+    <br>
+    <div class="panel-footer">
+      <div class="col-md-12">
+        <table class="table"><br>
+          <tr>
+            <th>Bezeichnung</th>
+            <th>Aktion</th>
+            <th>Termine</th>
+
+          </tr>
+          <tr *ngFor="let raum of raums" [ngClass]="{ 'active': raum == selectedRaum }">
+
+            <td>{{raum.bezeichnung}}</td>
+            <td>
+              <button type="button" class="btn btn-success btn-sm" (click)="select(raum)">
+                <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
+              </button>
+              <a class="btn btn-sm btn-primary" [routerLink]="['/raum-edit', raum.id]">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+              </a>
+              <button type="button" class="btn btn-danger btn-sm" (click)="delete(raum)">
+                <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+              </button>
+            </td>
+            <td *ngFor="let termin of raum.termin">
+              <b>{{termin.kommentar}}</b> am <i>{{termin.datum}}</i>
+            </td>
+
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-primary" *ngIf="menu == 2">
+  <div class="panel-heading">
+    <h2 class="panel-title">Raum anlegen</h2>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-12">
+      <div class="col-lg-3 col-md-2">
+        <input [(ngModel)]="bezeichnug" class="form-control" placeholder="Bezeichnung">
+      </div>
+
+      <div class="col-lg-2 col-md-1">
+        <button class="btn btn-success" type="button" (click)="create();menu = 1">
+          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-primary" *ngIf="menu == 3">
+  <div class="panel-heading">
+    <h2 class="panel-title">Raum Info</h2>
+  </div>
+  <div class="panel-body">
+    <div *ngFor="let raum of raums" class="col-xs-12 col-lg-3 col-md-4 col-sm-6 ">
+      <raum-card
+        [item]="raum"
+        [(selectedItem)]="selectedRaum">
+      </raum-card>
+    </div>
+    <pre>
+      {{ selectedRaum | json }}
+    </pre>
+  </div>
+</div>

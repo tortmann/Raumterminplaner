@@ -1,0 +1,15 @@
+<div style="padding:20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); margin: 20px;"
+     [ngStyle]="{'background-color': (selectedItem == item) ?  '#006dcc' : 'ivory',
+     'color': (selectedItem == item) ?  'white' : 'black'}">
+
+  <h3>Raum #{{item.id}}</h3>
+  <hr>
+  <p><b>Bezeichnung:</b> {{item.bezeichnung}}</p>
+  <hr>
+
+
+  <p>
+    <input type="button" value="Auswählen" class="btn btn-xs btn-primary" (click)="select()" />
+    <a class="btn btn-xs btn-danger" [routerLink]="['/raum-edit', item.id]">Editieren</a>
+  </p>
+</div>
