@@ -15,7 +15,6 @@ export class MitarbeiterService{
   termins: Array<Termin> = [];
   raums: Array<any>;
   mitarbeitersSorted: Array<Mitarbeiter> = [];
-  terminsSorted: Array<Termin> = [];
   urlTermine: string;
   urlRaum: string;
 
@@ -54,7 +53,6 @@ export class MitarbeiterService{
       this.mitarbeiters = [];
       this.mitarbeitersSorted = [];
       this.termins = [];
-      this.terminsSorted = [];
       this.raums = [];
 
       let search = new URLSearchParams();
@@ -90,29 +88,28 @@ export class MitarbeiterService{
                     // iterate over all termins found for the current mitarbeiter
                     for (let j of this.termins){
                       // add the termins to a sorted array
-                      this.terminsSorted.push(j);
+                      let terminsSorted = [];
+                      terminsSorted.push(j);
                       // http-GET returns the raum of the respective termin (current termin = j)
                       // proceed to build url similar to getting termins
                       this.urlRaum = 'http://localhost:8080/api/termins/'+j.id+'/raum';
                       this.http.get(this.urlRaum, {headers}).map(resp => resp.json())
                         .subscribe((raumObj) => {
-                          // this time the data types match receive Object from response this.raums expects an array of raum objects
-                          this.raums = raumObj;
-                          // iterate over the sorted mitarbeiters array
-                          for (var k=0; k < this.mitarbeitersSorted.length; k++){
-                            // check if the id of the mitarbeiter in the sorted mitarbeiter array matches the id of the current mitarbeiter (i)
-                            if (this.mitarbeitersSorted[k].id == i.id){
-                              // if the ids match then this termin belongs to exactly this mitarbeiter and can therefore be added to the sorted mitarbeiter array
-                              this.mitarbeitersSorted[k]['termin'] = this.termins;
-                              // iterate once again - this time iterate over all the termins of the current user
-                              for (var n=0; n < this.mitarbeitersSorted[k]['termin'].length; n++){
-                                if (this.mitarbeitersSorted[k]['termin'][n]['id'] == i.id){
+                            // this time the data types match receive Object from response this.raums expects an array of raum objects
+                            this.raums = raumObj;
+                            // iterate over the sorted mitarbeiters array
+                            for (let k = 0; k < this.mitarbeitersSorted.length; k++) {
+                              // check if the id of the mitarbeiter in the sorted mitarbeiter array matches the id of the current mitarbeiter (i)
+                              if (this.mitarbeitersSorted[k].id == i.id) {
+                                // if the ids match then this termin belongs to exactly this mitarbeiter and can therefore be added to the sorted mitarbeiter array
+                                this.mitarbeitersSorted[k]['termin'] = terminsSorted;
+                                // iterate once again - this time iterate over all the termins of the current user
+                                for (let n = 0; n < this.mitarbeitersSorted[k]['termin'].length; n++) {
                                   // append the raums object to the respective users termins
                                   this.mitarbeitersSorted[k]['termin'][n].raum = this.raums;
                                 }
                               }
                             }
-                          }
                         // Ende des callbacks von http-GET raum
                         })
                     }
@@ -123,7 +120,6 @@ export class MitarbeiterService{
             // save the sorted data into the main array for mitarbeiter and termin
             // these are used to display the data in the frontend
             this.mitarbeiters = this.mitarbeitersSorted;
-            this.termins = this.terminsSorted;
         // Ende des callbacks von http-GET mitarbeiters
         });
   }
