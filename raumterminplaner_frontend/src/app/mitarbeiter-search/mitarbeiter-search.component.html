@@ -35,6 +35,9 @@
         <button [disabled]="!f?.controls?.name?.valid" class="btn btn-default" type="button" (click)="search()">
           <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
         </button>
+        <button class="btn btn-primary" type="button">
+          <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+        </button>
       </span>
     </div>
     <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.name?.valid">

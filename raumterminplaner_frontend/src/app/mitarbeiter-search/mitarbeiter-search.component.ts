@@ -39,6 +39,8 @@ export class MitarbeiterSearchComponent {
     this.mitarbeiterService.find(this.name);
   }
 
+
+
   delete(mitarbeiter: Mitarbeiter): void {
 
     this.mitarbeiterService.delete(mitarbeiter.id.toString(),mitarbeiter.name, mitarbeiter.vorname)
