@@ -77,6 +77,10 @@ export class MitarbeiterService{
               if (i.name == name) {
                 // push correct objects<Mitarbeiter> (i) into sorted array
                 this.mitarbeitersSorted.push(i);
+              }
+              if (name == 'all'){
+                this.mitarbeitersSorted.push(i);
+              }
                 // modifiy url for next http-GET - http://localhost:8080/api/mitarbeiters/id/termine
                 // the part /id/ is variable and matches the id of the mitarbeiter object (i.id)
                 this.urlTermine = 'http://localhost:8080/api/mitarbeiters/'+i.id+'/termine';
@@ -115,7 +119,7 @@ export class MitarbeiterService{
                     }
                   // Ende des callbacks von http-GET termins
                   })
-              }
+              //}
             }
             // save the sorted data into the main array for mitarbeiter and termin
             // these are used to display the data in the frontend

@@ -35,7 +35,7 @@
         <button [disabled]="!f?.controls?.name?.valid" class="btn btn-default" type="button" (click)="search()">
           <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
         </button>
-        <button class="btn btn-primary" type="button">
+        <button class="btn btn-primary" type="button" (click)="searchAll()">
           <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
         </button>
       </span>
