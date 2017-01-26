@@ -81,9 +81,13 @@ export class MitarbeiterService{
               if (name == 'all'){
                 this.mitarbeitersSorted.push(i);
               }
+            }
+            // only make the http-request for the necessary mitarbeiters --> all mitarbeiters that match the
+            // search criteria (they are all in this.mitarbeitersSorted --> optimize the number of http-requests
+            for (let x of this.mitarbeitersSorted){
                 // modifiy url for next http-GET - http://localhost:8080/api/mitarbeiters/id/termine
                 // the part /id/ is variable and matches the id of the mitarbeiter object (i.id)
-                this.urlTermine = 'http://localhost:8080/api/mitarbeiters/'+i.id+'/termine';
+                this.urlTermine = 'http://localhost:8080/api/mitarbeiters/'+x.id+'/termine';
                 // http-GET returns all termine of the respective mitarbeiter (current mitarbeiter = i)
                 this.http.get(this.urlTermine, {headers}).map(resp => resp.json())
                   .subscribe((termineObj) => {
@@ -104,7 +108,7 @@ export class MitarbeiterService{
                             // iterate over the sorted mitarbeiters array
                             for (let k = 0; k < this.mitarbeitersSorted.length; k++) {
                               // check if the id of the mitarbeiter in the sorted mitarbeiter array matches the id of the current mitarbeiter (i)
-                              if (this.mitarbeitersSorted[k].id == i.id) {
+                              if (this.mitarbeitersSorted[k].id == x.id) {
                                 // if the ids match then this termin belongs to exactly this mitarbeiter and can therefore be added to the sorted mitarbeiter array
                                 this.mitarbeitersSorted[k]['termin'] = terminsSorted;
                                 // iterate once again - this time iterate over all the termins of the current user
@@ -119,7 +123,6 @@ export class MitarbeiterService{
                     }
                   // Ende des callbacks von http-GET termins
                   })
-              //}
             }
             // save the sorted data into the main array for mitarbeiter and termin
             // these are used to display the data in the frontend

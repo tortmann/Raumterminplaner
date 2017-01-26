@@ -47,6 +47,7 @@ export class TerminService{
           for (let termin of this.termins) {
             if (termin.datum == datum) {
               this.termineSorted.push(termin);
+
             }
           }
             for (let terminSorted of this.termineSorted){
@@ -62,6 +63,7 @@ export class TerminService{
                    let raums = [];
                    raums.push(raumObj);
 
+
                    for (var t=0; t<this.termineSorted.length;t++){
                      if (this.termineSorted[t].id == terminSorted.id){
                        this.termineSorted[t]['mitarbeiter'] = mitarbeiters;
@@ -76,6 +78,7 @@ export class TerminService{
                    }
                  })
                 })
+
           }
           this.termins = this.termineSorted;
         });

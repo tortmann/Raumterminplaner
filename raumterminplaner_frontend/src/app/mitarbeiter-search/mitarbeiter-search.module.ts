@@ -6,7 +6,6 @@ import {MitarbeiterCardComponent} from "./mitarbeiter-card.component";
 import {SharedModule} from "../shared/shared.module";
 import {MitarbeiterSearchRouterModule} from "./mitarbeiter-search.routes";
 import {MitarbeiterEditComponent} from "./mitarbeiter-edit/mitarbeiter-edit.component";
-import {FlightSearchComponent} from "./flight-search/flight-search.component";
 import {MitarbeiterService} from "./services/mitarbeiter.service";
 @NgModule({
   imports: [
@@ -18,8 +17,7 @@ import {MitarbeiterService} from "./services/mitarbeiter.service";
   declarations: [
     MitarbeiterSearchComponent,
     MitarbeiterCardComponent,
-    MitarbeiterEditComponent,
-    FlightSearchComponent
+    MitarbeiterEditComponent
   ],
   providers: [
     MitarbeiterService

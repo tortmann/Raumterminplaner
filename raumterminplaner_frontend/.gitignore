@@ -2,3 +2,4 @@
 /dist/
 /npm-debug.log
 /.idea/typescript-compiler.xml
+../.idea/workspace.xml

@@ -23,7 +23,6 @@
       <span class="input-group-addon" id="basic-addon1">Name</span>
       <input [(ngModel)]="name" placeholder="Suche nach Mitarbeitern..."
              name="name"
-             mitarbeiter="Muster,Sorglos,Doe,Test,Blauensteiner,Ortmann,Skerbinz"
              required
              minlength="3"
              maxlength="20"
@@ -62,7 +61,7 @@
     </div>
     </form>
     <br>
-    <div class="panel-footer">
+    <div *ngIf="mitarbeiters.length > 0" class="panel-footer">
       <div class="col-md-12">
       <table class="table"><br>
         <tr>
@@ -102,17 +101,16 @@
   </div>
   <div class="panel-body">
     <div class="col-md-12">
-      <div class="col-lg-3 col-md-2">
+      <div class="col-lg-3 col-md-3">
         <input [(ngModel)]="name" class="form-control" placeholder="Name">
       </div>
-      <div class="col-lg-3 col-md-2">
+      <div class="col-lg-3 col-md-3">
         <input [(ngModel)]="vorname" class="form-control" placeholder="Vorname">
       </div>
       <div class="col-lg-2 col-md-1">
         <button class="btn btn-success" type="button" (click)="create();menu = 1">
           <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
       </div>
-
     </div>
   </div>
 </div>
