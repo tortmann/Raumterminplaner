@@ -11,8 +11,6 @@ import {Termin} from "../entities/termin";
 
 export class MitarbeiterSearchComponent {
 
-  public deleteResponse: number = 0;
-  public createResponse: number = 0;
   public menu: number = 1;
   public messageExists: boolean = false;
   public errorMessageExists: boolean = false;
@@ -38,6 +36,12 @@ export class MitarbeiterSearchComponent {
   search(): void {
     this.mitarbeiterService.find(this.name);
   }
+
+  searchAll(): void {
+    this.mitarbeiterService.find('all');
+  }
+
+
 
   delete(mitarbeiter: Mitarbeiter): void {
 
