@@ -14,8 +14,6 @@ export class TerminSearchComponent {
   public id: number;
   public datum: string;
   public kommentar: string;
-  //public mitarbeiter_id: number;
- // public raum_id: number;
   public selectedTermin: Termin;
   public message: string;
   public messageExists: boolean = false;
