@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Mitarbeiter} from "../entities/mitarbeiter";
 import {MitarbeiterService} from "./services/mitarbeiter.service";
 import {Termin} from "../entities/termin";
@@ -22,7 +22,6 @@ export class MitarbeiterSearchComponent {
   public errorMessage: string;
 
   constructor (private mitarbeiterService: MitarbeiterService){
-
   }
 
   public get mitarbeiters(): Array<Mitarbeiter> {
@@ -40,8 +39,6 @@ export class MitarbeiterSearchComponent {
   searchAll(): void {
     this.mitarbeiterService.find('all');
   }
-
-
 
   delete(mitarbeiter: Mitarbeiter): void {
 

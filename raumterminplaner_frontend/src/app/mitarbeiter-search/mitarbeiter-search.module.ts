@@ -18,8 +18,7 @@ import {MitarbeiterService} from "./services/mitarbeiter.service";
   declarations: [
     MitarbeiterSearchComponent,
     MitarbeiterCardComponent,
-    MitarbeiterEditComponent,
-    FlightSearchComponent
+    MitarbeiterEditComponent
   ],
   providers: [
     MitarbeiterService

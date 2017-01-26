@@ -1,10 +1,9 @@
 <nav class="navbar navbar-default">
   <ul class="nav navbar-nav">
     <li><a routerLink="/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
-    <li><a routerLink="/mitarbeiter-search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;Mitarbeiter</a></li>
-    <li><a routerLink="/termin-search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;Termine</a></li>
-    <li><a routerLink="/raum-search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;Räume</a></li>
-    <li><a routerLink="/flight-search">Flight Search Placeholder</a></li>
+    <li *ngIf="givenName"><a routerLink="/mitarbeiter-search"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Mitarbeiter</a></li>
+    <li *ngIf="givenName"><a routerLink="/termin-search"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>&nbsp;Termine</a></li>
+    <li *ngIf="givenName"><a routerLink="/raum-search"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span>&nbsp;Räume</a></li>
   </ul>
 </nav>
 

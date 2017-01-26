@@ -50,14 +50,13 @@ export class TerminService{
           for (let termin of this.termins) {
             if(termin.datum == datum) {
               this.termineSorted.push(termin);
-            /*  this.mitarbeiterUrl = this.baseUrl+this.classSuffix+"/"+termin.id+"/mitarbeiter";
+              this.mitarbeiterUrl = this.baseUrl+this.classSuffix+"/"+termin.id+"/mitarbeiter";
               this.http.get(this.mitarbeiterUrl, {headers}).map(resp=>resp.json())
                 .subscribe((mitarbeiterObj) => {
                   this.mitarbeiters = mitarbeiterObj;
-
-               this.raumUrl = this.baseUrl+this.classSuffix+"/"+termin.id+"/raum";
-               this.http.get(this.raumUrl, {headers}).map(resp => resp.json())
-                 .subscribe((raumObj)=>{
+                this.raumUrl = this.baseUrl+this.classSuffix+"/"+termin.id+"/raum";
+                this.http.get(this.raumUrl, {headers}).map(resp => resp.json())
+               .subscribe((raumObj)=>{
                    this.raums = raumObj;
 
                    for (var t=0; t<this.termineSorted.length;t++){
@@ -68,7 +67,7 @@ export class TerminService{
                      }
                    }
                  })
-                })*/
+                })
             }
           }
           this.termins = this.termineSorted;
