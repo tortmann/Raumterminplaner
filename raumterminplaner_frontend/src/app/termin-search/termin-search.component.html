@@ -9,7 +9,7 @@
 
 <div class="panel panel-primary" *ngIf="menu == 1">
   <div class="panel-heading">
-    <h2 class="panel-title">Mitarbeiter suchen</h2>
+    <h2 class="panel-title">Termin suchen</h2>
   </div>
   <div class="panel-body">
     <div class="alert alert-info" role="alert" *ngIf="messageExists == true">
@@ -34,7 +34,7 @@
         </button>
       </span>
       </div>
-      <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.name?.valid">
+      <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.datum?.valid">
 
         <div *ngIf="f?.controls?.datum?.hasError('pattern')">
           <b>Warnung!&nbsp;</b>Bitte auf das richtige Format (<i>dd.mm.yyyy</i>) achten!
@@ -54,24 +54,25 @@
             <th>ID</th>
             <th>Datum</th>
             <th>Kommentar</th>
-            <th>Raum</th>
             <th>Mitarbeiter</th>
+            <th>Raum</th>
             <th>Aktion</th>
           </tr>
           <tr *ngFor="let termin of termins" [ngClass]="{ 'active': termin == selectedTermin }">
             <td>{{termin.id}}</td>
             <td>{{termin.datum}}</td>
             <td>{{termin.kommentar}}</td>
-            <!--<td>{{termin.mitarbeiter.name}} {{termin.mitarbeiter.vorname}}</td>
-            <td>{{termin.raum.bezeichnung}}</td>-->
+            <td *ngFor="let mitarbeiter of termin.mitarbeiter">{{mitarbeiter.vorname}} {{mitarbeiter.name}}</td>
+            <td *ngFor="let raum of termin.raum">
+              {{raum.bezeichnung}}</td>
             <td>
-              <button type="button" class="btn btn-success btn-sm" (click)="select(mitarbeiter)">
+              <button type="button" class="btn btn-success btn-sm" (click)="select(termin)">
                 <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
               </button>
-              <a class="btn btn-sm btn-primary" [routerLink]="['/mitarbeiter-edit', mitarbeiter.id]">
+              <a class="btn btn-sm btn-primary" [routerLink]="['/termin-edit', termin.id]">
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
               </a>
-              <button type="button" class="btn btn-danger btn-sm" (click)="delete(mitarbeiter)">
+              <button type="button" class="btn btn-danger btn-sm" (click)="delete(termin)">
                 <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
               </button>
             </td>

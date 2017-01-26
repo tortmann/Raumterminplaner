@@ -75,21 +75,24 @@ export class RaumService{
           for (let raum of this.raums) {
             if (raum.bezeichnung == bezeichnung) {
               this.raumsSorted.push(raum);
-              this.termineUrl = this.baseUrl+this.classSuffix+'/'+raum.id+"/termine";
+            }
+          }
+            for (let raumSorted of this.raumsSorted){
+              this.termineUrl = this.baseUrl+this.classSuffix+'/'+raumSorted.id+"/termine";
               this.http.get(this.termineUrl, {headers}).map(resp => resp.json())
                 .subscribe((termineObj) => {
                   this.termins = termineObj._embedded.termins;
                   for (let termin of this.termins){
                     this.terminsSorted.push(termin);
                         for (var r=0; r < this.raumsSorted.length; r++){
-                          if (this.raumsSorted[r].id == raum.id){
+                          if (this.raumsSorted[r].id == raumSorted.id){
                             this.raumsSorted[r]['termin'] = this.termins;
                             }
                         }
                   }
                 })
             }
-          }
+
           this.raums = this.raumsSorted;
           this.termins = this.terminsSorted;
           console.log(this.terminsSorted);

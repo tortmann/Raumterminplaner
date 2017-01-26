@@ -5,5 +5,5 @@ export interface Termin{
   datum: string;
   kommentar: string;
   raum: Object;
-  mitarbeiter: Object;
+  mitarbeiter: Array<any>;
 }
