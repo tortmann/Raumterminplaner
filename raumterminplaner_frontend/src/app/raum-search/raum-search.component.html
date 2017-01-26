@@ -9,7 +9,7 @@
 
 <div class="panel panel-primary" *ngIf="menu == 1">
   <div class="panel-heading">
-    <h2 class="panel-title">Mitarbeiter suchen</h2>
+    <h2 class="panel-title">Raum suchen</h2>
   </div>
   <div class="panel-body">
     <div class="alert alert-info" role="alert" *ngIf="messageExists == true">
@@ -20,28 +20,19 @@
     </div>
     <form #f="ngForm" novalidate>
       <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">Datum</span>
-        <input [(ngModel)]="datum" placeholder="Suche nach Terminen..."
-               name="datum"
+        <span class="input-group-addon" id="basic-addon1">Bezeichnung</span>
+        <input [(ngModel)]="bezeichnung" placeholder="Suche nach Räumen..."
+               name="raum"
                required
-               pattern="^(0?[1-9]|[12][0-9]|3[01]).(0?[1-9]|1[012]).\d{4}$"
                class="form-control">
-
-
         <span class="input-group-btn">
-        <button [disabled]="!f?.controls?.datum?.valid" class="btn btn-default" type="button" (click)="search()">
+        <button [disabled]="!f?.controls?.raum?.valid" class="btn btn-default" type="button" (click)="search()">
           <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
         </button>
       </span>
       </div>
-      <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.name?.valid">
-
-        <div *ngIf="f?.controls?.datum?.hasError('pattern')">
-          <b>Warnung!&nbsp;</b>Bitte auf das richtige Format (<i>dd.mm.yyyy</i>) achten!
-        </div>
-
-
-        <div *ngIf="f?.controls?.datum?.hasError('required')">
+      <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.raum?.valid">
+        <div *ngIf="f?.controls?.raum?.hasError('required')">
           <b>Warnung!&nbsp;</b>Dieses Feld ist nicht optional!
         </div>
       </div>
@@ -51,30 +42,29 @@
       <div class="col-md-12">
         <table class="table"><br>
           <tr>
-            <th>ID</th>
-            <th>Datum</th>
-            <th>Kommentar</th>
-            <th>Raum</th>
-            <th>Mitarbeiter</th>
+            <th>Bezeichnung</th>
             <th>Aktion</th>
+            <th>Termine</th>
+
           </tr>
-          <tr *ngFor="let termin of termins" [ngClass]="{ 'active': termin == selectedTermin }">
-            <td>{{termin.id}}</td>
-            <td>{{termin.datum}}</td>
-            <td>{{termin.kommentar}}</td>
-            <!--<td>{{termin.mitarbeiter.name}} {{termin.mitarbeiter.vorname}}</td>
-            <td>{{termin.raum.bezeichnung}}</td>-->
+          <tr *ngFor="let raum of raums" [ngClass]="{ 'active': raum == selectedRaum }">
+
+            <td>{{raum.bezeichnung}}</td>
             <td>
-              <button type="button" class="btn btn-success btn-sm" (click)="select(mitarbeiter)">
+              <button type="button" class="btn btn-success btn-sm" (click)="select(raum)">
                 <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
               </button>
-              <a class="btn btn-sm btn-primary" [routerLink]="['/mitarbeiter-edit', mitarbeiter.id]">
+              <a class="btn btn-sm btn-primary" [routerLink]="['/raum-edit', raum.id]">
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
               </a>
-              <button type="button" class="btn btn-danger btn-sm" (click)="delete(mitarbeiter)">
+              <button type="button" class="btn btn-danger btn-sm" (click)="delete(raum)">
                 <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
               </button>
             </td>
+            <td *ngFor="let termin of raum.termin">
+              <b>{{termin.kommentar}}</b> am <i>{{termin.datum}}</i>
+            </td>
+
           </tr>
         </table>
       </div>
@@ -84,16 +74,14 @@
 
 <div class="panel panel-primary" *ngIf="menu == 2">
   <div class="panel-heading">
-    <h2 class="panel-title">Termin anlegen</h2>
+    <h2 class="panel-title">Raum anlegen</h2>
   </div>
   <div class="panel-body">
     <div class="col-md-12">
       <div class="col-lg-3 col-md-2">
-        <input [(ngModel)]="datum" class="form-control" placeholder="Datum">
+        <input [(ngModel)]="bezeichnung" class="form-control" placeholder="Bezeichnung">
       </div>
-      <div class="col-lg-3 col-md-2">
-        <input [(ngModel)]="kommentar" class="form-control" placeholder="Kommentar">
-      </div>
+
       <div class="col-lg-2 col-md-1">
         <button class="btn btn-success" type="button" (click)="create();menu = 1">
           <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
@@ -105,17 +93,17 @@
 
 <div class="panel panel-primary" *ngIf="menu == 3">
   <div class="panel-heading">
-    <h2 class="panel-title">Termin Info</h2>
+    <h2 class="panel-title">Raum Info</h2>
   </div>
   <div class="panel-body">
-    <div *ngFor="let termin of termins" class="col-xs-12 col-lg-3 col-md-4 col-sm-6 ">
-      <termin-card
-        [item]="termin"
-        [(selectedItem)]="selectedTermin">
-      </termin-card>
+    <div *ngFor="let raum of raums" class="col-xs-12 col-lg-3 col-md-4 col-sm-6 ">
+      <raum-card
+        [item]="raum"
+        [(selectedItem)]="selectedRaum">
+      </raum-card>
     </div>
     <pre>
-      {{ selectedTermin | json }}
+      {{ selectedRaum | json }}
     </pre>
   </div>
 </div>

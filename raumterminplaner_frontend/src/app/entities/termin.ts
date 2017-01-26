@@ -5,6 +5,5 @@ export interface Termin{
   datum: string;
   kommentar: string;
   raum: Object;
-  mitarbeiter_id: number;
-
+  mitarbeiter: Object;
 }
