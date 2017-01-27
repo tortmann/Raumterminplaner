@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Termin} from "../entities/termin";
 import {TerminService} from "./services/termin.service";
 
@@ -8,7 +8,7 @@ import {TerminService} from "./services/termin.service";
   styleUrls: ['termin-search.component.css']
 })
 
-export class TerminSearchComponent {
+export class TerminSearchComponent implements OnInit{
 
   public menu: number = 1;
   public id: number;
@@ -27,13 +27,24 @@ export class TerminSearchComponent {
   }
 
 
+  ngOnInit(){
+    this.terminService.findMitarbeiter('all');
+    //this.terminService.findRaum('all');
+  }
+
   public get termins(): Array<Termin> {
     return this.terminService.termins;
   }
 
+
   search(): void {
     this.terminService.find(this.datum);
   }
+
+  searchAll(): void {
+    this.terminService.find('all');
+  }
+
 
   delete(termin: Termin): void {
 

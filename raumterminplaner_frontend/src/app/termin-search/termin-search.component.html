@@ -32,6 +32,9 @@
         <button [disabled]="!f?.controls?.datum?.valid" class="btn btn-default" type="button" (click)="search()">
           <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
         </button>
+           <button class="btn btn-primary" type="button" (click)="searchAll()">
+          <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+        </button>
       </span>
       </div>
       <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.datum?.valid">
@@ -39,8 +42,6 @@
         <div *ngIf="f?.controls?.datum?.hasError('pattern')">
           <b>Warnung!&nbsp;</b>Bitte auf das richtige Format (<i>dd.mm.yyyy</i>) achten!
         </div>
-
-
         <div *ngIf="f?.controls?.datum?.hasError('required')">
           <b>Warnung!&nbsp;</b>Dieses Feld ist nicht optional!
         </div>
@@ -62,7 +63,7 @@
             <td>{{termin.id}}</td>
             <td>{{termin.datum}}</td>
             <td>{{termin.kommentar}}</td>
-            <td *ngFor="let mitarbeiter of termin.mitarbeiter">{{mitarbeiter.vorname}} {{mitarbeiter.name}}</td>
+            <td *ngFor="let mitarbeiter of termin.mitarbeiter">{{mitarbeiter.id}}</td>
             <td *ngFor="let raum of termin.raum">
               {{raum.bezeichnung}}</td>
             <td>

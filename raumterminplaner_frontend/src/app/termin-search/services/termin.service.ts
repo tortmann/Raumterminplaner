@@ -11,10 +11,14 @@ import {Termin} from "../../entities/termin";
 export class TerminService{
 
   classSuffix: string = 'termins';
+  mitarbeiterClassSuffix: string = 'mitarbeiters';
+
   termins: Array<any> = [];
   termineSorted: Array<any> = [];
   mitarbeiterUrl: string;
   raumUrl: string;
+  mitarbeitersSearch: Array<any>;
+  mitarbeitersSorted: Array<any>;
 
   constructor(
     @Inject(BASE_URL) private baseUrl: string,
@@ -48,6 +52,9 @@ export class TerminService{
             if (termin.datum == datum) {
               this.termineSorted.push(termin);
 
+            }
+            if (datum == 'all'){
+              this.termineSorted.push(termin);
             }
           }
             for (let terminSorted of this.termineSorted){
@@ -107,10 +114,69 @@ export class TerminService{
 
   }
 
+  public save(termin: Termin, id: number): Observable<Termin> {
+
+    let mitarbeiterId = termin.mitarbeiter;
+    let datum = termin.datum
+    let kommentar = termin.kommentar;
+    let url = this.baseUrl+this.classSuffix+'/'+id;
+    let mitarbeiter:string = this.baseUrl+this.mitarbeiterClassSuffix+'/'+mitarbeiterId;
+    console.log(mitarbeiter);
+
+
+    //let raum = this.baseUrl+this.raumClassSuffix+'/'+raum.id;
+
+
+    let headers = new Headers();
+    headers.set('Accept', 'application/json');
+    headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
+
+    return this.http.put(url, {mitarbeiter, datum, kommentar}, { headers }).map(resp => resp.json());
 
 
 
-    public findById(id: number): Observable<Termin> {
+
+  }
+
+  public findMitarbeiter(name: string) {
+
+    let url = this.baseUrl+this.mitarbeiterClassSuffix;
+
+    this.mitarbeitersSearch = [];
+    this.mitarbeitersSorted = [];
+
+    let search = new URLSearchParams();
+    search.set('name', name);
+
+    let headers = new Headers();
+    headers.set('Accept', 'application/json');
+    headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
+
+    return this
+      .http
+      .get(url, { headers, search })
+      .map(resp => resp.json())
+      .subscribe(
+        (mitarbeiterObj) => {
+          this.mitarbeitersSearch = mitarbeiterObj._embedded.mitarbeiters;
+          for (let i of this.mitarbeitersSearch) {
+            if (i.name == name) {
+              this.mitarbeitersSorted.push(i);
+            }
+            if (name == 'all'){
+              this.mitarbeitersSorted.push(i);
+              console.log(this.mitarbeitersSorted);
+            }
+          }
+          this.mitarbeitersSearch = this.mitarbeitersSorted;
+          console.log(this.mitarbeitersSearch);
+
+        });
+  }
+
+
+
+  public findById(id: number): Observable<Termin> {
 
       let url = this.baseUrl+this.classSuffix+'/'+id;
 
@@ -125,20 +191,6 @@ export class TerminService{
 
     }
 
-    public save(termin: Termin, id:number): Observable<Termin> {
-
-      let url = this.baseUrl+this.classSuffix+'/'+id;
-
-      let headers = new Headers();
-      headers.set('Accept', 'application/json');
-      headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
-
-      return this
-        .http
-        .put(url, termin, { headers })
-        .map(resp => resp.json());
-
-    }
 
     public delete(id: string,datum: string, kommentar: string) {
 
