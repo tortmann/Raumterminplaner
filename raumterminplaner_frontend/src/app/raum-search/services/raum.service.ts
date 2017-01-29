@@ -76,6 +76,9 @@ export class RaumService{
             if (raum.bezeichnung == bezeichnung) {
               this.raumsSorted.push(raum);
             }
+            if (bezeichnung == 'all'){
+              this.raumsSorted.push(raum);
+            }
           }
             for (let raumSorted of this.raumsSorted){
               this.termineUrl = this.baseUrl+this.classSuffix+'/'+raumSorted.id+"/termine";
@@ -95,8 +98,6 @@ export class RaumService{
 
           this.raums = this.raumsSorted;
           this.termins = this.terminsSorted;
-          console.log(this.terminsSorted);
-          console.log(this.raumsSorted);
         }
       );
   }

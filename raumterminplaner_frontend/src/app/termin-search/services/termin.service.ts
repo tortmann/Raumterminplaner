@@ -6,12 +6,14 @@ import {Observable} from "rxjs";
 import {OAuthService} from "angular-oauth2-oidc";
 import {find} from "rxjs/operator/find";
 import {Termin} from "../../entities/termin";
+import {Raum} from "../../entities/raum";
 
 @Injectable()
 export class TerminService{
 
   classSuffix: string = 'termins';
   mitarbeiterClassSuffix: string = 'mitarbeiters';
+  raumClassSuffix: string = 'raums';
 
   termins: Array<any> = [];
   termineSorted: Array<any> = [];
@@ -19,6 +21,8 @@ export class TerminService{
   raumUrl: string;
   mitarbeitersSearch: Array<any>;
   mitarbeitersSorted: Array<any>;
+  raumsSearch: Array<any> = [];
+  raumsSorted: Array<any> = [];
 
   constructor(
     @Inject(BASE_URL) private baseUrl: string,
@@ -75,11 +79,6 @@ export class TerminService{
                      if (this.termineSorted[t].id == terminSorted.id){
                        this.termineSorted[t]['mitarbeiter'] = mitarbeiters;
                        this.termineSorted[t]['raum'] = raums;
-                       console.log(this.termineSorted);
-                       console.log('Raum');
-                       console.log(raums);
-                       console.log('Mitarbeiter');
-                       console.log(mitarbeiters);
 
                      }
                    }
@@ -100,12 +99,14 @@ export class TerminService{
     headers.set('Accept', 'application/json');
     headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
 
-    let dummyTermin =  {
+   let dummyTermin =  {
       "id": 0,
       "datum": datum,
       "kommentar": kommentar,
 
     };
+
+
 
     return this
       .http
@@ -121,17 +122,20 @@ export class TerminService{
     let kommentar = termin.kommentar;
     let url = this.baseUrl+this.classSuffix+'/'+id;
     let mitarbeiter:string = this.baseUrl+this.mitarbeiterClassSuffix+'/'+mitarbeiterId;
+    console.log('Save')
     console.log(mitarbeiter);
+    let raumId = termin.raum;
+    let raum = this.baseUrl+this.raumClassSuffix+'/'+raumId;
+    console.log(raum);
 
 
-    //let raum = this.baseUrl+this.raumClassSuffix+'/'+raum.id;
 
 
     let headers = new Headers();
     headers.set('Accept', 'application/json');
     headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
 
-    return this.http.put(url, {mitarbeiter, datum, kommentar}, { headers }).map(resp => resp.json());
+    return this.http.put(url, {mitarbeiter,raum, datum, kommentar}, { headers }).map(resp => resp.json());
 
 
 
@@ -165,12 +169,42 @@ export class TerminService{
             }
             if (name == 'all'){
               this.mitarbeitersSorted.push(i);
-              console.log(this.mitarbeitersSorted);
             }
           }
           this.mitarbeitersSearch = this.mitarbeitersSorted;
-          console.log(this.mitarbeitersSearch);
 
+        });
+  }
+
+  public findRaum(bezeichnung: string) {
+
+    let url = this.baseUrl+this.raumClassSuffix;
+
+    this.raumsSearch = [];
+    this.raumsSorted = [];
+
+    let search = new URLSearchParams();
+    search.set('bezeichnung', bezeichnung);
+
+    let headers = new Headers();
+    headers.set('Accept', 'application/json');
+    headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
+
+    return this
+      .http
+      .get(url, { headers, search })
+      .map(resp => resp.json())
+      .subscribe(
+        (raumObj) => {
+          this.raumsSearch = raumObj._embedded.raums;
+          for (let i of this.raumsSearch) {
+            if (i.bezeichnung == bezeichnung) {
+            }
+            if (bezeichnung == 'all'){
+              this.raumsSorted.push(i);
+            }
+          }
+          this.raumsSearch = this.raumsSorted;
         });
   }
 

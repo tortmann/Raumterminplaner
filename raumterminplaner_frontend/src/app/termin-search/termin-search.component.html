@@ -35,6 +35,7 @@
            <button class="btn btn-primary" type="button" (click)="searchAll()">
           <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
         </button>
+
       </span>
       </div>
       <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.datum?.valid">
@@ -91,16 +92,29 @@
   <div class="panel-body">
     <div class="col-md-12">
       <div class="col-lg-3 col-md-2">
+        <label>Datum</label>
         <input [(ngModel)]="datum" class="form-control" placeholder="Datum">
       </div>
       <div class="col-lg-3 col-md-2">
+        <label>Kommentar</label>
         <input [(ngModel)]="kommentar" class="form-control" placeholder="Kommentar">
+      </div>
+      <div class="col-lg-3 col-md-2">
+        <label>Mitarbeiter</label>
+        <select  [(ngModel)]="mitarbeiter" class="form-control" id="selector">
+          <option *ngFor="let m of mitarbeitersSearch">{{m.id}}</option>
+        </select>
+      </div>
+      <div class="col-lg-3 col-md-2">
+        <label>Raum</label>
+        <select  [(ngModel)]="raum" class="form-control" id="selector">
+          <option *ngFor="let r of raumsSearch">{{r.id}}</option>
+        </select>
       </div>
       <div class="col-lg-2 col-md-1">
         <button class="btn btn-success" type="button" (click)="create();menu = 1">
           <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
       </div>
-
     </div>
   </div>
 </div>

@@ -29,6 +29,12 @@ import {Termin} from "../../entities/termin";
         <option *ngFor="let m of mitarbeitersSearch">{{m.id}}</option>
       </select>
       </div>
+       <div class="form-group">
+      <label>Raum</label>
+      <select  [(ngModel)]="termin.raum" class="form-control" id="selector">
+        <option *ngFor="let r of raumsSearch">{{r.id}}</option>
+      </select>
+      </div>
       <div class="form-group">        
         <a class="btn btn-sm btn-danger" [routerLink]="['/mitarbeiter-search']">
           <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
@@ -66,7 +72,7 @@ export class TerminEditComponent implements OnInit{
 
   ngOnInit(){
     this.terminService.findMitarbeiter('all');
-    //this.terminService.findRaum('all');
+    this.terminService.findRaum('all');
   }
 
   public get termins(): Array<Termin> {
@@ -77,6 +83,10 @@ export class TerminEditComponent implements OnInit{
     return this.terminService.mitarbeitersSearch;
   }
 
+  public get raumsSearch():Array<any>{
+    return this.terminService.raumsSearch;
+
+  }
 
   load(id: number): void {
     this

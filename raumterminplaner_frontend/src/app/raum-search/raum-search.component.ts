@@ -34,6 +34,9 @@ export class RaumSearchComponent {
     return this.raumService.termins;
   }
 
+  searchAll(): void {
+    this.raumService.find('all');
+  }
   search(): void {
     this.raumService.find(this.bezeichnung);
   }

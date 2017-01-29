@@ -4,5 +4,6 @@ export interface Termin{
   datum: string;
   kommentar: string;
   mitarbeiter: string;
+  raum: string;
 
 }

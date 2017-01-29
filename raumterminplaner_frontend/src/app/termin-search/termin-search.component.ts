@@ -1,6 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {Termin} from "../entities/termin";
 import {TerminService} from "./services/termin.service";
+import {Mitarbeiter} from "../entities/mitarbeiter";
+import {Raum} from "../entities/raum";
 
 @Component({
   selector: 'termin-search',
@@ -29,13 +31,21 @@ export class TerminSearchComponent implements OnInit{
 
   ngOnInit(){
     this.terminService.findMitarbeiter('all');
-    //this.terminService.findRaum('all');
+    this.terminService.findRaum('all');
   }
 
   public get termins(): Array<Termin> {
     return this.terminService.termins;
   }
 
+  public get mitarbeitersSearch():Array<any>{
+    return this.terminService.mitarbeitersSearch;
+  }
+
+  public get raumsSearch():Array<any>{
+    return this.terminService.raumsSearch;
+
+  }
 
   search(): void {
     this.terminService.find(this.datum);
