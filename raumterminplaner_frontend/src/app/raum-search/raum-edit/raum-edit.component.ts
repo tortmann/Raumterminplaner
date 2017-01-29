@@ -8,13 +8,16 @@ import {Raum} from "../../entities/raum";
   template: `
     <h2>Raum bearbeiten!</h2>
     <hr>
-    <div>
-      {{ message }}
+    <div class="alert alert-success" role="alert" *ngIf="messageExists == true">
+      <b>{{ message }}</b>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessageExists == true">
+      <b>{{ message }}</b>
     </div>
     <div *ngIf="raum">
       <div class="form-group">
         <label>ID</label>
-        <input [(ngModel)]="raum.id" class="form-control">
+        <input [(ngModel)]="raum.id" class="form-control" disabled>
       </div>
       <div class="form-group">
         <label>Bezeichnung</label>
@@ -37,6 +40,8 @@ export class RaumEditComponent {
 
   id: number;
   showDetails: string;
+  public messageExists: boolean = false;
+  public errorMessageExists: boolean = false;
 
   constructor(
     private raumService: RaumService,
@@ -78,10 +83,14 @@ export class RaumEditComponent {
         raum => {
           this.raum = raum;
           this.message = "Daten wurden gespeichert!";
+          this.messageExists = true;
+          setTimeout(() => {
+            this.messageExists = false;
+          }, 5000)
         },
         (err) => {
           this.message = "Fehler beim Speichern: " + err.text();
-
+          this.errorMessageExists = true;
         }
       )
 

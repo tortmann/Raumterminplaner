@@ -9,7 +9,7 @@
 
 <div class="panel panel-primary" *ngIf="menu == 1">
   <div class="panel-heading">
-    <h2 class="panel-title">Mitarbeiter suchen</h2>
+    <h1 class="panel-title">Mitarbeiter suchen</h1>
   </div>
   <div class="panel-body">
     <div class="alert alert-info" role="alert" *ngIf="messageExists == true">
@@ -65,15 +65,17 @@
       <div class="col-md-12">
       <table class="table"><br>
         <tr>
-          <th>Name</th>
           <th>Vorname</th>
-          <th>Aktion</th>
+          <th>Name</th>
           <th>Termine</th>
+          <th>Aktion</th>
         </tr>
         <tr *ngFor="let mitarbeiter of mitarbeiters" [ngClass]="{ 'active': mitarbeiter == selectedMitarbeiter }">
-
-          <td>{{mitarbeiter.name}}</td>
           <td>{{mitarbeiter.vorname}}</td>
+          <td>{{mitarbeiter.name}}</td>
+          <td *ngFor="let termin of mitarbeiter.termin">
+            <b>{{termin.kommentar}}</b> am <i>{{termin.datum}}</i> in Raum: <u>{{termin.raum.bezeichnung}}</u>
+          </td>
           <td>
             <button type="button" class="btn btn-success btn-sm" (click)="select(mitarbeiter)">
               <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
@@ -84,9 +86,6 @@
             <button type="button" class="btn btn-danger btn-sm" (click)="delete(mitarbeiter)">
               <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
             </button>
-          </td>
-          <td *ngFor="let termin of mitarbeiter.termin">
-            <b>{{termin.kommentar}}</b> am <i>{{termin.datum}}</i> in Raum: <u>{{termin.raum.bezeichnung}}</u>
           </td>
         </tr>
         </table>

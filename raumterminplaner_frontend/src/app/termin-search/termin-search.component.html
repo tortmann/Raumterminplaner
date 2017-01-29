@@ -9,7 +9,7 @@
 
 <div class="panel panel-primary" *ngIf="menu == 1">
   <div class="panel-heading">
-    <h2 class="panel-title">Termin suchen</h2>
+    <h1 class="panel-title">Termin suchen</h1>
   </div>
   <div class="panel-body">
     <div class="alert alert-info" role="alert" *ngIf="messageExists == true">
@@ -53,7 +53,6 @@
       <div class="col-md-12">
         <table class="table"><br>
           <tr>
-            <th>ID</th>
             <th>Datum</th>
             <th>Kommentar</th>
             <th>Mitarbeiter</th>
@@ -61,10 +60,9 @@
             <th>Aktion</th>
           </tr>
           <tr *ngFor="let termin of termins" [ngClass]="{ 'active': termin == selectedTermin }">
-            <td>{{termin.id}}</td>
             <td>{{termin.datum}}</td>
             <td>{{termin.kommentar}}</td>
-            <td *ngFor="let mitarbeiter of termin.mitarbeiter">{{mitarbeiter.id}}</td>
+            <td *ngFor="let mitarbeiter of termin.mitarbeiter">{{mitarbeiter.vorname}} {{mitarbeiter.name}}</td>
             <td *ngFor="let raum of termin.raum">
               {{raum.bezeichnung}}</td>
             <td>

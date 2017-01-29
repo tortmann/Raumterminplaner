@@ -8,13 +8,16 @@ import { Mitarbeiter } from '../../entities/mitarbeiter';
   template: `
     <h2>Mitarbeiter bearbeiten!</h2>
     <hr>
-    <div>
-      {{ message }}
+    <div class="alert alert-success" role="alert" *ngIf="messageExists == true">
+      <b>{{ message }}</b>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessageExists == true">
+      <b>{{ message }}</b>
     </div>
     <div *ngIf="mitarbeiter">
       <div class="form-group">
         <label>ID</label>
-        <input [(ngModel)]="mitarbeiter.id" class="form-control">
+        <input [(ngModel)]="mitarbeiter.id" class="form-control" disabled>
       </div>
       <div class="form-group">
         <label>Name</label>
@@ -40,6 +43,8 @@ export class MitarbeiterEditComponent {
 
   id: number;
   showDetails: string;
+  public messageExists: boolean = false;
+  public errorMessageExists: boolean = false;
 
   constructor(
     private mitarbeiterService: MitarbeiterService,
@@ -81,10 +86,14 @@ export class MitarbeiterEditComponent {
         mitarbeiter => {
           this.mitarbeiter = mitarbeiter;
           this.message = "Daten wurden gespeichert!";
+          this.messageExists = true;
+          setTimeout(() => {
+            this.messageExists = false;
+          }, 5000)
         },
         (err) => {
           this.message = "Fehler beim Speichern: " + err.text();
-
+          this.errorMessageExists = true;
         }
       )
 

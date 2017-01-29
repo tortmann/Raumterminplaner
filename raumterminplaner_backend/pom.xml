@@ -9,12 +9,12 @@
 	<packaging>jar</packaging>
 
 	<name>raumterminplaner</name>
-	<description>Demo project for Spring Boot</description>
+	<description>swengs final project</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.4.3.RELEASE</version>
+		<version>1.4.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 

@@ -6,14 +6,17 @@ import {Termin} from "../../entities/termin";
 
 @Component({
   template: `
-    <h1>Termin Edit!</h1>
-    <div>
-      {{ message }}
+    <h1>Termin bearbeiten!</h1>
+    <div class="alert alert-success" role="alert" *ngIf="messageExists == true">
+      <b>{{ message }}</b>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessageExists == true">
+      <b>{{ message }}</b>
     </div>
     <div *ngIf="termin">
       <div class="form-group">
         <label>Id</label>
-        <input [(ngModel)]="termin.id" class="form-control">
+        <input [(ngModel)]="termin.id" class="form-control" disabled>
       </div>
       <div class="form-group">
         <label>Datum</label>
@@ -36,7 +39,7 @@ import {Termin} from "../../entities/termin";
       </select>
       </div>
       <div class="form-group">        
-        <a class="btn btn-sm btn-danger" [routerLink]="['/mitarbeiter-search']">
+        <a class="btn btn-sm btn-danger" [routerLink]="['/termin-search']">
           <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
         </a>
         <button (click)="save()" class="btn btn-sm btn-success">
@@ -50,6 +53,8 @@ export class TerminEditComponent implements OnInit{
 
   id: number;
   showDetails: string;
+  public messageExists: boolean = false;
+  public errorMessageExists: boolean = false;
 
   constructor(
     private terminService: TerminService,
@@ -112,10 +117,14 @@ export class TerminEditComponent implements OnInit{
         termin => {
           this.termin = termin;
           this.message = "Daten wurden gespeichert!";
+          this.messageExists = true;
+          setTimeout(() => {
+            this.messageExists = false;
+          }, 5000)
         },
         (err) => {
           this.message = "Fehler beim Speichern: " + err.text();
-
+          this.errorMessageExists = true;
         }
       )
 

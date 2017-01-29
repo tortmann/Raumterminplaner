@@ -9,7 +9,7 @@
 
 <div class="panel panel-primary" *ngIf="menu == 1">
   <div class="panel-heading">
-    <h2 class="panel-title">Raum suchen</h2>
+    <h1 class="panel-title">Raum suchen</h1>
   </div>
   <div class="panel-body">
     <div class="alert alert-info" role="alert" *ngIf="messageExists == true">
@@ -46,13 +46,16 @@
         <table class="table"><br>
           <tr>
             <th>Bezeichnung</th>
-            <th>Aktion</th>
             <th>Termine</th>
+            <th>Aktion</th>
 
           </tr>
           <tr *ngFor="let raum of raums" [ngClass]="{ 'active': raum == selectedRaum }">
 
             <td>{{raum.bezeichnung}}</td>
+            <td *ngFor="let termin of raum.termin">
+              <b>{{termin.kommentar}}</b> am <i>{{termin.datum}}</i>&nbsp;
+            </td>
             <td>
               <button type="button" class="btn btn-success btn-sm" (click)="select(raum)">
                 <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
@@ -64,10 +67,6 @@
                 <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
               </button>
             </td>
-            <td *ngFor="let termin of raum.termin">
-              <b>{{termin.kommentar}}</b> am <i>{{termin.datum}}</i>
-            </td>
-
           </tr>
         </table>
       </div>
