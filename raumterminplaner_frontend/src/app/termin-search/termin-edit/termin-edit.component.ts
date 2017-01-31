@@ -112,7 +112,7 @@ export class TerminEditComponent implements OnInit{
     console.log(this.termin);
     this
       .terminService
-      .save(this.termin, this.id)
+      .save(this.termin)
       .subscribe(
         termin => {
           this.termin = termin;

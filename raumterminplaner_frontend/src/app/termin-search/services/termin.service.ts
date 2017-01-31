@@ -97,12 +97,12 @@ export class TerminService{
       .map(resp => resp.json())
   }
 
-  public save(termin: Termin, id: number): Observable<Termin> {
+  public save(termin: Termin): Observable<Termin> {
 
     let mitarbeiterId = termin.mitarbeiter;
-    let datum = termin.datum
+    let datum = termin.datum;
     let kommentar = termin.kommentar;
-    let url = this.baseUrl+this.classSuffix+'/'+id;
+    let url = this.baseUrl+this.classSuffix+'/'+termin.id;
     let mitarbeiter:string = this.baseUrl+this.mitarbeiterClassSuffix+'/'+mitarbeiterId;
     let raumId = termin.raum;
     let raum = this.baseUrl+this.raumClassSuffix+'/'+raumId;
@@ -113,7 +113,7 @@ export class TerminService{
 
     return this
       .http
-      .put(url, {mitarbeiter,raum, datum, kommentar}, { headers })
+      .patch(url, {mitarbeiter,raum, datum, kommentar}, { headers })
       .map(resp => resp.json());
 
   }

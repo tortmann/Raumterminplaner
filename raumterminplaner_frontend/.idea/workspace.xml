@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="528d9274-517e-4bac-a078-43b294c6a681" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/shared/pipes/mitarbeiterFullName.pipe.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/shared/pipes/raumBezeichnung.pipe.ts" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/shared/pipes/bonusMiles.pipe.ts" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/typescript-compiler.xml" afterPath="$PROJECT_DIR$/.idea/typescript-compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../raumterminplaner_backend/src/main/java/at/fh/ima/swengs/raumterminplaner/WebConfig.java" afterPath="$PROJECT_DIR$/../raumterminplaner_backend/src/main/java/at/fh/ima/swengs/raumterminplaner/WebConfig.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/shared.module.ts" afterPath="$PROJECT_DIR$/src/app/shared/shared.module.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/termin-search/services/termin.service.ts" afterPath="$PROJECT_DIR$/src/app/termin-search/services/termin.service.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/termin-search/termin-edit/termin-edit.component.ts" afterPath="$PROJECT_DIR$/src/app/termin-search/termin-edit/termin-edit.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/termin-search/termin-search.component.html" afterPath="$PROJECT_DIR$/src/app/termin-search/termin-search.component.html" />
     </list>
     <ignored path="angular2-seed.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,32 +29,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="termin-search.component.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/app/termin-search/termin-search.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="76" column="3" lean-forward="true" selection-start-line="76" selection-start-column="3" selection-end-line="76" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="termin.service.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="termin.service.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/termin-search/services/termin.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="98" column="0" lean-forward="true" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+            <state relative-caret-position="549">
+              <caret line="116" column="32" lean-forward="true" selection-start-line="116" selection-start-column="32" selection-end-line="116" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shared.module.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/shared/shared.module.ts">
+      <file leaf-file-name="termin-edit.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/termin-search/termin-edit/termin-edit.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-              <folding />
+            <state relative-caret-position="273">
+              <caret line="111" column="29" lean-forward="false" selection-start-line="111" selection-start-column="29" selection-end-line="111" selection-end-column="29" />
+              <folding>
+                <marker date="1485874085910" expanded="true" signature="272:504" ph="..." />
+                <marker date="1485874085910" expanded="true" signature="343:381" ph="..." />
+                <marker date="1485874085910" expanded="true" signature="466:504" ph="..." />
+                <marker date="1485874085910" expanded="true" signature="529:1918" ph="..." />
+                <marker date="1485874085910" expanded="true" signature="560:669" ph="..." />
+                <marker date="1485874085910" expanded="true" signature="700:806" ph="..." />
+                <marker date="1485874085910" expanded="true" signature="843:957" ph="..." />
+                <marker date="1485874085910" expanded="true" signature="988:1255" ph="..." />
+                <marker date="1485874085910" expanded="true" signature="1116:1242" ph="..." />
+                <marker date="1485874085910" expanded="true" signature="1287:1522" ph="..." />
+                <marker date="1485874085910" expanded="true" signature="1394:1509" ph="..." />
+                <marker date="1485874085910" expanded="true" signature="1553:1907" ph="..." />
+                <marker date="1485874085910" expanded="true" signature="1637:1732" ph="..." />
+                <marker date="1485874085910" expanded="true" signature="1797:1894" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -117,11 +117,8 @@
         <option value="$PROJECT_DIR$/src/app/raum-search/raum-search.routes.ts" />
         <option value="$PROJECT_DIR$/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/src/app/raum-search/raum-search.module.ts" />
-        <option value="$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts" />
         <option value="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.ts" />
         <option value="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts" />
-        <option value="$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts" />
         <option value="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.routes.ts" />
         <option value="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.ts" />
         <option value="$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.ts" />
@@ -148,11 +145,14 @@
         <option value="$PROJECT_DIR$/src/app/shared/pipes/mitarbeiterBezeichnung.pipe.ts" />
         <option value="$PROJECT_DIR$/src/app/shared/pipes/mitarbeiterFullName.pipe.ts" />
         <option value="$PROJECT_DIR$/src/app/shared/shared.module.ts" />
-        <option value="$PROJECT_DIR$/src/app/termin-search/services/termin.service.ts" />
-        <option value="$PROJECT_DIR$/src/app/termin-search/services/termin.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/termin-search/termin-search.component.html" />
+        <option value="$PROJECT_DIR$/src/app/termin-search/termin-search.component.html" />
+        <option value="$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts" />
         <option value="$PROJECT_DIR$/src/app/termin-search/termin-edit/termin-edit.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/termin-search/termin-search.component.html" />
-        <option value="$PROJECT_DIR$/src/app/termin-search/termin-search.component.html" />
+        <option value="$PROJECT_DIR$/src/app/termin-search/services/termin.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/termin-search/services/termin.service.ts" />
       </list>
     </option>
   </component>
@@ -362,81 +362,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="raumterminplaner_frontend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="raumterminplaner_frontend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mitarbeiter-search" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="raumterminplaner_frontend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="raumterminplaner_frontend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mitarbeiter-search" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mitarbeiter-edit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="raumterminplaner_frontend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="raumterminplaner_frontend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -917,6 +847,7 @@
       <workItem from="1485855678031" duration="4762000" />
       <workItem from="1485860495769" duration="7953000" />
       <workItem from="1485871477009" duration="806000" />
+      <workItem from="1485872397017" duration="2439000" />
     </task>
     <task id="LOCAL-00001" summary="Erstellung der entities: mitarbeiter, raum, termin&#10;Umsetzung von Mitarbeiter Components, Services und Routen&#10;Working features create, read">
       <created>1485115933404</created>
@@ -971,7 +902,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="208474000" />
+    <option name="totallyTimeSpent" value="210913000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -984,7 +915,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -998,11 +929,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917705" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2596054" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2596054" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917705" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28665933" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2899669" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1299,13 +1230,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="83" column="13" lean-forward="false" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/raum-search/raum-edit/raum-edit.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -1328,7 +1252,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1385,7 +1308,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1399,14 +1321,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/shared.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/mitarbeiter-search.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="829">
@@ -1415,41 +1329,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/termin-search/termin-edit/termin-edit.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="24" column="36" lean-forward="true" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
-          <folding>
-            <marker date="1485872063453" expanded="true" signature="272:504" ph="..." />
-            <marker date="1485872063453" expanded="true" signature="343:381" ph="..." />
-            <marker date="1485872063453" expanded="true" signature="466:504" ph="..." />
-            <marker date="1485872063453" expanded="true" signature="529:1918" ph="..." />
-            <marker date="1485872063453" expanded="true" signature="560:669" ph="..." />
-            <marker date="1485872063453" expanded="true" signature="700:806" ph="..." />
-            <marker date="1485872063453" expanded="true" signature="843:957" ph="..." />
-            <marker date="1485872063453" expanded="true" signature="988:1255" ph="..." />
-            <marker date="1485872063453" expanded="true" signature="1116:1242" ph="..." />
-            <marker date="1485872063453" expanded="true" signature="1287:1522" ph="..." />
-            <marker date="1485872063453" expanded="true" signature="1394:1509" ph="..." />
-            <marker date="1485872063453" expanded="true" signature="1553:1907" ph="..." />
-            <marker date="1485872063453" expanded="true" signature="1637:1732" ph="..." />
-            <marker date="1485872063453" expanded="true" signature="1797:1894" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/termin-search/termin-search.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
           <caret line="113" column="72" lean-forward="true" selection-start-line="113" selection-start-column="72" selection-end-line="113" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/termin-search/services/termin.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="98" column="0" lean-forward="true" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1464,8 +1347,55 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/termin-search/termin-search.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="76" column="3" lean-forward="true" selection-start-line="76" selection-start-column="3" selection-end-line="76" selection-end-column="3" />
+        <state relative-caret-position="770">
+          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/shared.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/mitarbeiter-search/services/mitarbeiter.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-933">
+          <caret line="82" column="15" lean-forward="true" selection-start-line="82" selection-start-column="15" selection-end-line="82" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/termin-search/termin-edit/termin-edit.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="111" column="29" lean-forward="false" selection-start-line="111" selection-start-column="29" selection-end-line="111" selection-end-column="29" />
+          <folding>
+            <marker date="1485874085910" expanded="true" signature="272:504" ph="..." />
+            <marker date="1485874085910" expanded="true" signature="343:381" ph="..." />
+            <marker date="1485874085910" expanded="true" signature="466:504" ph="..." />
+            <marker date="1485874085910" expanded="true" signature="529:1918" ph="..." />
+            <marker date="1485874085910" expanded="true" signature="560:669" ph="..." />
+            <marker date="1485874085910" expanded="true" signature="700:806" ph="..." />
+            <marker date="1485874085910" expanded="true" signature="843:957" ph="..." />
+            <marker date="1485874085910" expanded="true" signature="988:1255" ph="..." />
+            <marker date="1485874085910" expanded="true" signature="1116:1242" ph="..." />
+            <marker date="1485874085910" expanded="true" signature="1287:1522" ph="..." />
+            <marker date="1485874085910" expanded="true" signature="1394:1509" ph="..." />
+            <marker date="1485874085910" expanded="true" signature="1553:1907" ph="..." />
+            <marker date="1485874085910" expanded="true" signature="1637:1732" ph="..." />
+            <marker date="1485874085910" expanded="true" signature="1797:1894" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/termin-search/services/termin.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="116" column="32" lean-forward="true" selection-start-line="116" selection-start-column="32" selection-end-line="116" selection-end-column="32" />
           <folding />
         </state>
       </provider>
