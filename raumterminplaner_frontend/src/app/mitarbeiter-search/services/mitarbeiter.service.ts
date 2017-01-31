@@ -17,6 +17,7 @@ export class MitarbeiterService{
   mitarbeitersSorted: Array<Mitarbeiter> = [];
   urlTermine: string;
   urlRaum: string;
+  messageFromService: string;
 
   constructor(
     @Inject(BASE_URL) private baseUrl: string,
@@ -25,6 +26,12 @@ export class MitarbeiterService{
   ) {
 
   }
+
+  public displayMessage(message: string){
+
+    this.messageFromService = message;
+
+}
 
   public create(name: string, vorname: string){
 
@@ -49,7 +56,6 @@ export class MitarbeiterService{
   public find(name: string) {
 
       let url = this.baseUrl+this.classSuffix;
-
       this.mitarbeiters = [];
       this.mitarbeitersSorted = [];
       this.termins = [];
@@ -156,7 +162,7 @@ export class MitarbeiterService{
 
     return this
       .http
-      .put(url, mitarbeiter, { headers })
+      .patch(url, mitarbeiter, { headers })
       .map(resp => resp.json());
 
   }

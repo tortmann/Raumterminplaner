@@ -23,7 +23,7 @@ export class MitarbeiterValidator implements Validator {
     }
 
     return {
-      passenger: "Es wurde kein Mitarbeiter mit diesem Namen gefunden!"
+      mitarbeiter: "Es wurde kein Mitarbeiter mit diesem Namen gefunden!"
     };
 
 

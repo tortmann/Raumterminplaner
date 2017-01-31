@@ -28,12 +28,12 @@ import { Mitarbeiter } from '../../entities/mitarbeiter';
         <input [(ngModel)]="mitarbeiter.vorname" class="form-control">
       </div>
       <div class="form-group">        
-        <a class="btn btn-sm btn-danger" [routerLink]="['/mitarbeiter-search']">
+        <a class="btn btn-sm btn-primary" [routerLink]="['/mitarbeiter-search']">
           <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
         </a>
-        <button (click)="save()" class="btn btn-sm btn-success">
+        <a class="btn btn-sm btn-success" (click)="save()" [routerLink]="['/mitarbeiter-search']">
           <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-        </button>
+        </a>
       </div>
     </div>
     <hr>
@@ -61,7 +61,7 @@ export class MitarbeiterEditComponent {
   }
 
   mitarbeiter: Mitarbeiter;
-  message: string;
+  public message: string = 'hello world';
 
   load(id: number): void {
     this
@@ -85,7 +85,9 @@ export class MitarbeiterEditComponent {
       .subscribe(
         mitarbeiter => {
           this.mitarbeiter = mitarbeiter;
+          this.mitarbeiterService.find(this.mitarbeiter.name);
           this.message = "Daten wurden gespeichert!";
+          this.mitarbeiterService.displayMessage(this.message);
           this.messageExists = true;
           setTimeout(() => {
             this.messageExists = false;

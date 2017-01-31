@@ -15,14 +15,20 @@ export class RaumService{
   termins: Array<Termin> = [];
   terminsSorted: Array<Termin> = [];
   termineUrl: string;
-
   classSuffix: string = 'raums';
+  messageFromService: string;
 
   constructor(
     @Inject(BASE_URL) private baseUrl: string,
     private http: Http,
     private oauthService: OAuthService
   ) {
+
+  }
+
+  public displayMessage(message: string){
+
+    this.messageFromService = message;
 
   }
 
@@ -127,7 +133,7 @@ export class RaumService{
 
     return this
       .http
-      .put(url, raum, { headers })
+      .patch(url, raum, { headers })
       .map(resp => resp.json());
 
   }

@@ -30,10 +30,26 @@ export class TerminSearchComponent implements OnInit{
 
   }
 
-
   ngOnInit(){
     this.terminService.findMitarbeiter('all');
     this.terminService.findRaum('all');
+    setTimeout(() => {
+      this.displayMessage();
+    }, 1000);
+  }
+
+  displayMessage(): void {
+    this.message = this.messages;
+    if(this.messages){
+      this.messageExists = true;
+    }
+    setTimeout(() => {
+      this.messageExists = false;
+    }, 3000)
+  }
+
+  public get messages(): string {
+    return this.terminService.messageFromService;
   }
 
   public get termins(): Array<Termin> {

@@ -12,11 +12,11 @@
     <h1 class="panel-title">Raum suchen</h1>
   </div>
   <div class="panel-body">
-    <div class="alert alert-info" role="alert" *ngIf="messageExists == true">
-      <b>{{ message }}</b>
+    <div class="alert alert-success" role="alert" *ngIf="messageExists == true">
+      <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>&nbsp;<b>{{ message }}</b>
     </div>
     <div class="alert alert-danger" role="alert" *ngIf="errorMessageExists == true">
-      <b>{{ message }}</b>
+      <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;<b>{{ message }}</b>
     </div>
     <form #f="ngForm" novalidate>
       <div class="input-group">
@@ -36,7 +36,7 @@
       </div>
       <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.raum?.valid">
         <div *ngIf="f?.controls?.raum?.hasError('required')">
-          <b>Warnung!&nbsp;</b>Dieses Feld ist nicht optional!
+          <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Dieses Feld ist nicht optional!
         </div>
       </div>
     </form>

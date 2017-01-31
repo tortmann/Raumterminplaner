@@ -39,12 +39,12 @@ import {Termin} from "../../entities/termin";
       </select>
       </div>
       <div class="form-group">        
-        <a class="btn btn-sm btn-danger" [routerLink]="['/termin-search']">
+        <a class="btn btn-sm btn-primary" [routerLink]="['/termin-search']">
           <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
         </a>
-        <button (click)="save()" class="btn btn-sm btn-success">
+        <a class="btn btn-sm btn-success" (click)="save()" [routerLink]="['/termin-search']">
           <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-        </button>
+        </a>
       </div>
     </div>
     `
@@ -116,7 +116,9 @@ export class TerminEditComponent implements OnInit{
       .subscribe(
         termin => {
           this.termin = termin;
-          this.message = "Daten wurden gespeichert!";
+          this.terminService.find(this.termin.datum);
+          this.message = "Daten wurden gespeichert!"
+          this.terminService.displayMessage(this.message);
           this.messageExists = true;
           setTimeout(() => {
             this.messageExists = false;

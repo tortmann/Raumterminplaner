@@ -12,11 +12,11 @@
     <h1 class="panel-title">Termin suchen</h1>
   </div>
   <div class="panel-body">
-    <div class="alert alert-info" role="alert" *ngIf="messageExists == true">
-      <b>{{ message }}</b>
+    <div class="alert alert-success" role="alert" *ngIf="messageExists == true">
+      <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>&nbsp;<b>{{ message }}</b>
     </div>
     <div class="alert alert-danger" role="alert" *ngIf="errorMessageExists == true">
-      <b>{{ message }}</b>
+      <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;<b>{{ message }}</b>
     </div>
     <form #f="ngForm" novalidate>
       <div class="input-group">
@@ -41,10 +41,10 @@
       <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.datum?.valid">
 
         <div *ngIf="f?.controls?.datum?.hasError('pattern')">
-          <b>Warnung!&nbsp;</b>Bitte auf das richtige Format (<i>dd.mm.yyyy</i>) achten!
+          <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Bitte auf das richtige Format (<i>dd.mm.yyyy</i>) achten!
         </div>
         <div *ngIf="f?.controls?.datum?.hasError('required')">
-          <b>Warnung!&nbsp;</b>Dieses Feld ist nicht optional!
+          <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Dieses Feld ist nicht optional!
         </div>
       </div>
     </form>

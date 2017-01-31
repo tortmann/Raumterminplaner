@@ -19,12 +19,19 @@ export class TerminService{
   mitarbeitersSorted: Array<any>;
   raumsSearch: Array<any> = [];
   raumsSorted: Array<any> = [];
+  messageFromService: string;
 
   constructor(
     @Inject(BASE_URL) private baseUrl: string,
     private http: Http,
     private oauthService: OAuthService
   ) {}
+
+  public displayMessage(message: string){
+
+    this.messageFromService = message;
+
+  }
 
   public find(datum: string) {
 

@@ -1,7 +1,13 @@
-import {Component, OnInit} from "@angular/core";
+import {
+  Component, OnInit, OnChanges, AfterViewChecked, AfterContentChecked, AfterContentInit,
+  AfterViewInit
+} from "@angular/core";
 import {Mitarbeiter} from "../entities/mitarbeiter";
 import {MitarbeiterService} from "./services/mitarbeiter.service";
 import {Termin} from "../entities/termin";
+import {MitarbeiterEditComponent} from "./mitarbeiter-edit/mitarbeiter-edit.component";
+import {isUndefined} from "util";
+import {isNullOrUndefined} from "util";
 
 @Component({
   selector: 'mitarbeiter-search',
@@ -9,7 +15,7 @@ import {Termin} from "../entities/termin";
   styleUrls: ['mitarbeiter-search.component.css']
 })
 
-export class MitarbeiterSearchComponent {
+export class MitarbeiterSearchComponent implements OnInit{
 
   public menu: number = 1;
   public messageExists: boolean = false;
@@ -21,7 +27,27 @@ export class MitarbeiterSearchComponent {
   public message: string;
   public errorMessage: string;
 
-  constructor (private mitarbeiterService: MitarbeiterService){
+  constructor (private mitarbeiterService: MitarbeiterService){}
+
+  ngOnInit(){
+    setTimeout(() => {
+      this.displayMessage();
+    }, 1000);
+
+  }
+
+  displayMessage(): void {
+    this.message = this.messages;
+    if(this.messages){
+      this.messageExists = true;
+    }
+    setTimeout(() => {
+      this.messageExists = false;
+    }, 3000)
+  }
+
+  public get messages(): string {
+    return this.mitarbeiterService.messageFromService;
   }
 
   public get mitarbeiters(): Array<Mitarbeiter> {
@@ -33,7 +59,7 @@ export class MitarbeiterSearchComponent {
   }
 
   search(): void {
-    this.mitarbeiterService.find(this.name);
+    this.mitarbeiterService.find(this.name);;
   }
 
   searchAll(): void {

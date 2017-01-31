@@ -12,11 +12,11 @@
     <h1 class="panel-title">Mitarbeiter suchen</h1>
   </div>
   <div class="panel-body">
-    <div class="alert alert-info" role="alert" *ngIf="messageExists == true">
-      <b>{{ message }}</b>
+    <div class="alert alert-success" role="alert" *ngIf="messageExists == true">
+      <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>&nbsp;<b>{{ message }}</b>
     </div>
     <div class="alert alert-danger" role="alert" *ngIf="errorMessageExists == true">
-      <b>{{ message }}</b>
+      <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;<b>{{ message }}</b>
     </div>
     <form #f="ngForm" novalidate>
     <div class="input-group">
@@ -26,7 +26,6 @@
              required
              minlength="3"
              maxlength="20"
-             asyncMitarbeiter
              pattern="[a-zA-ZöäüßÖÄÜ]*"
              class="form-control">
 
@@ -40,23 +39,14 @@
       </span>
     </div>
     <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.name?.valid">
-       <div *ngIf="f?.controls?.name?.hasError('mitarbeiter')">
-         <b>Warnung!&nbsp;</b><i>FALSCHER</i> Mitarbeiter Name!
-      </div>
-      <div *ngIf="f?.controls?.name?.pending">
-        <b>Validierung...</b>
-      </div>
-      <div *ngIf="f?.controls?.name?.hasError('asyncMitarbeiter')">
-        <b>Warnung!&nbsp;</b><i>KEINE</i> es wurden keine Mitarbeiter mit diesem <i>Namen</i> gefunden!
-      </div>
       <div *ngIf="f?.controls?.name?.hasError('minlength')">
-        <b>Warnung!&nbsp;</b>Mitarbeiter Name ist <i>ZU KURZ</i>!
+        <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Mitarbeiter Name ist <i>ZU KURZ</i>!
       </div>
       <div *ngIf="f?.controls?.name?.hasError('pattern')">
-        <b>Warnung!&nbsp;</b>Nur <i>BUCHSTABEN</i> sind erlaubt!
+        <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Nur <i>BUCHSTABEN</i> sind erlaubt!
       </div>
       <div *ngIf="f?.controls?.name?.hasError('required')">
-        <b>Warnung!&nbsp;</b>Dieses Feld ist nicht optional!
+        <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Dieses Feld ist nicht optional!
       </div>
     </div>
     </form>
@@ -119,14 +109,17 @@
     <h2 class="panel-title">Passenger Info</h2>
   </div>
   <div class="panel-body">
-    <div *ngFor="let mitarbeiter of mitarbeiters" class="col-xs-12 col-lg-3 col-md-4 col-sm-6 ">
-      <mitarbeiter-card
-        [item]="mitarbeiter"
-        [(selectedItem)]="selectedMitarbeiter">
-      </mitarbeiter-card>
+    <div class="col-md-12">
+      <div *ngFor="let mitarbeiter of mitarbeiters" class="col-xs-12 col-lg-3 col-md-4 col-sm-6 ">
+        <mitarbeiter-card
+          [item]="mitarbeiter"
+          [(selectedItem)]="selectedMitarbeiter">
+        </mitarbeiter-card>
+      </div>
+    <div class="col-md-12">
+      <pre>
+        {{ selectedMitarbeiter | json }}
+      </pre>
     </div>
-    <pre>
-      {{ selectedMitarbeiter | json }}
-    </pre>
   </div>
 </div>

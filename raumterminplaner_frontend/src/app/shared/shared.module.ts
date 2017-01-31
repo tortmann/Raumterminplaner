@@ -2,7 +2,6 @@ import {NgModule} from "@angular/core";
 import {CommonModule} from '@angular/common';
 import {RaumBezeichnungPipe} from "./pipes/raumBezeichnung.pipe";
 import {MitarbeiterValidator} from "./validators/mitarbeiter.validator";
-import {AsyncMitarbeiterValidator} from "./validators/async-mitarbeiter.validator";
 import {MitarbeiterFullNamePipe} from "./pipes/mitarbeiterFullName.pipe";
 
 
@@ -13,8 +12,7 @@ import {MitarbeiterFullNamePipe} from "./pipes/mitarbeiterFullName.pipe";
   declarations: [
     RaumBezeichnungPipe,
     MitarbeiterFullNamePipe,
-    MitarbeiterValidator,
-    AsyncMitarbeiterValidator
+    MitarbeiterValidator
   ],
   providers: [
 
@@ -22,8 +20,7 @@ import {MitarbeiterFullNamePipe} from "./pipes/mitarbeiterFullName.pipe";
   exports: [
     RaumBezeichnungPipe,
     MitarbeiterFullNamePipe,
-    MitarbeiterValidator,
-    AsyncMitarbeiterValidator
+    MitarbeiterValidator
   ]
 
 })

@@ -1,7 +1,7 @@
 import {Raum} from "../entities/raum";
 import {RaumService} from "./services/raum.service";
 import {Termin} from "../entities/termin";
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 
 @Component({
   selector: 'raum-search',
@@ -9,7 +9,7 @@ import {Component} from "@angular/core";
   styleUrls: ['raum-search.component.css']
 })
 
-export class RaumSearchComponent {
+export class RaumSearchComponent implements OnInit{
 
   public deleteResponse: number = 0;
   public createResponse: number = 0;
@@ -24,6 +24,27 @@ export class RaumSearchComponent {
 
   constructor (private raumService: RaumService){
 
+  }
+
+  ngOnInit(){
+    setTimeout(() => {
+      this.displayMessage();
+    }, 1000);
+
+  }
+
+  displayMessage(): void {
+    this.message = this.messages;
+    if(this.messages){
+      this.messageExists = true;
+    }
+    setTimeout(() => {
+      this.messageExists = false;
+    }, 3000)
+  }
+
+  public get messages(): string {
+    return this.raumService.messageFromService;
   }
 
   public get raums(): Array<Raum> {

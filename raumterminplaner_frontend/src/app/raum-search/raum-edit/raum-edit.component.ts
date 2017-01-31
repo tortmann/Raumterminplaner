@@ -25,12 +25,12 @@ import {Raum} from "../../entities/raum";
       </div>
     
       <div class="form-group">        
-        <a class="btn btn-sm btn-danger" [routerLink]="['/raum-search']">
+        <a class="btn btn-sm btn-primary" [routerLink]="['/raum-search']">
           <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
         </a>
-        <button (click)="save()" class="btn btn-sm btn-success">
+        <a class="btn btn-sm btn-success" (click)="save()" [routerLink]="['/raum-search']">
           <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-        </button>
+        </a>
       </div>
     </div>
     <hr>
@@ -82,7 +82,9 @@ export class RaumEditComponent {
       .subscribe(
         raum => {
           this.raum = raum;
+          this.raumService.find(this.raum.bezeichnung);
           this.message = "Daten wurden gespeichert!";
+          this.raumService.displayMessage(this.message);
           this.messageExists = true;
           setTimeout(() => {
             this.messageExists = false;
