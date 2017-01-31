@@ -1,9 +1,9 @@
 # SWENGS-Projekt
 ### ToDo-Liste:
--[ ] Placeholder für leere Einträge in Tabellen 
+1. Placeholder für leere Einträge in Tabellen 
     * Bsp: Wenn zu einem Termin kein Raum gefunden wurde - sollte statt
     eines leeren Feld "kein Raum gefunden" in der Tabelle stehen
--[ ] Validierung in allen EDIT und CREATE Forms - siehe Checkliste unten
+2. Validierung in allen EDIT und CREATE Forms - siehe Checkliste unten
     #####Mitarbeiter
         * -[ ] EDIT
         * -[ ] CREATE
@@ -13,7 +13,7 @@
     #####Raum
         * -[ ] EDIT
         * -[ ] CREATE
--[ ] 1 Bonus Feature implementieren
+3. 1 Bonus Feature implementieren
     ######z.B.:
         * Lazy Loading
         * Unit Tests
