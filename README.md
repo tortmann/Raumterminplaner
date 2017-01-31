@@ -4,18 +4,18 @@
     * Bsp: Wenn zu einem Termin kein Raum gefunden wurde - sollte statt
     eines leeren Feld "kein Raum gefunden" in der Tabelle stehen
 2. Validierung in allen EDIT und CREATE Forms - siehe Checkliste unten
-    #####Mitarbeiter
-        * -[ ] EDIT
-        * -[ ] CREATE
-    #####Termin
-        * -[ ] EDIT
-        * -[ ] CREATE
-    #####Raum
-        * -[ ] EDIT
-        * -[ ] CREATE
-3. 1 Bonus Feature implementieren
-    ######z.B.:
-        * Lazy Loading
+    * Mitarbeiter
+        -[ ] EDIT
+        -[ ] CREATE
+    * Termin
+        -[ ] EDIT
+        -[ ] CREATE
+    * Raum
+        -[ ] EDIT
+        -[ ] CREATE
+3. Bonus Feature implementieren
+        
+        * Lazy Loading        
         * Unit Tests
 
     
