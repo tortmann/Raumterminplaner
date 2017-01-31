@@ -5,14 +5,14 @@
     eines leeren Feld "kein Raum gefunden" in der Tabelle stehen
 2. Validierung in allen EDIT und CREATE Forms - siehe Checkliste unten
     * Mitarbeiter
-        -[ ] EDIT
-        -[ ] CREATE
+        * EDIT
+        * CREATE
     * Termin
-        -[ ] EDIT
-        -[ ] CREATE
+        * EDIT
+        * CREATE
     * Raum
-        -[ ] EDIT
-        -[ ] CREATE
+        * EDIT
+        * CREATE
 3. Bonus Feature implementieren
         
         * Lazy Loading        
