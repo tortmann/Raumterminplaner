@@ -33,9 +33,7 @@ export class MitarbeiterSearchComponent implements OnInit{
     setTimeout(() => {
       this.displayMessage();
     }, 1000);
-
   }
-
   displayMessage(): void {
     this.message = this.messages;
     if(this.messages){
@@ -59,11 +57,37 @@ export class MitarbeiterSearchComponent implements OnInit{
   }
 
   search(): void {
-    this.mitarbeiterService.find(this.name);;
+    this.mitarbeiterService.find(this.name);
+    setTimeout(() => {
+      if(this.mitarbeiterService.mitarbeiters.length == 0){
+        this.errorMessage = 'Es wurde kein Mitarbeiter mit dem Namen "'+this.name+'" gefunden!';
+        this.errorMessageExists = true;
+        setTimeout(() => {
+          this.errorMessageExists = false;
+        }, 5000)
+      }else{
+        let numberOfSearchResults = this.mitarbeiterService.mitarbeiters.length;
+        this.errorMessageExists = false;
+        this.messageExists = true;
+          this.message = 'Es wurde(n) '+numberOfSearchResults+' Mitarbeiter mit dem Namen "'+this.name+'" gefunden'
+        setTimeout(() => {
+          this.messageExists = false;
+        }, 5000)
+      }
+    }, 500)
   }
 
   searchAll(): void {
     this.mitarbeiterService.find('all');
+    setTimeout(() => {
+      let numberOfSearchResults = this.mitarbeiterService.mitarbeiters.length;
+      this.errorMessageExists = false;
+      this.messageExists = true;
+      this.message = 'Es wurden '+numberOfSearchResults+' Mitarbeiter gefunden'
+      setTimeout(() => {
+        this.messageExists = false;
+      }, 5000)
+    }, 500)
   }
 
   delete(mitarbeiter: Mitarbeiter): void {
@@ -90,7 +114,7 @@ export class MitarbeiterSearchComponent implements OnInit{
     this.messageExists = true;
     setTimeout(() => {
       this.messageExists = false;
-    }, 3000)
+    }, 5000)
   }
 
   create(): void {

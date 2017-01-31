@@ -67,10 +67,36 @@ export class TerminSearchComponent implements OnInit{
 
   search(): void {
     this.terminService.find(this.datum);
+    setTimeout(() => {
+      if(this.terminService.termins.length == 0){
+        this.errorMessage = 'Es wurden keine Termine am "'+this.datum+'" gefunden!';
+        this.errorMessageExists = true;
+        setTimeout(() => {
+          this.errorMessageExists = false;
+        }, 5000)
+      }else{
+        let numberOfSearchResults = this.terminService.termins.length;
+        this.errorMessageExists = false;
+        this.messageExists = true;
+        this.message = 'Es wurde(n) '+numberOfSearchResults+' Termine am "'+this.datum+'" gefunden!'
+        setTimeout(() => {
+          this.messageExists = false;
+        }, 5000)
+      }
+    }, 500)
   }
 
   searchAll(): void {
     this.terminService.find('all');
+    setTimeout(() => {
+      let numberOfSearchResults = this.terminService.termins.length;
+      this.errorMessageExists = false;
+      this.messageExists = true;
+      this.message = 'Es wurden '+numberOfSearchResults+' Termine gefunden!'
+      setTimeout(() => {
+        this.messageExists = false;
+      }, 5000)
+    }, 500)
   }
 
 

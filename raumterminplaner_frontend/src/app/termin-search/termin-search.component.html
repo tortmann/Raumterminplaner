@@ -16,7 +16,7 @@
       <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>&nbsp;<b>{{ message }}</b>
     </div>
     <div class="alert alert-danger" role="alert" *ngIf="errorMessageExists == true">
-      <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;<b>{{ message }}</b>
+      <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;<b>{{ errorMessage }}</b>
     </div>
     <form #f="ngForm" novalidate>
       <div class="input-group">
@@ -53,18 +53,13 @@
       <div class="col-md-12">
         <table class="table"><br>
           <tr>
+            <th>Aktion</th>
             <th>Datum</th>
             <th>Kommentar</th>
             <th>Mitarbeiter</th>
             <th>Raum</th>
-            <th>Aktion</th>
           </tr>
           <tr *ngFor="let termin of termins" [ngClass]="{ 'active': termin == selectedTermin }">
-            <td>{{termin.datum}}</td>
-            <td>{{termin.kommentar}}</td>
-            <td *ngFor="let mitarbeiter of termin.mitarbeiter">{{mitarbeiter.vorname}} {{mitarbeiter.name}}</td>
-            <td *ngFor="let raum of termin.raum">
-              {{raum.bezeichnung}}</td>
             <td>
               <button type="button" class="btn btn-success btn-sm" (click)="select(termin)">
                 <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
@@ -76,6 +71,11 @@
                 <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
               </button>
             </td>
+            <td>{{termin.datum}}</td>
+            <td>{{termin.kommentar}}</td>
+            <td *ngFor="let mitarbeiter of termin.mitarbeiter">{{mitarbeiter.vorname}} {{mitarbeiter.name}}</td>
+            <td *ngFor="let raum of termin.raum">
+              {{raum.bezeichnung}}</td>
           </tr>
         </table>
       </div>

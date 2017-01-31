@@ -55,11 +55,38 @@ export class RaumSearchComponent implements OnInit{
     return this.raumService.termins;
   }
 
-  searchAll(): void {
-    this.raumService.find('all');
-  }
   search(): void {
     this.raumService.find(this.bezeichnung);
+    setTimeout(() => {
+      if(this.raumService.raums.length == 0){
+        this.errorMessage = 'Es wurde kein Räume mit der Bezeichnung "'+this.bezeichnung+'" gefunden!';
+        this.errorMessageExists = true;
+        setTimeout(() => {
+          this.errorMessageExists = false;
+        }, 5000)
+      }else{
+        let numberOfSearchResults = this.raumService.raums.length;
+        this.errorMessageExists = false;
+        this.messageExists = true;
+        this.message = 'Es wurde(n) '+numberOfSearchResults+' Räume mit der Bezeichnung "'+this.bezeichnung+'" gefunden!'
+        setTimeout(() => {
+          this.messageExists = false;
+        }, 5000)
+      }
+    }, 500)
+  }
+
+  searchAll(): void {
+    this.raumService.find('all');
+    setTimeout(() => {
+      let numberOfSearchResults = this.raumService.raums.length;
+      this.errorMessageExists = false;
+      this.messageExists = true;
+      this.message = 'Es wurden '+numberOfSearchResults+' Räume gefunden!'
+      setTimeout(() => {
+        this.messageExists = false;
+      }, 5000)
+    }, 500)
   }
 
   delete(raum: Raum): void {
