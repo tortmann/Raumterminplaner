@@ -17,7 +17,8 @@
         
         * Lazy Loading        
         * Unit Tests
-
+4. Readme für Abgabe schreiben
+    * kurze Beschreibung der Features und des Projekts im Allgemeinen
     
     
 #### Autoren: Thomas Ortmann, Verena Skerbinz
