@@ -16,6 +16,8 @@ export class TerminSearchComponent implements OnInit{
   public id: number;
   public datum: string;
   public kommentar: string;
+  public mitarbeiter: string;
+  public raum: string;
   public selectedTermin: Termin;
   public message: string;
   public messageExists: boolean = false;
@@ -84,7 +86,7 @@ export class TerminSearchComponent implements OnInit{
   }
 
   create(): void {
-    this.terminService.create(this.datum, this.kommentar).subscribe((resp) => {
+    this.terminService.create(this.datum, this.kommentar, this.mitarbeiter, this.raum).subscribe((resp) => {
           this.terminService.find(this.datum);
           this.message = 'Termin: '+ this.kommentar + ' am ' + this.datum +' wurde neu angelegt!';
           this.messageExists = true;

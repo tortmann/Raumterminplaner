@@ -14,7 +14,6 @@ export class TerminService{
   classSuffix: string = 'termins';
   mitarbeiterClassSuffix: string = 'mitarbeiters';
   raumClassSuffix: string = 'raums';
-
   termins: Array<any> = [];
   termineSorted: Array<any> = [];
   mitarbeiterUrl: string;
@@ -33,10 +32,8 @@ export class TerminService{
   public find(datum: string) {
 
     let url = this.baseUrl+this.classSuffix;
-
     this.termins = [];
     this.termineSorted = [];
-
 
     let search = new URLSearchParams();
     search.set('datum', datum);
@@ -67,52 +64,40 @@ export class TerminService{
                 .subscribe((mitarbeiterObj) => {
                   let mitarbeiters = [];
                   mitarbeiters.push(mitarbeiterObj);
-
                this.raumUrl = this.baseUrl+this.classSuffix+"/"+terminSorted.id+"/raum";
                this.http.get(this.raumUrl, {headers}).map(resp => resp.json())
                  .subscribe((raumObj)=>{
                    let raums = [];
                    raums.push(raumObj);
-
-
                    for (var t=0; t<this.termineSorted.length;t++){
                      if (this.termineSorted[t].id == terminSorted.id){
                        this.termineSorted[t]['mitarbeiter'] = mitarbeiters;
                        this.termineSorted[t]['raum'] = raums;
-
                      }
                    }
                  })
                 })
-
           }
           this.termins = this.termineSorted;
         });
   }
 
 
-  public create(datum: string, kommentar: string){
+  public create(datum: string, kommentar: string, mitarbeiterId: string, raumId: string){
 
     let url = this.baseUrl+this.classSuffix;
+    let id:number = 0;
+    let mitarbeiter: string = this.baseUrl+this.mitarbeiterClassSuffix+'/'+mitarbeiterId;
+    let raum: string = this.baseUrl+this.raumClassSuffix+'/'+raumId;
 
     let headers = new Headers();
     headers.set('Accept', 'application/json');
     headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
 
-   let dummyTermin =  {
-      "id": 0,
-      "datum": datum,
-      "kommentar": kommentar,
-
-    };
-
-
-
     return this
       .http
-      .post(url, dummyTermin, {headers})
+      .post(url, {id,datum,kommentar,mitarbeiter,raum}, {headers})
       .map(resp => resp.json())
-
   }
 
   public save(termin: Termin, id: number): Observable<Termin> {
@@ -122,23 +107,17 @@ export class TerminService{
     let kommentar = termin.kommentar;
     let url = this.baseUrl+this.classSuffix+'/'+id;
     let mitarbeiter:string = this.baseUrl+this.mitarbeiterClassSuffix+'/'+mitarbeiterId;
-    console.log('Save')
-    console.log(mitarbeiter);
     let raumId = termin.raum;
     let raum = this.baseUrl+this.raumClassSuffix+'/'+raumId;
-    console.log(raum);
-
-
-
 
     let headers = new Headers();
     headers.set('Accept', 'application/json');
     headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
 
-    return this.http.put(url, {mitarbeiter,raum, datum, kommentar}, { headers }).map(resp => resp.json());
-
-
-
+    return this
+      .http
+      .put(url, {mitarbeiter,raum, datum, kommentar}, { headers })
+      .map(resp => resp.json());
 
   }
 
@@ -179,7 +158,6 @@ export class TerminService{
   public findRaum(bezeichnung: string) {
 
     let url = this.baseUrl+this.raumClassSuffix;
-
     this.raumsSearch = [];
     this.raumsSorted = [];
 
@@ -213,7 +191,6 @@ export class TerminService{
   public findById(id: number): Observable<Termin> {
 
       let url = this.baseUrl+this.classSuffix+'/'+id;
-
       let headers = new Headers();
       headers.set('Accept', 'application/json');
       headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
@@ -229,7 +206,6 @@ export class TerminService{
     public delete(id: string,datum: string, kommentar: string) {
 
       let url = this.baseUrl+this.classSuffix+'/'+id;
-
       let headers = new Headers();
       headers.set('Accept', 'application/json');
       headers.set('Authorization', 'Bearer ' + this.oauthService.getAccessToken() );
