@@ -28,14 +28,14 @@ import {Termin} from "../../entities/termin";
       </div>
       <div class="form-group">
       <label>Mitarbeiter</label>
-      <select  [(ngModel)]="termin.mitarbeiter" class="form-control" id="selector">
-        <option *ngFor="let m of mitarbeitersSearch">{{m.id}}</option>
+      <select  [(ngModel)]="termin.mitarbeiter" class="form-control" id="selectorMitarbeiter">
+        <option *ngFor="let m of mitarbeitersSearch" value="{{m.id}}">{{m.id | mitarbeiterFullName}}</option>
       </select>
       </div>
        <div class="form-group">
       <label>Raum</label>
-      <select  [(ngModel)]="termin.raum" class="form-control" id="selector">
-        <option *ngFor="let r of raumsSearch">{{r.id}}</option>
+      <select  [(ngModel)]="termin.raum" class="form-control" id="selectorRaum">
+        <option *ngFor="let r of raumsSearch" value="{{r.id}}">{{r.id | raumBezeichnung}}</option>
       </select>
       </div>
       <div class="form-group">        

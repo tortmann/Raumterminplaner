@@ -1,12 +1,9 @@
 import {Injectable, Inject} from "@angular/core";
 import {Http, Headers, URLSearchParams} from "@angular/http";
-import {Mitarbeiter} from "../../entities/mitarbeiter";
 import {BASE_URL} from "../../app.tokens";
 import {Observable} from "rxjs";
 import {OAuthService} from "angular-oauth2-oidc";
-import {find} from "rxjs/operator/find";
 import {Termin} from "../../entities/termin";
-import {Raum} from "../../entities/raum";
 
 @Injectable()
 export class TerminService{

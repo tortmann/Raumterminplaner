@@ -99,20 +99,20 @@
         </div>
         <div class="col-lg-2 col-md-2">
           <label>Mitarbeiter</label>
-          <select  [(ngModel)]="mitarbeiter" class="form-control" id="selector">
-            <option *ngFor="let m of mitarbeitersSearch">{{m.id}}</option>
+          <select  [(ngModel)]="mitarbeiter" class="form-control" id="selectorMitarbeiter">
+            <option *ngFor="let m of mitarbeitersSearch" value="{{m.id}}">{{m.id | mitarbeiterFullName}}</option>
           </select>
         </div>
         <div class="col-lg-2 col-md-2">
           <label>Raum</label>
-          <select  [(ngModel)]="raum" class="form-control" id="selector">
-            <option *ngFor="let r of raumsSearch">{{r.id}}</option>
+          <select  [(ngModel)]="raum" class="form-control" id="selectorRaum">
+            <option *ngFor="let r of raumsSearch" value="{{r.id}}">{{r.id | raumBezeichnung}}</option>
           </select>
         </div>
-        <div class="col-lg-1 col-md-1">
-          <button class="btn btn-success" type="button" (click)="create();menu = 1">
-            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
-        </div>
+      </div>
+      <div class="col-lg-1 col-md-1">
+        <button class="btn btn-success" type="button" (click)="create();menu = 1">
+          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
       </div>
   </div>
 </div>
