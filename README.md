@@ -20,6 +20,8 @@
 4. Readme für Abgabe schreiben
     * kurze Beschreibung der Features und des Projekts im Allgemeinen
     
+5. navbar collapse fixen & login routing nur wenn authentifiziert
+    
     
 #### Autoren: Thomas Ortmann, Verena Skerbinz
 ###### Erstellt im Rahmen der Ausbildung am Studiengang Informationsmanagement an der FH-Joanneum
