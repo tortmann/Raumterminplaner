@@ -1,9 +1,12 @@
 <br>
 <br>
 <ul class="nav nav-tabs">
-    <li [ngClass]="{ 'active':  menu == 1}" role="presentation"><a (click)="menu = 1"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
-    <li [ngClass]="{ 'active':  menu == 2}" role="presentation"><a (click)="menu = 2"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a></li>
-    <li [ngClass]="{ 'active':  menu == 3}" role="presentation"><a (click)="menu = 3"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></li>
+  <li [ngClass]="{ 'active':  menu == 1}" role="presentation"><a (click)="menu = 1"><span
+    class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
+  <li [ngClass]="{ 'active':  menu == 2}" role="presentation"><a (click)="menu = 2"><span
+    class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a></li>
+  <li [ngClass]="{ 'active':  menu == 3}" role="presentation"><a (click)="menu = 3"><span
+    class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></li>
 </ul>
 
 
@@ -19,17 +22,17 @@
       <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;<b>{{ errorMessage }}</b>
     </div>
     <form #f="ngForm" novalidate>
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">Name</span>
-      <input [(ngModel)]="name" placeholder="Suche nach Mitarbeitern..."
-             name="name"
-             required
-             minlength="3"
-             maxlength="20"
-             pattern="[a-zA-ZöäüßÖÄÜ]*"
-             class="form-control">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Name</span>
+        <input [(ngModel)]="name" placeholder="Suche nach Mitarbeitern..."
+               name="name"
+               required
+               minlength="3"
+               maxlength="20"
+               pattern="[a-zA-ZöäüßÖÄÜ]*"
+               class="form-control">
 
-      <span class="input-group-btn">
+        <span class="input-group-btn">
         <button [disabled]="!f?.controls?.name?.valid" class="btn btn-default" type="button" (click)="search()">
           <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
         </button>
@@ -37,47 +40,50 @@
           <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
         </button>
       </span>
-    </div>
-    <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.name?.valid">
-      <div *ngIf="f?.controls?.name?.hasError('minlength')">
-        <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Mitarbeiter Name ist <i>ZU KURZ</i>!
       </div>
-      <div *ngIf="f?.controls?.name?.hasError('pattern')">
-        <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Nur <i>BUCHSTABEN</i> sind erlaubt!
+      <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.name?.valid">
+        <div *ngIf="f?.controls?.name?.hasError('minlength')">
+          <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Mitarbeiter Name ist <i>ZU
+          KURZ</i>!
+        </div>
+        <div *ngIf="f?.controls?.name?.hasError('pattern')">
+          <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Nur <i>BUCHSTABEN</i>
+          sind erlaubt!
+        </div>
+        <div *ngIf="f?.controls?.name?.hasError('required')">
+          <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Dieses Feld ist nicht
+          optional!
+        </div>
       </div>
-      <div *ngIf="f?.controls?.name?.hasError('required')">
-        <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Dieses Feld ist nicht optional!
-      </div>
-    </div>
     </form>
     <br>
     <div *ngIf="mitarbeiters.length > 0" class="panel-footer">
       <div class="col-md-12">
-      <table class="table"><br>
-        <tr>
-          <th>Aktion</th>
-          <th>Vorname</th>
-          <th>Name</th>
-          <th>Termine</th>
-        </tr>
-        <tr *ngFor="let mitarbeiter of mitarbeiters" [ngClass]="{ 'active': mitarbeiter == selectedMitarbeiter }">
-          <td>
-            <button type="button" class="btn btn-success btn-sm" (click)="select(mitarbeiter)">
-              <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
-            </button>
-            <a class="btn btn-sm btn-primary" [routerLink]="['/mitarbeiter-edit', mitarbeiter.id]">
-              <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-            </a>
-            <button type="button" class="btn btn-danger btn-sm" (click)="delete(mitarbeiter)">
-              <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
-            </button>
-          </td>
-          <td>{{mitarbeiter.vorname}}</td>
-          <td>{{mitarbeiter.name}}</td>
-          <td *ngFor="let termin of mitarbeiter.termin">
-            <b>{{termin.kommentar}}</b> am <i>{{termin.datum}}</i> in Raum: <u>{{termin.raum.bezeichnung}}</u>
-          </td>
-        </tr>
+        <table class="table"><br>
+          <tr>
+            <th>Aktion</th>
+            <th>Vorname</th>
+            <th>Name</th>
+            <th>Termine</th>
+          </tr>
+          <tr *ngFor="let mitarbeiter of mitarbeiters" [ngClass]="{ 'active': mitarbeiter == selectedMitarbeiter }">
+            <td>
+              <button type="button" class="btn btn-success btn-sm" (click)="select(mitarbeiter)">
+                <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
+              </button>
+              <a class="btn btn-sm btn-primary" [routerLink]="['/mitarbeiter-edit', mitarbeiter.id]">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+              </a>
+              <button type="button" class="btn btn-danger btn-sm" (click)="delete(mitarbeiter)">
+                <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+              </button>
+            </td>
+            <td>{{mitarbeiter.vorname}}</td>
+            <td>{{mitarbeiter.name}}</td>
+            <td *ngFor="let termin of mitarbeiter.termin">
+              <b>{{termin.kommentar}}</b> am <i>{{termin.datum}}</i> in Raum: <u>{{termin.raum.bezeichnung}}</u>
+            </td>
+          </tr>
         </table>
       </div>
     </div>
@@ -88,25 +94,52 @@
   <div class="panel-heading">
     <h2 class="panel-title">Mitarbeiter anlegen</h2>
   </div>
-  <div class="panel-body">
-    <div class="col-md-12">
-      <div class="col-lg-3 col-md-3">
-        <input [(ngModel)]="name" class="form-control" placeholder="Name">
+  <form #f="ngForm" novalidate>
+    <div class="panel-body">
+      <div class="col-md-12">
+        <div class="col-lg-3 col-md-3">
+          <input [(ngModel)]="name" class="form-control" placeholder="Name"
+                 name="name"
+                 required
+                 minlength="3"
+                 maxlength="20"
+                 pattern="[a-zA-ZöäüßÖÄÜ]*">
+        </div>
+        <div class="col-lg-3 col-md-3">
+          <input [(ngModel)]="vorname" class="form-control" placeholder="Vorname"
+                 name="vorname"
+                 required
+                 minlength="3"
+                 maxlength="20"
+                 pattern="[a-zA-ZöäüßÖÄÜ]*">
+        </div>
+        <div class="col-lg-2 col-md-1">
+          <button [disabled]="!f?.controls?.name?.valid ||!f?.controls?.vorname?.valid "  class="btn btn-success" type="button" (click)="create();menu = 1">
+            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+        </div>
       </div>
-      <div class="col-lg-3 col-md-3">
-        <input [(ngModel)]="vorname" class="form-control" placeholder="Vorname">
-      </div>
-      <div class="col-lg-2 col-md-1">
-        <button class="btn btn-success" type="button" (click)="create();menu = 1">
-          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+    <div class="col-md-12" >
+      <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.vorname?.valid || !f?.controls?.name?.valid">
+        <div *ngIf="f?.controls?.vorname?.hasError('minlength') || f?.controls?.name?.hasError('minlength')">
+          <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Name und Vorname
+          eines Mitarbeiters müssen  <i>mind. 3 BUCHSTABEN</i> enthalten!
+        </div>
+        <div *ngIf="f?.controls?.vorname?.hasError('pattern')||f?.controls?.name?.hasError('pattern')">
+          <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Nur <i>BUCHSTABEN</i>
+          sind erlaubt!
+        </div>
+        <div *ngIf="f?.controls?.vorname?.hasError('required') || f?.controls?.name?.hasError('required')">
+          <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Beide Felder müssen ausgefüllt werden!
+        </div>
       </div>
     </div>
-  </div>
+    </div>
+  </form>
 </div>
 
 <div class="panel panel-primary" *ngIf="menu == 3">
   <div class="panel-heading">
-    <h2 class="panel-title">Passenger Info</h2>
+    <h2 class="panel-title">Mitarbeiter Info</h2>
   </div>
   <div class="panel-body">
     <div class="col-md-12">
@@ -116,10 +149,10 @@
           [(selectedItem)]="selectedMitarbeiter">
         </mitarbeiter-card>
       </div>
-    <div class="col-md-12">
+      <div class="col-md-12">
       <pre>
         {{ selectedMitarbeiter | json }}
       </pre>
+      </div>
     </div>
   </div>
-</div>

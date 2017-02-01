@@ -7,34 +7,40 @@ import {Termin} from "../../entities/termin";
 @Component({
   template: `
     <h1>Termin bearbeiten!</h1>
+  <div class="panel-body">
     <div class="alert alert-success" role="alert" *ngIf="messageExists == true">
-      <b>{{ message }}</b>
+      <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>&nbsp;<b>{{ message }}</b>
     </div>
     <div class="alert alert-danger" role="alert" *ngIf="errorMessageExists == true">
-      <b>{{ message }}</b>
+      <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;<b>{{ errorMessage }}</b>
     </div>
+    <form #f="ngForm" novalidate>
     <div *ngIf="termin">
       <div class="form-group">
         <label>Id</label>
-        <input [(ngModel)]="termin.id" class="form-control" disabled>
+        <input [(ngModel)]="termin.id" class="form-control" disabled name="id"> 
       </div>
       <div class="form-group">
         <label>Datum</label>
-        <input [(ngModel)]="termin.datum" class="form-control">
+        <input [(ngModel)]="termin.datum" class="form-control" 
+                 name="datum"
+                 required
+                 pattern="^(0?[1-9]|[12][0-9]|3[01]).(0?[1-9]|1[012]).\\d{4}$">
       </div>
             <div class="form-group">
         <label>Kommentar</label>
-        <input [(ngModel)]="termin.kommentar" class="form-control">
+        <input [(ngModel)]="termin.kommentar" class="form-control" name="kommentar"
+        >
       </div>
       <div class="form-group">
       <label>Mitarbeiter</label>
-      <select  [(ngModel)]="termin.mitarbeiter" class="form-control" id="selectorMitarbeiter">
+      <select  [(ngModel)]="termin.mitarbeiter" class="form-control" id="selectorMitarbeiter" name="mitarbeiter">
         <option *ngFor="let m of mitarbeitersSearch" value="{{m.id}}">{{m.id | mitarbeiterFullName}}</option>
       </select>
       </div>
        <div class="form-group">
       <label>Raum</label>
-      <select  [(ngModel)]="termin.raum" class="form-control" id="selectorRaum">
+      <select  [(ngModel)]="termin.raum" class="form-control" id="selectorRaum" name="raum">
         <option *ngFor="let r of raumsSearch" value="{{r.id}}">{{r.id | raumBezeichnung}}</option>
       </select>
       </div>
@@ -42,11 +48,25 @@ import {Termin} from "../../entities/termin";
         <a class="btn btn-sm btn-primary" [routerLink]="['/termin-search']">
           <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
         </a>
-        <a class="btn btn-sm btn-success" (click)="save()" [routerLink]="['/termin-search']">
+        <button [disabled]="!f?.controls?.datum?.valid" class="btn btn-sm btn-success" (click)="save()" [routerLink]="['/termin-search']">
           <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-        </a>
+        </button>
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.datum?.valid">
+
+        <div *ngIf="f?.controls?.datum?.hasError('pattern')">
+          <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Bitte auf das richtige
+          Format (<i>dd.mm.yyyy</i>) achten!
+        </div>
+        <div *ngIf="f?.controls?.datum?.hasError('required')">
+          <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Dieses Feld ist nicht
+          optional!
+        </div>        
       </div>
     </div>
+    </form>
+        <hr>
+
     `
 })
 export class TerminEditComponent implements OnInit{

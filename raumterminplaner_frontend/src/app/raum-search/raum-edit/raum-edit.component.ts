@@ -8,31 +8,47 @@ import {Raum} from "../../entities/raum";
   template: `
     <h2>Raum bearbeiten!</h2>
     <hr>
+    <div class="panel-body">
     <div class="alert alert-success" role="alert" *ngIf="messageExists == true">
-      <b>{{ message }}</b>
+      <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>&nbsp;<b>{{ message }}</b>
     </div>
     <div class="alert alert-danger" role="alert" *ngIf="errorMessageExists == true">
-      <b>{{ message }}</b>
+      <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;<b>{{ errorMessage }}</b>
     </div>
+    <form #f="ngForm" novalidate>
     <div *ngIf="raum">
       <div class="form-group">
         <label>ID</label>
-        <input [(ngModel)]="raum.id" class="form-control" disabled>
+        <input [(ngModel)]="raum.id" class="form-control" disabled
+        name="id">
       </div>
       <div class="form-group">
         <label>Bezeichnung</label>
-        <input [(ngModel)]="raum.bezeichnung" class="form-control">
+        <input [(ngModel)]="raum.bezeichnung" class="form-control"
+               name="raum"
+               required
+              >
       </div>
     
       <div class="form-group">        
         <a class="btn btn-sm btn-primary" [routerLink]="['/raum-search']">
           <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
         </a>
-        <a class="btn btn-sm btn-success" (click)="save()" [routerLink]="['/raum-search']">
+        <button [disabled]="!f?.controls?.raum?.valid" class="btn btn-sm btn-success" (click)="save()" [routerLink]="['/raum-search']">
           <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-        </a>
+        </button>
+      </div>
+       <div class="col-md-12">
+
+        <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.raum?.valid">
+          <div *ngIf="f?.controls?.raum?.hasError('required')">
+            <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Dieses Feld ist nicht
+            optional!
+          </div>
+        </div>
       </div>
     </div>
+    </form>
     <hr>
     `
 })

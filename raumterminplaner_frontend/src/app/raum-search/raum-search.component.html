@@ -1,9 +1,12 @@
 <br>
 <br>
 <ul class="nav nav-tabs">
-  <li [ngClass]="{ 'active':  menu == 1}" role="presentation"><a (click)="menu = 1"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
-  <li [ngClass]="{ 'active':  menu == 2}" role="presentation"><a (click)="menu = 2"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a></li>
-  <li [ngClass]="{ 'active':  menu == 3}" role="presentation"><a (click)="menu = 3"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></li>
+  <li [ngClass]="{ 'active':  menu == 1}" role="presentation"><a (click)="menu = 1"><span
+    class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
+  <li [ngClass]="{ 'active':  menu == 2}" role="presentation"><a (click)="menu = 2"><span
+    class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a></li>
+  <li [ngClass]="{ 'active':  menu == 3}" role="presentation"><a (click)="menu = 3"><span
+    class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></li>
 </ul>
 
 
@@ -36,7 +39,8 @@
       </div>
       <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.raum?.valid">
         <div *ngIf="f?.controls?.raum?.hasError('required')">
-          <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Dieses Feld ist nicht optional!
+          <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Dieses Feld ist nicht
+          optional!
         </div>
       </div>
     </form>
@@ -76,19 +80,33 @@
   <div class="panel-heading">
     <h2 class="panel-title">Raum anlegen</h2>
   </div>
-  <div class="panel-body">
-    <div class="col-md-12">
-      <div class="col-lg-3 col-md-2">
-        <input [(ngModel)]="bezeichnung" class="form-control" placeholder="Bezeichnung">
-      </div>
+  <form #f="ngForm" novalidate>
+    <div class="panel-body">
+      <div class="col-md-12">
+        <div class="col-lg-3 col-md-2">
+          <input [(ngModel)]="bezeichnung" class="form-control" placeholder="Bezeichnung"
+                 name="raum"
+                 required>
+        </div>
 
-      <div class="col-lg-2 col-md-1">
-        <button class="btn btn-success" type="button" (click)="create();menu = 1">
-          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
-      </div>
+        <div class="col-lg-2 col-md-1">
+          <button [disabled]="!f?.controls?.raum?.valid" class="btn btn-success" type="button"
+                  (click)="create();menu = 1">
+            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+        </div>
 
+      </div>
+      <div class="col-md-12">
+
+        <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.raum?.valid">
+          <div *ngIf="f?.controls?.raum?.hasError('required')">
+            <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Dieses Feld ist nicht
+            optional!
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </form>
 </div>
 
 <div class="panel panel-primary" *ngIf="menu == 3">
