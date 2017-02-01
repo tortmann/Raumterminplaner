@@ -1,18 +1,15 @@
 import {
-  Component, OnInit, OnChanges, AfterViewChecked, AfterContentChecked, AfterContentInit,
-  AfterViewInit
+  Component, OnInit
 } from "@angular/core";
 import {Mitarbeiter} from "../entities/mitarbeiter";
 import {MitarbeiterService} from "./services/mitarbeiter.service";
 import {Termin} from "../entities/termin";
-import {MitarbeiterEditComponent} from "./mitarbeiter-edit/mitarbeiter-edit.component";
-import {isUndefined} from "util";
-import {isNullOrUndefined} from "util";
+
 
 @Component({
   selector: 'mitarbeiter-search',
   templateUrl: 'mitarbeiter-search.component.html',
-  styleUrls: ['mitarbeiter-search.component.css']
+  styleUrls: ['../custom.css']
 })
 
 export class MitarbeiterSearchComponent implements OnInit{

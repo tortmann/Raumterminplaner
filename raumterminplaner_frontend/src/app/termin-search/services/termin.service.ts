@@ -35,6 +35,7 @@ export class TerminService{
 
   public find(datum: string) {
 
+    console.log(datum);
     let url = this.baseUrl+this.classSuffix;
     this.termins = [];
     this.termineSorted = [];

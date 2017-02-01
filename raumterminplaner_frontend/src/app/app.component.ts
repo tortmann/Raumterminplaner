@@ -1,11 +1,19 @@
-import {Component} from '@angular/core';
+import {Component, NgModule} from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import {Router} from "@angular/router";
+import { CollapseDirective } from 'ng2-bootstrap';
+
 
 @Component({
-  selector: 'app', // <app></app>
+  selector: 'app',
   templateUrl: './app.component.html',
+  styleUrls: ['./custom.css']
 })
+
+@NgModule({
+  declarations: [CollapseDirective]
+})
+
 export class AppComponent {
 
   constructor(private oauthService: OAuthService, private router: Router) {
@@ -42,6 +50,8 @@ export class AppComponent {
     });
 
   }
+  public isCollapsed: boolean = true;
+
   checkAutorization(): boolean {
 
     let userIsAuthorized = this.oauthService.hasValidAccessToken();
@@ -59,5 +69,6 @@ export class AppComponent {
 
     return claims.given_name;
   }
+
 
 }

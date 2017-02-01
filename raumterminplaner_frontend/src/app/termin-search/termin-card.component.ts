@@ -3,7 +3,8 @@ import {Component, Input, Output, EventEmitter} from "@angular/core";
 
 @Component({
   templateUrl: 'termin-card.component.html',
-  selector: 'termin-card'
+  selector: 'termin-card',
+  styleUrls: ['../custom.css']
 })
 export class TerminCardComponent {
 

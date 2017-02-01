@@ -1,18 +1,18 @@
 <br>
 <br>
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs nav-tabs-custom">
   <li [ngClass]="{ 'active':  menu == 1}" role="presentation"><a (click)="menu = 1"><span
     class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
   <li [ngClass]="{ 'active':  menu == 2}" role="presentation"><a (click)="menu = 2"><span
     class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a></li>
-  <li [ngClass]="{ 'active':  menu == 3}" role="presentation"><a (click)="menu = 3"><span
+  <li *ngIf="termins.length > 0"  [ngClass]="{ 'active':  menu == 3}" role="presentation"><a (click)="menu = 3"><span
     class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></li>
 </ul>
 
 
-<div class="panel panel-primary" *ngIf="menu == 1">
-  <div class="panel-heading">
-    <h1 class="panel-title">Termin suchen</h1>
+<div class="panel panel-custom" *ngIf="menu == 1">
+  <div class="panel-heading panel-heading-custom">
+    <h1 class="panel-title"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>&nbsp;Termin</h1>
   </div>
   <div class="panel-body">
     <div class="alert alert-success" role="alert" *ngIf="messageExists == true">
@@ -24,29 +24,23 @@
     <form #f="ngForm" novalidate>
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">Datum</span>
-        <input [(ngModel)]="datum" placeholder="Suche nach Terminen..."
+        <input type="date" [(ngModel)]="datum" placeholder="Suche nach Terminen..."
                name="datum"
                required
-               pattern="^(0?[1-9]|[12][0-9]|3[01]).(0?[1-9]|1[012]).\d{4}$"
                class="form-control">
 
 
         <span class="input-group-btn">
-        <button [disabled]="!f?.controls?.datum?.valid" class="btn btn-default" type="button" (click)="search()">
+        <button [disabled]="!f?.controls?.datum?.valid" class="btn btn-customInverse" type="button" (click)="search()">
           <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
         </button>
-           <button class="btn btn-primary" type="button" (click)="searchAll()">
+           <button class="btn btn-custom" type="button" (click)="searchAll()">
           <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
         </button>
 
       </span>
       </div>
       <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.datum?.valid">
-
-        <div *ngIf="f?.controls?.datum?.hasError('pattern')">
-          <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Bitte auf das richtige
-          Format (<i>dd.mm.yyyy</i>) achten!
-        </div>
         <div *ngIf="f?.controls?.datum?.hasError('required')">
           <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Dieses Feld ist nicht
           optional!
@@ -54,7 +48,7 @@
       </div>
     </form>
     <br>
-    <div class="panel-footer">
+    <div *ngIf="termins.length > 0" class="panel-footer">
       <div class="col-md-12">
         <table class="table"><br>
           <tr>
@@ -66,13 +60,13 @@
           </tr>
           <tr *ngFor="let termin of termins" [ngClass]="{ 'active': termin == selectedTermin }">
             <td>
-              <button type="button" class="btn btn-success btn-sm" (click)="select(termin)">
+              <button type="button" class="btn btn-custom btn-sm" (click)="select(termin)">
                 <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
               </button>
-              <a class="btn btn-sm btn-primary" [routerLink]="['/termin-edit', termin.id]">
+              <a class="btn btn-sm btn-custom" [routerLink]="['/termin-edit', termin.id]">
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
               </a>
-              <button type="button" class="btn btn-danger btn-sm" (click)="delete(termin)">
+              <button type="button" class="btn btn-customDelete btn-sm" (click)="delete(termin)">
                 <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
               </button>
             </td>
@@ -89,70 +83,76 @@
   </div>
 </div>
 
-<div class="panel panel-primary" *ngIf="menu == 2">
-  <div class="panel-heading">
-    <h2 class="panel-title">Termin anlegen</h2>
+<div class="panel panel-custom" *ngIf="menu == 2">
+  <div class="panel-heading panel-heading-custom">
+    <h1 class="panel-title"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>&nbsp;Termin</h1>
   </div>
   <form #f="ngForm" novalidate>
     <div class="panel-body">
-      <div class="col-md-12">
-        <div class="col-lg-3 col-md-2">
-          <label>Datum</label>
-          <input [(ngModel)]="datum" class="form-control" placeholder="Datum"
+      <div class="input-group col-md-12">
+        <div class="col-md-5">
+          <input type="date"  [(ngModel)]="datum" class="form-control" placeholder="Datum"
                  name="datum"
-                 required
-                 pattern="^(0?[1-9]|[12][0-9]|3[01]).(0?[1-9]|1[012]).\d{4}$">
+                 required>
         </div>
-        <div class="col-lg-3 col-md-2">
-          <label>Kommentar</label>
+        <div class="col-md-7">
           <input [(ngModel)]="kommentar" class="form-control" placeholder="Kommentar"
-                 name="Kommentar">
+                 name="kommentar" required>
         </div>
-        <div class="col-lg-2 col-md-2">
-          <label>Mitarbeiter</label>
-          <select [(ngModel)]="mitarbeiter" class="form-control" id="selectorMitarbeiter" name="mitarbeiter">
-            <option *ngFor="let m of mitarbeitersSearch" value="{{m.id}}">{{m.id | mitarbeiterFullName}}</option>
-          </select>
+        <div class="col-md-5">
+          <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.datum?.valid">
+            <div *ngIf="f?.controls?.datum?.hasError('required')">
+              <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Das Feld "Datum" ist nicht
+              optional!
+            </div>
+          </div>
         </div>
-        <div class="col-lg-2 col-md-2">
-          <label>Raum</label>
-          <select [(ngModel)]="raum" class="form-control" id="selectorRaum" name="raum">
+        <div class="col-md-7">
+          <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.kommentar?.valid">
+            <div *ngIf="f?.controls?.kommentar?.hasError('required')">
+              <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Das Feld "Kommentar" ist nicht
+              optional!
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+            <select [(ngModel)]="mitarbeiter" class="form-control" id="selectorMitarbeiter" name="mitarbeiter" required>
+              <option *ngFor="let m of mitarbeitersSearch" value="{{m.id}}">{{m.id | mitarbeiterFullName}}</option>
+            </select>
+        </div>
+        <div class="col-md-5">
+          <select [(ngModel)]="raum" class="form-control" id="selectorRaum" name="raum" required>
             <option *ngFor="let r of raumsSearch" value="{{r.id}}">{{r.id | raumBezeichnung}}</option>
           </select>
         </div>
+        <div class="col-md-2">
+          <button [disabled]="!f?.controls?.datum?.valid"   class="btn btn-custom btn-block" type="button" (click)="create();menu = 1">
+            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+          </button>
+        </div>
       </div>
-      <div class="col-lg-1 col-md-1">
-        <button [disabled]="!f?.controls?.datum?.valid"   class="btn btn-success" type="button" (click)="create();menu = 1">
-          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
-      </div>
-      <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.datum?.valid">
 
-        <div *ngIf="f?.controls?.datum?.hasError('pattern')">
-          <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Bitte auf das richtige
-          Format (<i>dd.mm.yyyy</i>) achten!
-        </div>
-        <div *ngIf="f?.controls?.datum?.hasError('required')">
-          <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Dieses Feld ist nicht
-          optional!
-        </div>
-      </div>
     </div>
   </form>
 </div>
 
-<div class="panel panel-primary" *ngIf="menu == 3">
-  <div class="panel-heading">
-    <h2 class="panel-title">Termin Info</h2>
+<div class="panel panel-custom" *ngIf="menu == 3">
+  <div class="panel-heading panel-heading-custom">
+    <h1 class="panel-title"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>&nbsp;Termin</h1>
   </div>
   <div class="panel-body">
-    <div *ngFor="let termin of termins" class="col-xs-12 col-lg-3 col-md-4 col-sm-6 ">
-      <termin-card
-        [item]="termin"
-        [(selectedItem)]="selectedTermin">
-      </termin-card>
+    <div class="col-md-12">
+      <div *ngFor="let termin of termins" class="col-xs-12 col-lg-3 col-md-4 col-sm-6 ">
+        <termin-card
+          [item]="termin"
+          [(selectedItem)]="selectedTermin">
+        </termin-card>
+      </div>
     </div>
-    <pre>
-      {{ selectedTermin | json }}
-    </pre>
+    <div class="col-md-12" *ngIf="termins.length > 0">
+      <pre>
+        {{ selectedTermin | json }}
+      </pre>
+    </div>
   </div>
 </div>

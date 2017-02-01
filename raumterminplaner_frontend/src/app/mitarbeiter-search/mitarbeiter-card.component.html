@@ -1,16 +1,18 @@
 <div style="padding:20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); margin: 20px;"
-     [ngStyle]="{'background-color': (selectedItem == item) ?  '#006dcc' : 'ivory',
-     'color': (selectedItem == item) ?  'white' : 'black'}">
+     [ngStyle]="{'background-color': (selectedItem == item) ?  '#fff' : '#323233',
+     'color': (selectedItem == item) ?  '#323233' : '#fff'}">
 
-  <h3>Mitarbeiter #{{item.id}}</h3>
+  <h3>Mitarbeiter {{item.id}}</h3>
   <hr>
-  <p><b>Name:</b> {{item.name}}</p>
   <p><b>Vorname:</b> {{item.vorname}}</p>
+  <p><b>Name:</b> {{item.name}}</p>
   <hr>
-
-
   <p>
-    <input type="button" value="Auswählen" class="btn btn-xs btn-primary" (click)="select()" />
-    <a class="btn btn-xs btn-danger" [routerLink]="['/mitarbeiter-edit', item.id]">Editieren</a>
+    <button type="button" class="btn btn-custom btn-sm" (click)="select(mitarbeiter)">
+      <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
+    </button>
+    <a class="btn btn-sm btn-custom" [routerLink]="['/mitarbeiter-edit', item.id]">
+      <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+    </a>
   </p>
 </div>

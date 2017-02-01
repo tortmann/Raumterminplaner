@@ -22,7 +22,11 @@
     
 5. navbar collapse fixen & login routing nur wenn authentifiziert
     
-    
+#
+#####Installation instructions - Install ng2-bootstrap from npm
+
+    npm install ng2-bootstrap --save    
+##    
 #### Autoren: Thomas Ortmann, Verena Skerbinz
 ###### Erstellt im Rahmen der Ausbildung am Studiengang Informationsmanagement an der FH-Joanneum
 

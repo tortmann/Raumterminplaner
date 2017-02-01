@@ -4,7 +4,8 @@ import {Raum} from "../entities/raum";
 
 @Component({
   templateUrl: 'raum-card.component.html',
-  selector: 'raum-card'
+  selector: 'raum-card',
+  styleUrls: ['../custom.css']
 })
 export class RaumCardComponent {
 

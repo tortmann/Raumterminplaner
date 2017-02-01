@@ -1,18 +1,18 @@
 <br>
 <br>
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs nav-tabs-custom">
   <li [ngClass]="{ 'active':  menu == 1}" role="presentation"><a (click)="menu = 1"><span
     class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
   <li [ngClass]="{ 'active':  menu == 2}" role="presentation"><a (click)="menu = 2"><span
     class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a></li>
-  <li [ngClass]="{ 'active':  menu == 3}" role="presentation"><a (click)="menu = 3"><span
+  <li *ngIf="raums.length > 0" [ngClass]="{ 'active':  menu == 3}" role="presentation"><a (click)="menu = 3"><span
     class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></li>
 </ul>
 
 
-<div class="panel panel-primary" *ngIf="menu == 1">
-  <div class="panel-heading">
-    <h1 class="panel-title">Raum suchen</h1>
+<div class="panel panel-custom" *ngIf="menu == 1">
+  <div class="panel-heading panel-heading-custom">
+    <h1 class="panel-title"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span>&nbsp;Räume</h1>
   </div>
   <div class="panel-body">
     <div class="alert alert-success" role="alert" *ngIf="messageExists == true">
@@ -29,10 +29,10 @@
                required
                class="form-control">
         <span class="input-group-btn">
-        <button [disabled]="!f?.controls?.raum?.valid" class="btn btn-default" type="button" (click)="search()">
+        <button [disabled]="!f?.controls?.raum?.valid" class="btn btn-customInverse" type="button" (click)="search()">
           <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
         </button>
-          <button class="btn btn-primary" type="button" (click)="searchAll()">
+          <button class="btn btn-custom" type="button" (click)="searchAll()">
           <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
         </button>
       </span>
@@ -45,7 +45,7 @@
       </div>
     </form>
     <br>
-    <div class="panel-footer">
+    <div *ngIf="raums.length > 0" class="panel-footer">
       <div class="col-md-12">
         <table class="table"><br>
           <tr>
@@ -55,13 +55,13 @@
           </tr>
           <tr *ngFor="let raum of raums" [ngClass]="{ 'active': raum == selectedRaum }">
             <td>
-              <button type="button" class="btn btn-success btn-sm" (click)="select(raum)">
+              <button type="button" class="btn btn-custom btn-sm" (click)="select(raum)">
                 <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
               </button>
-              <a class="btn btn-sm btn-primary" [routerLink]="['/raum-edit', raum.id]">
+              <a class="btn btn-sm btn-custom" [routerLink]="['/raum-edit', raum.id]">
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
               </a>
-              <button type="button" class="btn btn-danger btn-sm" (click)="delete(raum)">
+              <button type="button" class="btn btn-customDelete btn-sm" (click)="delete(raum)">
                 <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
               </button>
             </td>
@@ -76,32 +76,31 @@
   </div>
 </div>
 
-<div class="panel panel-primary" *ngIf="menu == 2">
-  <div class="panel-heading">
-    <h2 class="panel-title">Raum anlegen</h2>
+<div class="panel panel-custom" *ngIf="menu == 2">
+  <div class="panel-heading panel-heading-custom">
+    <h1 class="panel-title"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span>&nbsp;Räume</h1>
   </div>
   <form #f="ngForm" novalidate>
     <div class="panel-body">
       <div class="col-md-12">
-        <div class="col-lg-3 col-md-2">
+        <div class="col-md-6">
           <input [(ngModel)]="bezeichnung" class="form-control" placeholder="Bezeichnung"
                  name="raum"
                  required>
         </div>
-
-        <div class="col-lg-2 col-md-1">
-          <button [disabled]="!f?.controls?.raum?.valid" class="btn btn-success" type="button"
+        <div class="col-md-2">
+          <button [disabled]="!f?.controls?.raum?.valid" class="btn btn-custom" type="button"
                   (click)="create();menu = 1">
             <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
         </div>
-
       </div>
       <div class="col-md-12">
-
-        <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.raum?.valid">
-          <div *ngIf="f?.controls?.raum?.hasError('required')">
-            <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Dieses Feld ist nicht
-            optional!
+        <div class="col-md-6">
+          <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.raum?.valid">
+            <div *ngIf="f?.controls?.raum?.hasError('required')">
+              <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Dieses Feld ist nicht
+              optional!
+            </div>
           </div>
         </div>
       </div>
@@ -109,9 +108,9 @@
   </form>
 </div>
 
-<div class="panel panel-primary" *ngIf="menu == 3">
-  <div class="panel-heading">
-    <h2 class="panel-title">Raum Info</h2>
+<div class="panel panel-custom" *ngIf="menu == 3">
+  <div class="panel-heading panel-heading-custom">
+    <h1 class="panel-title"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span>&nbsp;Räume</h1>
   </div>
   <div class="panel-body">
     <div *ngFor="let raum of raums" class="col-xs-12 col-lg-3 col-md-4 col-sm-6 ">
@@ -120,8 +119,10 @@
         [(selectedItem)]="selectedRaum">
       </raum-card>
     </div>
-    <pre>
-      {{ selectedRaum | json }}
-    </pre>
+    <div class="col-md-12" *ngIf="raums.length > 0">
+      <pre>
+        {{ selectedMitarbeiter | json }}
+      </pre>
+    </div>
   </div>
 </div>
