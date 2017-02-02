@@ -5,6 +5,9 @@ input.ng-invalid {
 input.ng-valid {
   border-left: solid 15px forestgreen;
 }
+.table th {
+  font-size: 14pt;
+}
 
 .footer {
   position: fixed;
