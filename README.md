@@ -1,4 +1,21 @@
 # SWENGS-Projekt
+## Raumterminplaner
+
+Bei diesem Projekt handelt es sich um ein Agular2 Web Projekt.
+Für das Frontend wurde **Angular2** verwendet, für das Backend **Spring Boot**.
+Die Applikation greift auf eine **MySQL-Server Datenbank** zu, welcher für die FH Lizensiert ist, um Zugang dazu zu erhalten, müssen Zugangsdaten zum Server vorhanden sein.
+
+
+### Features
+Die Applikation besteht aus drei Tabellen:
+   * Termine
+   * Mitarbeiter
+   * Raum
+
+Es ist möglich nach Terminen, Mitarbeitern und Räumen zu suchen, zu erstellen oder zu editieren.
+
+
+
 ## Swapped Ports - frontend now 8080 / backend now 8081
 ### ToDo-Liste:
 1. Placeholder für leere Einträge in Tabellen 
