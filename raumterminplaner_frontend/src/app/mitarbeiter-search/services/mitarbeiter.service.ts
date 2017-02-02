@@ -18,6 +18,9 @@ export class MitarbeiterService{
   urlTermine: string;
   urlRaum: string;
   messageFromService: string;
+  terminClassSuffix: string = 'termine';
+  terminClassPrefix: string = 'termins';
+  raumClassSuffix: string = 'raum';
 
   constructor(
     @Inject(BASE_URL) private baseUrl: string,
@@ -92,7 +95,7 @@ export class MitarbeiterService{
             for (let x of this.mitarbeitersSorted){
                 // modifiy url for next http-GET - http://localhost:8080/api/mitarbeiters/id/termine
                 // the part /id/ is variable and matches the id of the mitarbeiter object (i.id)
-                this.urlTermine = 'http://localhost:8080/api/mitarbeiters/'+x.id+'/termine';
+                this.urlTermine = this.baseUrl+this.classSuffix+'/'+x.id+'/'+this.terminClassSuffix;
                 // http-GET returns all termine of the respective mitarbeiter (current mitarbeiter = i)
                 this.http.get(this.urlTermine, {headers}).map(resp => resp.json())
                   .subscribe((termineObj) => {
@@ -105,7 +108,7 @@ export class MitarbeiterService{
                       terminsSorted.push(j);
                       // http-GET returns the raum of the respective termin (current termin = j)
                       // proceed to build url similar to getting termins
-                      this.urlRaum = 'http://localhost:8080/api/termins/'+j.id+'/raum';
+                      this.urlRaum = this.baseUrl+this.terminClassPrefix+'/'+j.id+'/'+this.raumClassSuffix;
                       this.http.get(this.urlRaum, {headers}).map(resp => resp.json())
                         .subscribe((raumObj) => {
                             // this time the data types match receive Object from response this.raums expects an array of raum objects
