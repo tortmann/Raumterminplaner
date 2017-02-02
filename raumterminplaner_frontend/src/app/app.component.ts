@@ -1,17 +1,12 @@
 import {Component, NgModule} from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import {Router} from "@angular/router";
-import { CollapseDirective } from 'ng2-bootstrap';
 
 
 @Component({
   selector: 'app',
   templateUrl: './app.component.html',
   styleUrls: ['./custom.css']
-})
-
-@NgModule({
-  declarations: [CollapseDirective]
 })
 
 export class AppComponent {
@@ -50,6 +45,8 @@ export class AppComponent {
     });
 
   }
+
+  /*
   public isCollapsed: boolean = true;
 
   checkAutorization(): boolean {
@@ -62,6 +59,7 @@ export class AppComponent {
     return userIsAuthorized;
 
   }
+  */
 
   get givenName(): string {
     let claims = this.oauthService.getIdentityClaims();

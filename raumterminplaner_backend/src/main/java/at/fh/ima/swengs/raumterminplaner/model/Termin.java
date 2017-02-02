@@ -36,8 +36,6 @@ public class Termin {
     @ManyToOne
     private Mitarbeiter mitarbeiter;
 
-
-
     public Termin() {
 
     }

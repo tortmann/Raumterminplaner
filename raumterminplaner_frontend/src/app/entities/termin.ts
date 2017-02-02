@@ -1,7 +1,7 @@
 export interface Termin{
 
   id: number;
-  datum: string;
+  datum: any;
   kommentar: string;
   mitarbeiter: string;
   raum: string;

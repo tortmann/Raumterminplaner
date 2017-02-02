@@ -31,6 +31,7 @@ export class MitarbeiterSearchComponent implements OnInit{
       this.displayMessage();
     }, 1000);
   }
+
   displayMessage(): void {
     this.message = this.messages;
     if(this.messages){
