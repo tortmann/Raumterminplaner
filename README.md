@@ -1,4 +1,5 @@
 # SWENGS-Projekt
+## Swapped Ports - frontend now 8080 / backend now 8081
 ### ToDo-Liste:
 1. Placeholder für leere Einträge in Tabellen 
     * Bsp: Wenn zu einem Termin kein Raum gefunden wurde - sollte statt
