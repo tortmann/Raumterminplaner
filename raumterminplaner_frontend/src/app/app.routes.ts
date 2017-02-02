@@ -1,5 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import {MitarbeiterSearchComponent} from "./mitarbeiter-search/mitarbeiter-search.component";
+import {UrlGuard} from "./url.guard";
 
 
 const APP_ROUTES: Routes = [
@@ -13,6 +15,11 @@ const APP_ROUTES: Routes = [
     component: HomeComponent
   },
   {
+    path: 'mitarbeiter-search',
+    component: MitarbeiterSearchComponent,
+    canActivate: [ UrlGuard ]
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }
@@ -21,3 +28,4 @@ const APP_ROUTES: Routes = [
 
 export const AppRouterModule
                 = RouterModule.forRoot(APP_ROUTES);
+

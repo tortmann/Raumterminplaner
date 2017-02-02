@@ -4,6 +4,7 @@ import {
 import {Mitarbeiter} from "../entities/mitarbeiter";
 import {MitarbeiterService} from "./services/mitarbeiter.service";
 import {Termin} from "../entities/termin";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -24,7 +25,7 @@ export class MitarbeiterSearchComponent implements OnInit{
   public message: string;
   public errorMessage: string;
 
-  constructor (private mitarbeiterService: MitarbeiterService){}
+  constructor (private mitarbeiterService: MitarbeiterService, private router: Router){}
 
   ngOnInit(){
     setTimeout(() => {
