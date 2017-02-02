@@ -54,7 +54,7 @@ import {Mitarbeiter} from '../../entities/mitarbeiter';
               </div>  
               <div class="col-md-12">
                 <div class="form-group">
-                  <label>Name</label>
+                  <label>Nachname</label>
                   <input [(ngModel)]="mitarbeiter.name" class="form-control"
                            name="name"
                            required
