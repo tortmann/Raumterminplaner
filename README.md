@@ -1,4 +1,4 @@
-# ![Logo](Raumterminplaner/raumterminplaner_frontend/src/logo.png) SWENGS-Projekt
+# ![Logo](https://github.com/tortmann/Raumterminplaner/blob/master/raumterminplaner_frontend/src/logo.png) SWENGS-Projekt
 ###
 #### Neu
     * LOGO siehe - Raumterminplaner\raumterminplaner_frontend\src\logo.png
