@@ -7,7 +7,7 @@ import {Raum} from "../entities/raum";
 @Component({
   selector: 'termin-search',
   templateUrl: 'termin-search.component.html',
-  styleUrls: ['termin-search.component.css']
+  styleUrls: ['../custom.css']
 })
 
 export class TerminSearchComponent implements OnInit{
@@ -23,6 +23,7 @@ export class TerminSearchComponent implements OnInit{
   public messageExists: boolean = false;
   public errorMessageExists: boolean = false;
   public errorMessage: string;
+  public formattedDateString: string;
 
 
 
@@ -66,7 +67,11 @@ export class TerminSearchComponent implements OnInit{
   }
 
   search(): void {
-    this.terminService.find(this.datum);
+    let year = this.datum.substring(0,4);
+    let month = this.datum.substring(5,7);
+    let day = this.datum.substring(8,10);
+    this.formattedDateString = day+'.'+month+'.'+year;
+    this.terminService.find(this.formattedDateString);
     setTimeout(() => {
       if(this.terminService.termins.length == 0){
         this.errorMessage = 'Es wurden keine Termine am "'+this.datum+'" gefunden!';
@@ -78,7 +83,7 @@ export class TerminSearchComponent implements OnInit{
         let numberOfSearchResults = this.terminService.termins.length;
         this.errorMessageExists = false;
         this.messageExists = true;
-        this.message = 'Es wurde(n) '+numberOfSearchResults+' Termine am "'+this.datum+'" gefunden!'
+        this.message = 'Es wurde(n) '+numberOfSearchResults+' Termine am "'+this.formattedDateString+'" gefunden!'
         setTimeout(() => {
           this.messageExists = false;
         }, 5000)
@@ -128,9 +133,13 @@ export class TerminSearchComponent implements OnInit{
   }
 
   create(): void {
-    this.terminService.create(this.datum, this.kommentar, this.mitarbeiter, this.raum).subscribe((resp) => {
+    let year = this.datum.substring(0,4);
+    let month = this.datum.substring(5,7);
+    let day = this.datum.substring(8,10);
+    this.formattedDateString = day+'.'+month+'.'+year;
+    this.terminService.create(this.formattedDateString, this.kommentar, this.mitarbeiter, this.raum).subscribe((resp) => {
           this.terminService.find(this.datum);
-          this.message = 'Termin: '+ this.kommentar + ' am ' + this.datum +' wurde neu angelegt!';
+          this.message = 'Termin: '+ this.kommentar + ' am ' + this.formattedDateString +' wurde neu angelegt!';
           this.messageExists = true;
           setTimeout(() => {
             this.messageExists = false;

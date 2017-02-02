@@ -1,18 +1,16 @@
 import {
-  Component, OnInit, OnChanges, AfterViewChecked, AfterContentChecked, AfterContentInit,
-  AfterViewInit
+  Component, OnInit
 } from "@angular/core";
 import {Mitarbeiter} from "../entities/mitarbeiter";
 import {MitarbeiterService} from "./services/mitarbeiter.service";
 import {Termin} from "../entities/termin";
-import {MitarbeiterEditComponent} from "./mitarbeiter-edit/mitarbeiter-edit.component";
-import {isUndefined} from "util";
-import {isNullOrUndefined} from "util";
+import {Router} from "@angular/router";
+
 
 @Component({
   selector: 'mitarbeiter-search',
   templateUrl: 'mitarbeiter-search.component.html',
-  styleUrls: ['mitarbeiter-search.component.css']
+  styleUrls: ['../custom.css']
 })
 
 export class MitarbeiterSearchComponent implements OnInit{
@@ -27,13 +25,14 @@ export class MitarbeiterSearchComponent implements OnInit{
   public message: string;
   public errorMessage: string;
 
-  constructor (private mitarbeiterService: MitarbeiterService){}
+  constructor (private mitarbeiterService: MitarbeiterService, private router: Router){}
 
   ngOnInit(){
     setTimeout(() => {
       this.displayMessage();
     }, 1000);
   }
+
   displayMessage(): void {
     this.message = this.messages;
     if(this.messages){

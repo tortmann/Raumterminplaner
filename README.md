@@ -1,28 +1,20 @@
 # SWENGS-Projekt
+## Swapped Ports - frontend now 8080 / backend now 8081
 ### ToDo-Liste:
 1. Placeholder für leere Einträge in Tabellen 
     * Bsp: Wenn zu einem Termin kein Raum gefunden wurde - sollte statt
     eines leeren Feld "kein Raum gefunden" in der Tabelle stehen
-2. Validierung in allen EDIT und CREATE Forms - siehe Checkliste unten
-    * Mitarbeiter
-        * EDIT
-        * CREATE
-    * Termin
-        * EDIT
-        * CREATE
-    * Raum
-        * EDIT
-        * CREATE
-3. Bonus Feature implementieren
+2. Bonus Feature implementieren
         
         * Lazy Loading        
         * Unit Tests
-4. Readme für Abgabe schreiben
+3. Readme für Abgabe schreiben
     * kurze Beschreibung der Features und des Projekts im Allgemeinen
     
-5. navbar collapse fixen & login routing nur wenn authentifiziert
+4. navbar collapse fixen & login routing nur wenn authentifiziert
     
-    
+ 
+##    
 #### Autoren: Thomas Ortmann, Verena Skerbinz
 ###### Erstellt im Rahmen der Ausbildung am Studiengang Informationsmanagement an der FH-Joanneum
 

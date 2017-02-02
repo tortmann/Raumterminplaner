@@ -4,7 +4,8 @@ import {Mitarbeiter} from "../entities/mitarbeiter";
 
 @Component({
   templateUrl: 'mitarbeiter-card.component.html',
-  selector: 'mitarbeiter-card'
+  selector: 'mitarbeiter-card',
+  styleUrls: ['../custom.css']
 })
 export class MitarbeiterCardComponent {
 

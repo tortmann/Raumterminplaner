@@ -1,18 +1,18 @@
 <br>
 <br>
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs nav-tabs-custom">
   <li [ngClass]="{ 'active':  menu == 1}" role="presentation"><a (click)="menu = 1"><span
     class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
   <li [ngClass]="{ 'active':  menu == 2}" role="presentation"><a (click)="menu = 2"><span
     class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a></li>
-  <li [ngClass]="{ 'active':  menu == 3}" role="presentation"><a (click)="menu = 3"><span
+  <li *ngIf="mitarbeiters.length > 0" [ngClass]="{ 'active':  menu == 3 }" role="presentation"><a (click)="menu = 3"><span
     class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></li>
 </ul>
 
 
-<div class="panel panel-primary" *ngIf="menu == 1">
-  <div class="panel-heading">
-    <h1 class="panel-title">Mitarbeiter suchen</h1>
+<div class="panel panel-custom" *ngIf="menu == 1">
+  <div class="panel-heading panel-heading-custom">
+    <h1 class="panel-title"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Mitarbeiter</h1>
   </div>
   <div class="panel-body">
     <div class="alert alert-success" role="alert" *ngIf="messageExists == true">
@@ -33,10 +33,10 @@
                class="form-control">
 
         <span class="input-group-btn">
-        <button [disabled]="!f?.controls?.name?.valid" class="btn btn-default" type="button" (click)="search()">
+        <button [disabled]="!f?.controls?.name?.valid" class="btn btn-customInverse" type="button" (click)="search()">
           <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
         </button>
-        <button class="btn btn-primary" type="button" (click)="searchAll()">
+        <button class="btn btn-custom" type="button" (click)="searchAll()">
           <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
         </button>
       </span>
@@ -68,13 +68,13 @@
           </tr>
           <tr *ngFor="let mitarbeiter of mitarbeiters" [ngClass]="{ 'active': mitarbeiter == selectedMitarbeiter }">
             <td>
-              <button type="button" class="btn btn-success btn-sm" (click)="select(mitarbeiter)">
+              <button type="button" class="btn btn-custom btn-sm" (click)="select(mitarbeiter)">
                 <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
               </button>
-              <a class="btn btn-sm btn-primary" [routerLink]="['/mitarbeiter-edit', mitarbeiter.id]">
+              <a class="btn btn-sm btn-custom" [routerLink]="['/mitarbeiter-edit', mitarbeiter.id]">
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
               </a>
-              <button type="button" class="btn btn-danger btn-sm" (click)="delete(mitarbeiter)">
+              <button type="button" class="btn btn-customDelete btn-sm" (click)="delete(mitarbeiter)">
                 <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
               </button>
             </td>
@@ -90,14 +90,14 @@
   </div>
 </div>
 
-<div class="panel panel-primary" *ngIf="menu == 2">
-  <div class="panel-heading">
-    <h2 class="panel-title">Mitarbeiter anlegen</h2>
+<div class="panel panel-custom" *ngIf="menu == 2">
+  <div class="panel-heading panel-heading-custom">
+    <h1 class="panel-title"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Mitarbeiter</h1>
   </div>
   <form #f="ngForm" novalidate>
     <div class="panel-body">
-      <div class="col-md-12">
-        <div class="col-lg-3 col-md-3">
+      <div class="input-group col-md-12">
+        <div class="col-md-5">
           <input [(ngModel)]="name" class="form-control" placeholder="Name"
                  name="name"
                  required
@@ -105,7 +105,7 @@
                  maxlength="20"
                  pattern="[a-zA-ZöäüßÖÄÜ]*">
         </div>
-        <div class="col-lg-3 col-md-3">
+        <div class="col-md-5">
           <input [(ngModel)]="vorname" class="form-control" placeholder="Vorname"
                  name="vorname"
                  required
@@ -113,33 +113,46 @@
                  maxlength="20"
                  pattern="[a-zA-ZöäüßÖÄÜ]*">
         </div>
-        <div class="col-lg-2 col-md-1">
-          <button [disabled]="!f?.controls?.name?.valid ||!f?.controls?.vorname?.valid "  class="btn btn-success" type="button" (click)="create();menu = 1">
+        <div class="col-md-2">
+          <button [disabled]="!f?.controls?.name?.valid ||!f?.controls?.vorname?.valid "  class="btn btn-custom" type="button" (click)="create();menu = 1">
             <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
         </div>
+        <div class="col-md-5">
+          <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.name?.valid">
+            <div *ngIf="f?.controls?.name?.hasError('minlength')">
+              <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Minimum: <i> 3 BUCHSTABEN</i>!
+            </div>
+            <div *ngIf="f?.controls?.name?.hasError('pattern')">
+              <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Nur <i>BUCHSTABEN</i>
+              sind erlaubt!
+            </div>
+            <div *ngIf="f?.controls?.name?.hasError('required')">
+              <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Dieses Feld ist nicht optional!
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.vorname?.valid">
+            <div *ngIf="f?.controls?.vorname?.hasError('minlength')">
+              <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Minimum: <i> 3 BUCHSTABEN</i> enthalten!
+            </div>
+            <div *ngIf="f?.controls?.vorname?.hasError('pattern')">
+              <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Nur <i>BUCHSTABEN</i>
+              sind erlaubt!
+            </div>
+            <div *ngIf="f?.controls?.vorname?.hasError('required')">
+              <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Dieses Feld ist nicht optional!
+            </div>
+          </div>
+        </div>
       </div>
-    <div class="col-md-12" >
-      <div class="alert alert-danger" role="alert" *ngIf="!f?.controls?.vorname?.valid || !f?.controls?.name?.valid">
-        <div *ngIf="f?.controls?.vorname?.hasError('minlength') || f?.controls?.name?.hasError('minlength')">
-          <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Name und Vorname
-          eines Mitarbeiters müssen  <i>mind. 3 BUCHSTABEN</i> enthalten!
-        </div>
-        <div *ngIf="f?.controls?.vorname?.hasError('pattern')||f?.controls?.name?.hasError('pattern')">
-          <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Nur <i>BUCHSTABEN</i>
-          sind erlaubt!
-        </div>
-        <div *ngIf="f?.controls?.vorname?.hasError('required') || f?.controls?.name?.hasError('required')">
-          <b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;</b>Beide Felder müssen ausgefüllt werden!
-        </div>
-      </div>
-    </div>
     </div>
   </form>
 </div>
 
-<div class="panel panel-primary" *ngIf="menu == 3">
-  <div class="panel-heading">
-    <h2 class="panel-title">Mitarbeiter Info</h2>
+<div class="panel panel-custom" *ngIf="menu == 3">
+  <div class="panel-heading panel-heading-custom">
+    <h1 class="panel-title"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Mitarbeiter</h1>
   </div>
   <div class="panel-body">
     <div class="col-md-12">
@@ -149,7 +162,7 @@
           [(selectedItem)]="selectedMitarbeiter">
         </mitarbeiter-card>
       </div>
-      <div class="col-md-12">
+      <div class="col-md-12" *ngIf="mitarbeiters.length > 0">
       <pre>
         {{ selectedMitarbeiter | json }}
       </pre>

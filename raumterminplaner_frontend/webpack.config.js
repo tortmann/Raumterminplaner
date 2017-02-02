@@ -62,10 +62,8 @@ var defaultConfig = {
     modules: [ path.resolve(__dirname, 'node_modules') ]
   },
 
-  // Spring Boot Test
-  // changed to port:8081
   devServer: {
-    port: 8081,
+    port: 8080,
     historyApiFallback: true,
     watchOptions: { aggregateTimeout: 300, poll: 1000 }
   },

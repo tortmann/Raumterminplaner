@@ -28,7 +28,6 @@ export class MitarbeiterService{
   }
 
   public displayMessage(message: string){
-
     this.messageFromService = message;
 
 }
