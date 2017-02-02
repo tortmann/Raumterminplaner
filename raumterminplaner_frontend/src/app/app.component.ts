@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 
 export class AppComponent {
 
-  constructor(private oauthService: OAuthService) {
+  constructor(private oauthService: OAuthService, private router: Router) {
 
     this.oauthService.redirectUri = window.location.origin + "/index.html";
     this.oauthService.clientId = "spa-demo";
@@ -24,6 +24,11 @@ export class AppComponent {
 
     });
 
+  }
+
+  logout(): void {
+    this.oauthService.logOut();
+    this.router.navigate(['home']);
   }
 
   get givenName(): string {

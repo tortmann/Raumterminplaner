@@ -1,27 +1,32 @@
-
 import { Component } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
+import {Router} from "@angular/router";
 
 @Component({
   template: `
-    <h1 *ngIf="!givenName">Willkommen, bitte loggen Sie sich ein!</h1>
-    <h1 *ngIf="givenName"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;Sie sind nun eingeloggt!</h1>
+    <div *ngIf="givenName" class="alert alert-success" role="alert">      
+      <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>&nbsp;<b>{{ message }}</b>      
+    </div>
     
-    <button *ngIf="!givenName" class="btn btn-success" (click)="login()">Login</button>
-    <button *ngIf="givenName" class="btn btn-danger" (click)="logout()">Logout</button>
-  `
+    <div *ngIf="!givenName" class="alert alert-success" role="alert">
+      <button *ngIf="!givenName" class="btn btn-loginLogout" (click)="login()">
+        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+      </button>
+      &nbsp;&nbsp;<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;<b>{{ ErrorMessage }}</b>
+    </div> 
+  `,
+  styleUrls: ['../custom.css']
 })
 export class HomeComponent {
 
-  constructor(private oauthService: OAuthService) {
+  constructor(private oauthService: OAuthService, private router: Router) {
   }
+
+  public message: string = 'Sie sind nun eingeloggt!';
+  public ErrorMessage: string = 'Willkommen, bitte loggen Sie sich ein!';
 
   login(): void {
     this.oauthService.initImplicitFlow();
-  }
-
-  logout(): void {
-    this.oauthService.logOut();
   }
 
   get givenName(): string {
