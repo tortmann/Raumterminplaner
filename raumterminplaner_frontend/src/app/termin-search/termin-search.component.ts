@@ -7,7 +7,7 @@ import {Raum} from "../entities/raum";
 @Component({
   selector: 'termin-search',
   templateUrl: 'termin-search.component.html',
-  styleUrls: ['../custom.css']
+  styleUrls: ['../css/custom.css']
 })
 
 export class TerminSearchComponent implements OnInit{

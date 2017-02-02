@@ -95,7 +95,7 @@ import {Termin} from "../../entities/termin";
     </div>
 
     `,
-  styleUrls: ['../../custom.css']
+  styleUrls: ['../../css/custom.css']
 })
 export class TerminEditComponent implements OnInit{
 

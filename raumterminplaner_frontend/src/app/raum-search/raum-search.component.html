@@ -45,15 +45,15 @@
       </div>
     </form>
     <br>
-    <div *ngIf="raums.length > 0" class="panel-footer">
-      <div class="col-md-12">
-        <table class="table"><br>
+    <div *ngIf="raums.length > 0" class="container">
+      <div class="col-md-6 table-responsive">
+        <table class="table table-hover"><br>
           <tr>
-            <th>Aktion</th>
             <th>Bezeichnung</th>
-            <th>Termine</th>
+            <th>Aktion</th>
           </tr>
           <tr *ngFor="let raum of raums" [ngClass]="{ 'active': raum == selectedRaum }">
+            <td>{{raum.bezeichnung}}</td>
             <td>
               <button type="button" class="btn btn-custom btn-sm" (click)="select(raum)">
                 <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
@@ -64,10 +64,6 @@
               <button type="button" class="btn btn-customDelete btn-sm" (click)="delete(raum)">
                 <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
               </button>
-            </td>
-            <td>{{raum.bezeichnung}}</td>
-            <td *ngFor="let termin of raum.termin">
-              <b>{{termin.kommentar}}</b> am <i>{{termin.datum}}</i>&nbsp;
             </td>
           </tr>
         </table>

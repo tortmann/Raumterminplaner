@@ -92,7 +92,7 @@ import {Mitarbeiter} from '../../entities/mitarbeiter';
       </div> 
     </div>
     `,
-  styleUrls: ['../../custom.css']
+  styleUrls: ['../../css/custom.css']
 })
 export class MitarbeiterEditComponent {
 

@@ -6,7 +6,7 @@ import {Component, OnInit} from "@angular/core";
 @Component({
   selector: 'raum-search',
   templateUrl: 'raum-search.component.html',
-  styleUrls: ['../custom.css']
+  styleUrls: ['../css/custom.css']
 })
 
 export class RaumSearchComponent implements OnInit{

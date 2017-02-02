@@ -6,7 +6,7 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'app',
   templateUrl: './app.component.html',
-  styleUrls: ['./custom.css']
+  styleUrls: ['css/custom.css']
 })
 
 export class AppComponent {
