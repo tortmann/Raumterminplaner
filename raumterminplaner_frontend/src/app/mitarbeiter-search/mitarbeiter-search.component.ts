@@ -5,6 +5,7 @@ import {Mitarbeiter} from "../entities/mitarbeiter";
 import {MitarbeiterService} from "./services/mitarbeiter.service";
 import {Termin} from "../entities/termin";
 import {Router} from "@angular/router";
+import {OAuthService} from "angular-oauth2-oidc";
 
 
 @Component({
@@ -25,7 +26,7 @@ export class MitarbeiterSearchComponent implements OnInit{
   public message: string;
   public errorMessage: string;
 
-  constructor (private mitarbeiterService: MitarbeiterService, private router: Router){}
+  constructor (private mitarbeiterService: MitarbeiterService, private router: Router, private oauthService: OAuthService){}
 
   ngOnInit(){
     setTimeout(() => {

@@ -9,12 +9,10 @@ input.ng-valid {
 .footer {
   position: fixed;
   bottom: 0;
-  height: 60px;
-  margin: 0;
-  padding: 0;
   color: #ffffff;
   background-color: #323233;
   border-color: #222222;
+  border-radius: 5px;
   background-image: -webkit-gradient(linear, left 0%, left 100%, from(#4b4b4d), to(#323233));
   background-image: -webkit-linear-gradient(top, #4b4b4d, 0%, #323233, 100%);
   background-image: -moz-linear-gradient(top, #4b4b4d 0%, #323233 100%);
@@ -48,12 +46,20 @@ input.ng-valid {
   background-color: #ffffff;
   font-weight: 600;
   padding: 7px;
+  border-radius: 5px;
 }
 
 .alert-success {
-  border-color: #222222;
   color: #ffffff;
   background-color: #323233;
+  border-color: #222222;
+  border-radius: 5px;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#4b4b4d), to(#323233));
+  background-image: -webkit-linear-gradient(top, #4b4b4d, 0%, #323233, 100%);
+  background-image: -moz-linear-gradient(top, #4b4b4d 0%, #323233 100%);
+  background-image: linear-gradient(to bottom, #4b4b4d 0%, #323233 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4b4b4d', endColorstr='#ff323233', GradientType=0);
 }
 
 .input-group-addon {
@@ -103,6 +109,17 @@ input.ng-valid {
   border-color: #222222;
 }
 
+.btn-loginLogout {
+  color: #323233;
+  background-color: #ffffff;
+  border-color: #222222;
+}
+.btn-loginLogout:hover {
+  color: #ffffff;
+  background-color: #323233;
+  border-color: #ffffff;
+}
+
 .btn-customDelete {
   color: red;
   background-color: #323233;
@@ -139,6 +156,7 @@ input.ng-valid {
 }
 
 .navbar-custom {
+  border-radius: 5px;
   background-color: #323233;
   border-color: #222222;
   background-image: -webkit-gradient(linear, left 0%, left 100%, from(#4b4b4d), to(#323233));
@@ -148,8 +166,13 @@ input.ng-valid {
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4b4b4d', endColorstr='#ff323233', GradientType=0);
 }
-.navbar-custom .navbar-brand {
+
+.nav-custom .navbar-nav .navbar-right{
   color: #ffffff;
+}
+
+.navbar-custom .navbar-brand {
+  color: #e2fa83;
 }
 .navbar-custom .navbar-brand:hover,
 .navbar-custom .navbar-brand:focus {

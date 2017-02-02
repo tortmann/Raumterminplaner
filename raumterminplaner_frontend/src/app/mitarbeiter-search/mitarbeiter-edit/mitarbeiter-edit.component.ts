@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ActivatedRoute, __router_private__, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {MitarbeiterService} from '../services/mitarbeiter.service';
 import {Mitarbeiter} from '../../entities/mitarbeiter';
 

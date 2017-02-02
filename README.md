@@ -8,10 +8,10 @@
         
         * Lazy Loading        
         * Unit Tests
+        
 3. Readme für Abgabe schreiben
     * kurze Beschreibung der Features und des Projekts im Allgemeinen
     
-4. navbar collapse fixen & login routing nur wenn authentifiziert
     
  
 ##    

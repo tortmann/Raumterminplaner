@@ -5,15 +5,15 @@ import {SharedModule} from "../shared/shared.module";
 import {RaumSearchComponent} from "./raum-search.component";
 import {RaumCardComponent} from "./raum-card.component";
 import {RaumService} from "./services/raum.service";
-import {RaumSearchRouterModule} from "./raum-search.routes";
 import {RaumEditComponent} from "./raum-edit/raum-edit.component";
+import {AppRouterModule} from "../app.routes";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     SharedModule,
-    RaumSearchRouterModule
+    AppRouterModule
   ],
   declarations: [
     RaumSearchComponent,
