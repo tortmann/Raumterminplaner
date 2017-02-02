@@ -66,15 +66,17 @@
               {{raum.bezeichnung}}
             </td>
             <td>
-              <button type="button" class="btn btn-custom btn-sm" (click)="select(termin)">
-                <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
-              </button>
-              <a class="btn btn-sm btn-custom" [routerLink]="['/termin-edit', termin.id]">
-                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-              </a>
-              <button type="button" class="btn btn-customDelete btn-sm" (click)="delete(termin)">
-                <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
-              </button>
+              <div class="btn-group" role="group">
+                <button type="button" class="btn btn-custom btn-sm" (click)="select(termin)">
+                  <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
+                </button>
+                <a class="btn btn-sm btn-custom" [routerLink]="['/termin-edit', termin.id]">
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                </a>
+                <button type="button" class="btn btn-customDelete btn-sm" (click)="delete(termin)">
+                  <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                </button>
+              </div>
             </td>
           </tr>
         </table>
