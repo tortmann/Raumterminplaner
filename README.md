@@ -1,35 +1,17 @@
-# SWENGS-Projekt
-## Raumterminplaner
-
-Bei diesem Projekt handelt es sich um ein Agular2 Web Projekt.
-Für das Frontend wurde **Angular2** verwendet, für das Backend **Spring Boot**.
-Die Applikation greift auf eine **MySQL-Server Datenbank** zu, welcher für die FH Lizensiert ist, um Zugang dazu zu erhalten, müssen Zugangsdaten zum Server vorhanden sein.
-
-
-### Features
-Die Applikation besteht aus drei Tabellen:
-   * Termine
-   * Mitarbeiter
-   * Raum
-
-Es ist möglich nach Terminen, Mitarbeitern und Räumen zu suchen, zu erstellen oder zu editieren.
-
-
-
-## Swapped Ports - frontend now 8080 / backend now 8081
+![Logo](https://github.com/tortmann/Raumterminplaner/blob/master/raumterminplaner_frontend/src/readme_logo.png)
+#SWENGS-Projekt
+###
+#### Neu
+    * LOGOS 
 ### ToDo-Liste:
-1. Placeholder für leere Einträge in Tabellen 
-    * Bsp: Wenn zu einem Termin kein Raum gefunden wurde - sollte statt
-    eines leeren Feld "kein Raum gefunden" in der Tabelle stehen
-2. Bonus Feature implementieren
+1. Bonus Feature
         
-        * Lazy Loading        
-        * Unit Tests
+        * URL Guard
+        * GUI
+
         
-3. Readme für Abgabe schreiben
-    * kurze Beschreibung der Features und des Projekts im Allgemeinen
-    
-    
+2. Readme    
+        [Markup CheatSheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
  
 ##    
 #### Autoren: Thomas Ortmann, Verena Skerbinz
