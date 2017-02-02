@@ -11,7 +11,7 @@ import {OAuthService} from "angular-oauth2-oidc";
 @Component({
   selector: 'mitarbeiter-search',
   templateUrl: 'mitarbeiter-search.component.html',
-  styleUrls: ['../custom.css']
+  styleUrls: ['../css/custom.css']
 })
 
 export class MitarbeiterSearchComponent implements OnInit{

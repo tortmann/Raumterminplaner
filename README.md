@@ -1,15 +1,16 @@
 # SWENGS-Projekt
-## Swapped Ports - frontend now 8080 / backend now 8081
+###
+#### Neu
+    * LOGO siehe - Raumterminplaner\raumterminplaner_frontend\src\logo.png
 ### ToDo-Liste:
-1. Bonus Feature implementieren
+1. Bonus Feature
         
-        * Lazy Loading        
-        * Unit Tests
+        * URL Guard
+        * GUI
+
         
-2. Readme für Abgabe schreiben
-    * kurze Beschreibung der Features und des Projekts im Allgemeinen
-    
-    
+2. Readme    
+        [Markup CheatSheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
  
 ##    
 #### Autoren: Thomas Ortmann, Verena Skerbinz

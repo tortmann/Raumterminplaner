@@ -60,7 +60,7 @@ import {Raum} from "../../entities/raum";
    </div>
 
     `,
-  styleUrls: ['../../custom.css']
+  styleUrls: ['../../css/custom.css']
 })
 export class RaumEditComponent {
 

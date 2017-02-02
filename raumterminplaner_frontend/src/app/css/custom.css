@@ -27,6 +27,11 @@ input.ng-valid {
   text-align: center;
 }
 
+.logo{
+  width: 40px;
+  border-radius: 5px;
+  border: 2px solid #222222;
+}
 .panel-custom > .panel-heading-custom {
   background-color: #323233;
   border: 3px solid #323233;

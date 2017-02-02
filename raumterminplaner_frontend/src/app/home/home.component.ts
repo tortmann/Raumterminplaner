@@ -15,7 +15,7 @@ import {Router} from "@angular/router";
       &nbsp;&nbsp;<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;<b>{{ ErrorMessage }}</b>
     </div> 
   `,
-  styleUrls: ['../custom.css']
+  styleUrls: ['../css/custom.css']
 })
 export class HomeComponent {
 
